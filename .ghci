@@ -1,0 +1,5 @@
+:def hoogle \x -> return $ ":!hoogle \"" ++ x ++ "\""
+:def clear \x -> return $ ":! clear"
+
+:set prompt "λ "
+:set +t

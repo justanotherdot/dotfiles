@@ -1,0 +1,1 @@
+/home/rjs/.vim/vimrc
