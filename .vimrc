@@ -20,6 +20,7 @@ call vundle#begin()
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'luochen1990/rainbow'
+Plugin 'chriskempson/base16-vim'
 
 call vundle#end()
 
@@ -153,3 +154,5 @@ set guitablabel=%t
 
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_no_default_key_mappings=1
+
+let base16colorspace=256
