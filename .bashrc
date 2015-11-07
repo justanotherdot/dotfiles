@@ -39,7 +39,8 @@ set -o vi
 
 #Setup our prompt
 if [[ -n `echo $LANG | egrep -i "utf-?8" ` ]]; then
-    PS1="[\d, \@ | \w ]\n↪ "
+    #PS1="[\d, \@ | \w ]\n↪ "
+    PS1="[\d, \@ | \w ]\nλ "
 else
     PS1="[\d, \@ | \w ]\n&  "
 fi
