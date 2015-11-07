@@ -38,7 +38,7 @@ shopt -s extglob
 set -o vi
 
 #Setup our prompt
-if [[ -n `echo $LANG | grep "utf8" ` ]]; then
+if [[ -n `echo $LANG | egrep -i "utf-?8" ` ]]; then
     PS1="[\d, \@ | \w ]\n↪ "
 else
     PS1="[\d, \@ | \w ]\n&  "
@@ -58,8 +58,9 @@ function cd() {
 
 # Arch Linux specific
 update-system() {
-    sudo pacman -Syyu 
-    yaourt -Syu --aur
+    sudo pacman -Syyu
+    yaourt -Syyu --aur
+    yaourt -Syyua --devel # Update all version control packages
 }
 
 orphans() {
