@@ -70,3 +70,9 @@ orphans() {
         sudo pacman -Rns $(pacman -Qdtq)
     fi
 }
+
+# Properly pull from the dotfiles repo and its nested submodules
+update-env() {
+    git pull --recurse-submodules
+    git submodule update --recursive
+}
