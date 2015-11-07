@@ -1,14 +1,25 @@
-" VIMRC CONFIG
+"
+" .vimrc
+"
 " Ryan James Spencer
+
+"optimal width and height
+"set lines=50 
+"set columns=120
 
 set nocompatible
 filetype off
+"set rtp+=~/.vim/bundle/vundle/
+"call vundle#rc()
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" Bundle 'syntastic'
+" Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'luochen1990/rainbow'
 
 call vundle#end()
 
@@ -23,20 +34,21 @@ endif
 execute pathogen#infect()
 execute pathogen#helptags()
 
-
-set autochdir
-
-filetype plugin on
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 
-let g:airline#extensions#tabline#enabled = 1
-set laststatus=2
-
 "disable autocommenting on newlines MUST BE AFTER 'FILETYPE PLUGIN ON'
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-autocmd! BufNewFile,BufRead *.pde setlocal ft=arduino
+
+set nocompatible
+
+if has("multi_byte")
+    if &termencoding == ""
+        let &termencoding = &encoding
+    endif
+    set encoding=utf-8                     " better default than latin1
+    setglobal fileencoding=utf-8           " change default file encoding when writing new files
+endif
 
 "Do not close buffers; hide them instead.
 set hidden
@@ -46,39 +58,51 @@ set hidden
 set backspace+=indent,eol,start
 set whichwrap+=<,>,h,l
 
-" set foldmethod=syntax
-" set foldnestmax=1 
-" set foldlevelstart=1
-
+" Disable localized menus for now since only some items are translated (e.g.
+" the entire MacVim menu is set up in a nib file which currently only is
+" translated to English).
+set langmenu=none
 set nowrap
-set shiftround
-set smartcase
+" set foldmethod=syntax
+" set foldnestmax=1
+" set foldlevelstart=1
 
 set history=1000
 set undolevels=1000
-set title
-set novisualbell
-set noerrorbells
+"set title
+"set novisualbell
+"set noerrorbells
+
+set autochdir
+
+set laststatus=2
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+" map <silent> <Leader>e :Errors<CR>
+" map <Leader>s :SyntasticToggleMode<CR>
 
 " trailing chars for whitespace-centric languages
 " set list
 " set listchar=tab:>.,trail:.,extends:#,nbsp:.
 
 syntax on
-
-set bg=dark
 colorscheme gruvbox
+set bg=dark
 
+"Enhance command-line completions
 set wildmenu
 
+" easy escape
 inoremap jj <esc>
 
+"Remap the leader
 let mapleader = '\'
 let g:mapleader = '\'
-
+"Fast saving
 nmap <leader>w :w!<cr>
 nmap <leader>q :q<cr>
-nmap <leader>x :wq!<cr>
 nmap <leader>a :wqa<cr>
 " r for run
 nmap <leader>r :make<cr> 
@@ -89,26 +113,43 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" 4 char space smart indent
+"set autoindent 
+"set smartindent
+set tabstop=4
+set shiftwidth=4
+set shiftround
+set softtabstop=4
+set expandtab
+set nowrap
+
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
 
+" set pastetoggle=<F2> (or in this case, <leader>p)
 set pastetoggle=<leader>p
 
-set tabstop=8
-set expandtab
-set softtabstop=4
-set shiftwidth=4
-set shiftround
-
+"line numbers
 set number
+"current cursor position
 set ruler
 
 set ignorecase
 set smartcase
 set incsearch
 set magic
-set hlsearch
-nmap <silent> // :nohlsearch<cr>
+
+let g:rainbow_active = 1
+" au VimEnter * RainbowParenthesesToggle
+" au Syntax * RainbowParenthesesLoadRound
+" au Syntax * RainbowParenthesesLoadSquare
+" au Syntax * RainbowParenthesesLoadBraces
+
+nnoremap <leader>. :CtrlPTag<cr>
+
+set guitablabel=%t
+
+"autocmd Filetype gitcommit setlocal spell textwidth=72
 
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_no_default_key_mappings=1
