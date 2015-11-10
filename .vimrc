@@ -24,6 +24,7 @@ Plugin 'chriskempson/base16-vim'
 
 call vundle#end()
 
+highlight ExtraWhitespace ctermbg=white
 
 " Modify font for gtk+ gui
 if has("gui_running")
