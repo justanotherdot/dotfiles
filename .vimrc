@@ -24,8 +24,6 @@ Plugin 'chriskempson/base16-vim'
 
 call vundle#end()
 
-highlight ExtraWhitespace ctermbg=white
-
 " Modify font for gtk+ gui
 if has("gui_running")
     if has("gui_gtk2")
@@ -35,6 +33,7 @@ endif
 
 execute pathogen#infect()
 execute pathogen#helptags()
+
 
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
@@ -157,3 +156,5 @@ let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_no_default_key_mappings=1
 
 let base16colorspace=256
+
+highlight ExtraWhitespace ctermbg=white
