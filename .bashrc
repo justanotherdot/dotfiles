@@ -74,6 +74,13 @@ orphans() {
 
 # Properly pull from the dotfiles repo and its nested submodules
 update-env() {
-    git pull --recurse-submodules
-    git submodule update --recursive
+    builtin cd "$HOME"
+    # install pathogen
+    if [[ ! -f ~/.vim/autoload/pathogen.vim ]]; then 
+        mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+        curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+    fi
+    # Setup `git pullall` as an alias for our update
+    git config alias.pullall '!git pull && git submodule update --init --recursive'
+    git pullall
 }
