@@ -54,7 +54,11 @@ alias emacs='emacs -nw'
 
 # More complex aliases
 function cd() {
-    builtin cd "$1" && ls
+    if [[ -z $1 ]]; then
+        builtin cd "$HOME" && ls
+    else
+        builtin cd "$1" && ls
+    fi
 }
 
 # Arch Linux specific
