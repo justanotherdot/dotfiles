@@ -4,7 +4,7 @@
 " Ryan James Spencer
 
 "optimal width and height
-"set lines=50 
+"set lines=50
 "set columns=120
 
 set nocompatible
@@ -21,6 +21,14 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'luochen1990/rainbow'
 Plugin 'chriskempson/base16-vim'
+Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'bling/vim-airline'
+Plugin 'Twinside/vim-hoogle'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
 
 call vundle#end()
 
@@ -106,7 +114,7 @@ nmap <leader>w :w!<cr>
 nmap <leader>q :q<cr>
 nmap <leader>a :wqa<cr>
 " r for run
-nmap <leader>r :make<cr> 
+nmap <leader>r :make<cr>
 nmap // :noh<cr>
 
 map <C-h> <C-w>h
@@ -115,7 +123,7 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 
 " 4 char space smart indent
-"set autoindent 
+"set autoindent
 "set smartindent
 set tabstop=4
 set shiftwidth=4
