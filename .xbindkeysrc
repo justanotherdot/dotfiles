@@ -1,0 +1,41 @@
+#
+# .xbindkeysrc
+#
+# Ryan James Spencer
+
+#############################################
+# Media key audio adjustments for laptop    #
+#############################################
+
+# Raise Volume
+"amixer set Master 5%+ unmute"
+    m:0x0 + c:123
+    XF86AudioRaiseVolume
+
+# Lower Volume
+"amixer set Master 5%- unmute"
+    m:0x0 + c:122
+    XF86AudioLowerVolume
+
+# Toggle Audio
+"amixer set Master toggle"
+    m:0x0 + c:121
+    XF86AudioMute
+
+#############################################
+# Wallpaper commands                        #
+#############################################
+
+# Delete current bg image
+"variety -t"
+    m:0xc + c:28
+    Control+Alt + t
+
+# Go to prev bg image
+"variety -f"
+    m:0xc + c:41
+    Control+Alt + f
+
+#"dmenu_run -b -sb white -sf black -fn '-*-terminus-medium-r-normal-*-14-*-*-*-*-*-*-*'"
+#    m:0x8 + c:40
+#    Alt + d
