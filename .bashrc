@@ -31,7 +31,14 @@ export EDITOR='vim'
 export PAGER='less'
 export PATH=$HOME/.rvm/bin:$HOME/go/bin:$HOME/.gem/ruby/2.2.0/bin:$HOME/.cabal/bin:$HOME/bin:$PATH
 export GOPATH=$HOME/go
+# Recommended not to go beyong 10k
+export HISTFILESIZE=10000
+export HISTSIZE=10000
+# Allow more than a single instance of a shell to write to `history`
+export PROMPT_COMMAND='history -a'
 
+# Append to old history when we open new terminals
+shopt -s histappend
 # Turn on negative globs
 shopt -s extglob
 # Set vi keybidnings (in addition to .inputrc)
