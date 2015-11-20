@@ -7,6 +7,14 @@
 # Media key audio adjustments for laptop    #
 #############################################
 
+#Raise volume (mouse)
+"amixer set Master 5%+"
+   b:9
+
+#Lower volume (mouse)
+"amixer set Master 5%-"
+   b:8
+
 # Raise Volume
 "amixer set Master 5%+ unmute"
     m:0x0 + c:123
@@ -36,6 +44,6 @@
     m:0xc + c:41
     Control+Alt + f
 
-#"dmenu_run -b -sb white -sf black -fn '-*-terminus-medium-r-normal-*-14-*-*-*-*-*-*-*'"
-#    m:0x8 + c:40
-#    Alt + d
+"dmenu_run -b -sb white -sf black -fn '-*-terminus-medium-r-normal-*-14-*-*-*-*-*-*-*'"
+    m:0x8 + c:40
+    Alt + d
