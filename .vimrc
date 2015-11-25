@@ -129,6 +129,7 @@ let g:mapleader = '\'
 nmap <leader>w :w!<cr>
 nmap <leader>q :q<cr>
 nmap <leader>a :wqa<cr>
+nmap <leader>s :StripWhitespace<cr>
 " r for run
 nmap <leader>r :make<cr>
 nmap // :noh<cr>
