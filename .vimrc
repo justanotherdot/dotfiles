@@ -17,6 +17,9 @@ call vundle#begin()
 
 " Bundle 'syntastic'
 " Plugin 'christoomey/vim-tmux-navigator'
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'morhetz/gruvbox'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'luochen1990/rainbow'
@@ -27,9 +30,12 @@ Plugin 'Twinside/vim-hoogle'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-unimpaired'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
+Plugin 'dag/vim2hs'
 
 call vundle#end()
 
@@ -73,6 +79,7 @@ set whichwrap+=<,>,h,l
 " translated to English).
 set langmenu=none
 set nowrap
+set nofoldenable " There was a time I liked code folding.
 " set foldmethod=syntax
 " set foldnestmax=1
 " set foldlevelstart=1
@@ -149,11 +156,8 @@ set smartcase
 set incsearch
 set magic
 
+" Need to figure out how to disable this for haskell syntax
 let g:rainbow_active = 1
-" au VimEnter * RainbowParenthesesToggle
-" au Syntax * RainbowParenthesesLoadRound
-" au Syntax * RainbowParenthesesLoadSquare
-" au Syntax * RainbowParenthesesLoadBraces
 
 nnoremap <leader>. :CtrlPTag<cr>
 

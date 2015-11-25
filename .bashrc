@@ -99,4 +99,5 @@ update-env() {
     # Setup `git pullall` as an alias for our update
     git config alias.pullall '!git pull && git submodule update --init --recursive'
     git pullall
+    vim -c "PluginInstall"
 }
