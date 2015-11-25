@@ -99,5 +99,8 @@ update-env() {
     # Setup `git pullall` as an alias for our update
     git config alias.pullall '!git pull && git submodule update --init --recursive'
     git pullall
-    vim -c "PluginInstall"
+    if [[ -n `which cabal` ]]; then
+        cabal update && cabal install hlint hdevtools
+    fi
+    vim +PluginInstall +qall
 }

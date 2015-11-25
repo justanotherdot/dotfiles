@@ -15,7 +15,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Bundle 'syntastic'
+Plugin 'syntastic'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'morhetz/gruvbox'
 Plugin 'godlygeek/tabular'
@@ -166,6 +166,7 @@ set magic
 
 " Need to figure out how to disable this for haskell syntax
 let g:rainbow_active = 1
+au FileType haskell :RainbowToggle
 
 nnoremap <leader>. :CtrlPTag<cr>
 
