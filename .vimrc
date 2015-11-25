@@ -15,9 +15,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" Bundle 'syntastic'
-" Plugin 'christoomey/vim-tmux-navigator'
-
+Bundle 'syntastic'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'morhetz/gruvbox'
 Plugin 'godlygeek/tabular'
@@ -36,6 +34,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'dag/vim2hs'
+Plugin 'bitc/vim-hdevtools'
 
 call vundle#end()
 
@@ -97,8 +96,17 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
-" map <silent> <Leader>e :Errors<CR>
-" map <Leader>s :SyntasticToggleMode<CR>
+map <silent> <Leader>e :Errors<CR>
+map <Leader>s :SyntasticToggleMode<CR>
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " trailing chars for whitespace-centric languages
 " set list
