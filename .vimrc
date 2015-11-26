@@ -97,7 +97,7 @@ let g:airline#extensions#tabline#enabled = 1
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 map <silent> <Leader>e :Errors<CR>
-map <Leader>s :SyntasticToggleMode<CR>
+map <Leader>y :SyntasticToggleMode<CR>
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
