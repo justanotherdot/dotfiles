@@ -100,7 +100,7 @@ update-env() {
     git config alias.pullall '!git pull && git submodule update --init --recursive'
     git pullall
     if [[ -n `which cabal` ]]; then
-        cabal update && cabal install hlint hdevtools hasktags ghc-mod pointfree
+        cabal update && cabal install hlint hdevtools hasktags pointfree
     fi
     vim +PluginInstall +qall
 }

@@ -35,7 +35,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'dag/vim2hs'
 Plugin 'bitc/vim-hdevtools'
-Plugin 'majutsushi/tagbar'
+Plugin 'majutsushi/tagbar' " Don't know about this one just yet
 
 call vundle#end()
 
