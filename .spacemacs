@@ -32,7 +32,6 @@
      syntax-checking
      version-control
      themes-megapack
-     slime
      common-lisp
      haskell
      agda
