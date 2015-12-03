@@ -44,7 +44,7 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 Plugin 'mattn/emmet-vim'
-Plugin 'kovisoft/slimv'
+" Plugin 'kovisoft/slimv'
 
 call vundle#end()
 
