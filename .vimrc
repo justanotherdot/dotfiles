@@ -39,6 +39,12 @@ Plugin 'dag/vim2hs'
 Plugin 'bitc/vim-hdevtools'
 Plugin 'majutsushi/tagbar' " Don't know about this one just yet
 Plugin 'jimenezrick/vimerl'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
+Plugin 'mattn/emmet-vim'
+Plugin 'kovisoft/slimv'
 
 call vundle#end()
 
@@ -185,3 +191,5 @@ let g:vim_markdown_no_default_key_mappings=1
 let base16colorspace=256
 
 highlight ExtraWhitespace ctermbg=white
+
+" let g:slimv_swank_cmd = '! clisp ~/.vim/bundle/slimv/slime/start-swank.lisp &'

@@ -18,12 +18,12 @@
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      ;; better-defaults
-     ;; org
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
+     ;;company-mode
      auto-completion
-     company-mode
+     org
      javascript
      colors
      emacs-lisp
@@ -188,6 +188,8 @@ before layers configuration."
    layers configuration."
     (global-linum-mode)
     (global-hl-line-mode -1)
+    ;; Remove this when we want to use sbcl; slime's default for spacemacs
+    (setq inferior-lisp-program "/usr/bin/clisp -q")
  )
 
 ;; Do not write anything past this comment. This is where Emacs will
