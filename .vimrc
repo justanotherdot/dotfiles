@@ -30,11 +30,14 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-sleuth'
+Plugin 'tpope/vim-sensible'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'dag/vim2hs'
 Plugin 'bitc/vim-hdevtools'
+Plugin 'jimenezrick/vimerl'
 
 call vundle#end()
 
