@@ -130,7 +130,7 @@ set bg=dark
 set wildmenu
 
 " easy escape
-inoremap jj <esc>
+inoremap jk <esc>
 
 "Remap the leader
 let mapleader = '\'
