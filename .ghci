@@ -1,5 +1,5 @@
 :def hoogle \x -> return $ ":!hoogle \"" ++ x ++ "\""
 :def clear \x -> return $ ":! clear"
 
-:set prompt "λ "
+:set prompt "\ESC[1;34m%s\n\ESC[0;34mλ \ESC[m"
 :set +t
