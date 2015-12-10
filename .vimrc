@@ -43,7 +43,10 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 Plugin 'mattn/emmet-vim'
-" Plugin 'kovisoft/slimv'
+Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-classpath'
+Plugin 'guns/vim-clojure-static'
+Plugin 'kovisoft/slimv'
 
 call vundle#end()
 
