@@ -96,11 +96,30 @@ update-env() {
         mkdir -p ~/.vim/autoload ~/.vim/bundle && \
         curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
     fi
+    # Check for cabal programs
+    cabal-check
     # Setup `git pullall` as an alias for our update
     git config alias.pullall '!git pull && git submodule update --init --recursive'
     git pullall
-    if [[ -n `which cabal` ]]; then
-        cabal update && cabal install hlint hdevtools hasktags pointfree
-    fi
     vim +PluginInstall +qall
+}
+
+cabal-check() {
+    if [[ -n `command -v cabal` ]]; then
+        CABAL_PRGMS_WNT=(hlint hdevtools hasktags pointfree)
+        CABAL_PRGMS_GET=()
+
+        for cabal_prg in "$CABAL_PRGMS_WNT"; do
+            if [[ -n `command -v $cabal_prg` ]]; then
+                CABAL_PRGMS_GET+="$cabal_prg"
+            fi
+        done
+
+        if [[ ${#CABAL_PRGNS_GET[0]} == "hlint" ]]; then
+            cabal update
+            for cabal_prg in "$CABAL_PRGMS_GET"; do
+                cabal install "$cabal_prg"
+            done
+        fi
+    fi
 }
