@@ -7,5 +7,5 @@ This will probably be changed to an update script (or an automator, e.g. dotbot 
 License
 -------
 
-Copyright (c) Ryan James Spencer. Released under the MIT License. See
-[license](LICENSE.md) for details.
+Copyright (c) 2015 Ryan James Spencer. Released under the MIT License. See
+[LICENSE.md](LICENSE.md) for details.
