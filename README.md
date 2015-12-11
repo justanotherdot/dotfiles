@@ -1,4 +1,4 @@
-dotfiles
+Dotfiles
 ========
 
 After cloning, source .bashrc and run `update-env` command in the shell. 
