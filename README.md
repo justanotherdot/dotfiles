@@ -8,4 +8,4 @@ License
 -------
 
 Copyright (c) Ryan James Spencer. Released under the MIT License. See
-[license][LICENSE.md] for details.
+[license](LICENSE.md) for details.
