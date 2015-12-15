@@ -105,20 +105,20 @@ update-env() {
 }
 
 cabal-check() {
-    if [[ -n `command -v cabal` ]]; then
+    if command -v cabal >/dev/null 2>&1; then
         CABAL_PRGMS_WNT=(hlint hdevtools hasktags pointfree hoogle)
         CABAL_PRGMS_GET=()
 
-        for cabal_prg in "$CABAL_PRGMS_WNT"; do
-            if [[ -n `command -v $cabal_prg` ]]; then
+        for cabal_prg in "${CABAL_PRGMS_WNT[@]}"; do
+            if ! command -v "$cabal_prg" >/dev/null 2>&1; then
                 CABAL_PRGMS_GET+="$cabal_prg"
             fi
         done
 
-        if [[ ${#CABAL_PRGNS_GET[0]} == "hlint" ]]; then
+        if [ "${#CABAL_PRGMS_GET[@]}" -ne 0 ]; then
             cabal update
-            for cabal_prg in "$CABAL_PRGMS_GET"; do
-                cabal install "$cabal_prg"
+            for cabal_get in "${CABAL_PRGMS_GET[@]}"; do
+                cabal install "$cabal_get"
             done
         fi
     fi
