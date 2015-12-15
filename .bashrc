@@ -106,7 +106,7 @@ update-env() {
 
 cabal-check() {
     if [[ -n `command -v cabal` ]]; then
-        CABAL_PRGMS_WNT=(hlint hdevtools hasktags pointfree)
+        CABAL_PRGMS_WNT=(hlint hdevtools hasktags pointfree hoogle)
         CABAL_PRGMS_GET=()
 
         for cabal_prg in "$CABAL_PRGMS_WNT"; do
