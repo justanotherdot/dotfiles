@@ -106,12 +106,12 @@ update-env() {
 
 cabal-check() {
     if command -v cabal >/dev/null 2>&1; then
-        CABAL_PRGMS_WNT=(hlint hdevtools hasktags pointfree hoogle)
+        CABAL_PRGMS_WNT=(hlint hdevtools hasktags pointfree hoogle gtk2hs-buildtools ThreadScope)
         CABAL_PRGMS_GET=()
 
         for cabal_prg in "${CABAL_PRGMS_WNT[@]}"; do
             if ! command -v "$cabal_prg" >/dev/null 2>&1; then
-                CABAL_PRGMS_GET+="$cabal_prg"
+                CABAL_PRGMS_GET+=("$cabal_prg")
             fi
         done
 
