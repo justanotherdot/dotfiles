@@ -35,9 +35,9 @@
      common-lisp
      haskell
      agda
-     c-c++
+     ;c-c++
      clojure
-     elixir
+     ;elixir
      erlang
      csharp
      go
@@ -47,12 +47,12 @@
      racket
      ruby
      python
-     rust
+     ;rust
      shell-scripts
-     sql
-     django
-     ;;extra-langs ;; arduino
-     ;;ruby-on-rails
+     ;sql
+     ;django
+     ;extra-langs ;; arduino
+     ;ruby-on-rails
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -93,9 +93,7 @@ before layers configuration."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(gruvbox
-                         jazz
-                         sanityinc-tomorrow-night
-                         solarized-light)
+                         zenburn)
 
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
