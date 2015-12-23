@@ -4,18 +4,18 @@
 # Ryan James Spencer
 
 # Only import gruvbox colors if emacs not running.
-EP=$(pgrep "emacs")
-if [ -z "$EP" ]; then
+if [ -z `pgrep emacs` ]; then
+    # Gruvbox
     source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
+    # Base16 Shell
+    BASE16_SHELL="$HOME/.config/base16-shell/base16-eighties.dark.sh"
+    [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 fi
 
 if [[ -e "/usr/bin/lxqt-openssh-askpass" && -z $SSH_ASKPASS ]]; then
     SSH_ASKPASS="/usr/bin/lxqt-openssh-askpass"
 fi
 
-#Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/base16-eighties.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 # Let some applications know we're using XFCE
 export DE="XFCE"
