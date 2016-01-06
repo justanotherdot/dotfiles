@@ -33,7 +33,7 @@ fi
 
 export EDITOR='vim'
 export PAGER='less'
-export PATH=$HOME/.rvm/bin:$HOME/go/bin:$HOME/.gem/ruby/2.2.0/bin:$HOME/.cabal/bin:$HOME/bin:$PATH
+export PATH=$HOME/.rvm/bin:$HOME/go/bin:$HOME/.gem/ruby/2.3.0/bin:$HOME/.cabal/bin:$HOME/bin:$PATH
 export GOPATH=$HOME/go
 # Recommended not to go beyong 10k
 export HISTFILESIZE=10000
