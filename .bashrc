@@ -4,18 +4,18 @@
 # Ryan James Spencer
 
 # Only import gruvbox colors if emacs not running.
-EP=$(pgrep "emacs")
-if [ -z "$EP" ]; then
+if [ -z `pgrep emacs` ]; then
+    # Gruvbox
     source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
+    # Base16 Shell
+    BASE16_SHELL="$HOME/.config/base16-shell/base16-eighties.dark.sh"
+    [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 fi
 
 if [[ -e "/usr/bin/lxqt-openssh-askpass" && -z $SSH_ASKPASS ]]; then
     SSH_ASKPASS="/usr/bin/lxqt-openssh-askpass"
 fi
 
-#Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/base16-eighties.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 # Let some applications know we're using XFCE
 export DE="XFCE"
@@ -105,20 +105,20 @@ update-env() {
 }
 
 cabal-check() {
-    if [[ -n `command -v cabal` ]]; then
-        CABAL_PRGMS_WNT=(hlint hdevtools hasktags pointfree)
+    if command -v cabal >/dev/null 2>&1; then
+        CABAL_PRGMS_WNT=(hlint hdevtools hasktags pointfree hoogle gtk2hs-buildtools ThreadScope)
         CABAL_PRGMS_GET=()
 
-        for cabal_prg in "$CABAL_PRGMS_WNT"; do
-            if [[ -n `command -v $cabal_prg` ]]; then
-                CABAL_PRGMS_GET+="$cabal_prg"
+        for cabal_prg in "${CABAL_PRGMS_WNT[@]}"; do
+            if ! command -v "$cabal_prg" >/dev/null 2>&1; then
+                CABAL_PRGMS_GET+=("$cabal_prg")
             fi
         done
 
-        if [[ ${#CABAL_PRGNS_GET[0]} == "hlint" ]]; then
+        if [ "${#CABAL_PRGMS_GET[@]}" -ne 0 ]; then
             cabal update
-            for cabal_prg in "$CABAL_PRGMS_GET"; do
-                cabal install "$cabal_prg"
+            for cabal_get in "${CABAL_PRGMS_GET[@]}"; do
+                cabal install "$cabal_get"
             done
         fi
     fi
