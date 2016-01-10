@@ -29,11 +29,16 @@
                           'helm
                           'key-chord
                           'rainbow-delimiters
+                          'smart-mode-line
+                          'cider
                           )
 
 ;; Get rid of that ugly welcome message.
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
+
+;; Only spaces
+(setq-default indent-tabs-mode nil)
 
 ;; Remove nuisances
 (menu-bar-mode -1)
@@ -71,7 +76,7 @@
  '(custom-enabled-themes (quote (gruvbox)))
  '(custom-safe-themes
    (quote
-    ("b959f70a09f7ae16812bfc5bec2fd6b21081bee1f68686cdd80b3045bfc27b21" "f5eb916f6bd4e743206913e6f28051249de8ccfd070eae47b5bde31ee813d55f" "9e720b0c4ed90ce3735c94705f93b519191f5220e73dbacf6a4d71b89a0a6b0e" default)))
+    ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "79a3f477ac0cb4a106f78b6109614e991564a5c2467c36e6e854d4bc1102e178" "badc4f9ae3ee82a5ca711f3fd48c3f49ebe20e6303bba1912d4e2d19dd60ec98" "b959f70a09f7ae16812bfc5bec2fd6b21081bee1f68686cdd80b3045bfc27b21" "f5eb916f6bd4e743206913e6f28051249de8ccfd070eae47b5bde31ee813d55f" "9e720b0c4ed90ce3735c94705f93b519191f5220e73dbacf6a4d71b89a0a6b0e" default)))
  '(fci-rule-color "#383838")
  '(nrepl-message-colors
    (quote
@@ -104,3 +109,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:background nil)))))
+
+;; Set up smart mode line
+(setq sml/theme 'respectful)
+(sml/setup)
