@@ -44,7 +44,7 @@ Plugin 'tomtom/tlib_vim'
 "Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-classpath'
-Plugin 'guns/vim-clojure-static'
+"Plugin 'guns/vim-clojure-static'
 Plugin 'kovisoft/slimv'
 Plugin 'maxbrunsfeld/vim-yankstack'
 
@@ -195,3 +195,6 @@ let base16colorspace=256
 highlight ExtraWhitespace ctermbg=white
 
 " let g:slimv_swank_cmd = '! clisp ~/.vim/bundle/slimv/slime/start-swank.lisp &'
+
+nmap <Alt+p> <Plug>yankstack_substitute_older_paste
+nmap <Alt+P> <Plug>yankstack_substitute_newer_paste

@@ -31,7 +31,15 @@
                           'rainbow-delimiters
                           'smart-mode-line
                           'cider
+                          'multi-term
+                          'ace-window
                           )
+
+(require 'multi-term)
+(setq multi-term-program "/bin/bash")
+
+(require 'ace-window)
+(global-set-key (kbd "M-p") 'ace-window)
 
 ;; Get rid of that ugly welcome message.
 (setq inhibit-splash-screen t)
@@ -54,6 +62,11 @@
 
 (require 'evil)
 (evil-mode t)
+
+;; Forcefully remove evil-mode (basically) from term states
+;; One can use `ctl-z` to toggle evil-mode back on
+(delete 'term-mode evil-insert-state-modes)
+(add-to-list 'evil-emacs-state-modes 'term-mode)
 
 (require 'rainbow-delimiters)
 (rainbow-delimiters-mode t)
