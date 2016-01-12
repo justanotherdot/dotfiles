@@ -41,9 +41,16 @@
 (require 'ace-window)
 (global-set-key (kbd "M-p") 'ace-window)
 
+;; Slime REPL
+(setq inferior-lisp-program (executable-find "sbcl"))
+
+(set-default 'truncate-lines t)
+
 ;; Get rid of that ugly welcome message.
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
+
+(show-paren-mode t)
 
 ;; Only spaces
 (setq-default indent-tabs-mode nil)
@@ -59,14 +66,22 @@
 
 ;; Linenums!
 (global-linum-mode t)
+(column-number-mode t)
 
 (require 'evil)
 (evil-mode t)
 
+;; Easily resize windows in a frame.
+;; Acts weirdly in different windows
+(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "S-C-<down>") 'shrink-window)
+(global-set-key (kbd "S-C-<up>") 'enlarge-window)
+
 ;; Forcefully remove evil-mode (basically) from term states
 ;; One can use `ctl-z` to toggle evil-mode back on
-(delete 'term-mode evil-insert-state-modes)
-(add-to-list 'evil-emacs-state-modes 'term-mode)
+;(delete 'term-mode evil-insert-state-modes)
+;(add-to-list 'evil-emacs-state-modes 'term-mode)
 
 (require 'rainbow-delimiters)
 (rainbow-delimiters-mode t)
@@ -89,8 +104,9 @@
  '(custom-enabled-themes (quote (gruvbox)))
  '(custom-safe-themes
    (quote
-    ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "79a3f477ac0cb4a106f78b6109614e991564a5c2467c36e6e854d4bc1102e178" "badc4f9ae3ee82a5ca711f3fd48c3f49ebe20e6303bba1912d4e2d19dd60ec98" "b959f70a09f7ae16812bfc5bec2fd6b21081bee1f68686cdd80b3045bfc27b21" "f5eb916f6bd4e743206913e6f28051249de8ccfd070eae47b5bde31ee813d55f" "9e720b0c4ed90ce3735c94705f93b519191f5220e73dbacf6a4d71b89a0a6b0e" default)))
+    ("df3e05e16180d77732ceab47a43f2fcdb099714c1c47e91e8089d2fcf5882ea3" "0b6645497e51d80eda1d337d6cabe31814d6c381e69491931a688836c16137ed" "f245c9f24b609b00441a6a336bcc556fe38a6b24bfc0ca4aedd4fe23d858ba31" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "79a3f477ac0cb4a106f78b6109614e991564a5c2467c36e6e854d4bc1102e178" "badc4f9ae3ee82a5ca711f3fd48c3f49ebe20e6303bba1912d4e2d19dd60ec98" "b959f70a09f7ae16812bfc5bec2fd6b21081bee1f68686cdd80b3045bfc27b21" "f5eb916f6bd4e743206913e6f28051249de8ccfd070eae47b5bde31ee813d55f" "9e720b0c4ed90ce3735c94705f93b519191f5220e73dbacf6a4d71b89a0a6b0e" default)))
  '(fci-rule-color "#383838")
+ '(helm-mode nil)
  '(nrepl-message-colors
    (quote
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
