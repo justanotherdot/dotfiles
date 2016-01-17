@@ -33,13 +33,28 @@
                           'cider
                           'multi-term
                           'ace-window
+                          'slime
                           )
+
+;; Cleanup whitespace on every save
+(add-hook 'before-save-hook 'whitespace-cleanup)
 
 (require 'multi-term)
 (setq multi-term-program "/bin/bash")
 
 (require 'ace-window)
 (global-set-key (kbd "M-p") 'ace-window)
+
+(require 'cider)
+(setq cider-show-error-buffer nil)
+
+;; (require 'helm)
+;; (global-set-key (kbd "M-x") 'helm-M-x)
+;; (setq helm-mode-fuzzy-match t)
+;; (setq helm-completions-in-region-fuzzy-match t)
+
+;; Don't let ido mess up dir/file making!
+(setq ido-auto-merge-work-directories-length -1)
 
 ;; Slime REPL
 (setq inferior-lisp-program (executable-find "sbcl"))
@@ -68,8 +83,15 @@
 (global-linum-mode t)
 (column-number-mode t)
 
+;; Turn off linum mode for certain major modes
+(add-hook 'term-mode-hook (lambda () (linum-mode -1)))
+(add-hook 'multi-term-mode-hook (lambda () (linum-mode -1)))
+
 (require 'evil)
 (evil-mode t)
+
+(require 'evil-surround)
+(evil-surround-mode t)
 
 ;; Easily resize windows in a frame.
 ;; Acts weirdly in different windows
@@ -86,6 +108,8 @@
 (require 'rainbow-delimiters)
 (rainbow-delimiters-mode t)
 
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
 (ido-mode t)
 
 ;(require 'helm)
@@ -104,9 +128,8 @@
  '(custom-enabled-themes (quote (gruvbox)))
  '(custom-safe-themes
    (quote
-    ("df3e05e16180d77732ceab47a43f2fcdb099714c1c47e91e8089d2fcf5882ea3" "0b6645497e51d80eda1d337d6cabe31814d6c381e69491931a688836c16137ed" "f245c9f24b609b00441a6a336bcc556fe38a6b24bfc0ca4aedd4fe23d858ba31" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "79a3f477ac0cb4a106f78b6109614e991564a5c2467c36e6e854d4bc1102e178" "badc4f9ae3ee82a5ca711f3fd48c3f49ebe20e6303bba1912d4e2d19dd60ec98" "b959f70a09f7ae16812bfc5bec2fd6b21081bee1f68686cdd80b3045bfc27b21" "f5eb916f6bd4e743206913e6f28051249de8ccfd070eae47b5bde31ee813d55f" "9e720b0c4ed90ce3735c94705f93b519191f5220e73dbacf6a4d71b89a0a6b0e" default)))
+    ("bcc6775934c9adf5f3bd1f428326ce0dcd34d743a92df48c128e6438b815b44f" "b6db49cec08652adf1ff2341ce32c7303be313b0de38c621676122f255ee46db" "03e3e79fb2b344e41a7df897818b7969ca51a15a67dc0c30ebbdeb9ea2cd4492" "cdfb22711f64d0e665f40b2607879fcf2607764b2b70d672ddaa26d2da13049f" "8e3f020f1ce69cfa0c1ebee4e198feb28dd7eb31b7d77927e9c790819210c654" "df3e05e16180d77732ceab47a43f2fcdb099714c1c47e91e8089d2fcf5882ea3" "0b6645497e51d80eda1d337d6cabe31814d6c381e69491931a688836c16137ed" "f245c9f24b609b00441a6a336bcc556fe38a6b24bfc0ca4aedd4fe23d858ba31" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "79a3f477ac0cb4a106f78b6109614e991564a5c2467c36e6e854d4bc1102e178" "badc4f9ae3ee82a5ca711f3fd48c3f49ebe20e6303bba1912d4e2d19dd60ec98" "b959f70a09f7ae16812bfc5bec2fd6b21081bee1f68686cdd80b3045bfc27b21" "f5eb916f6bd4e743206913e6f28051249de8ccfd070eae47b5bde31ee813d55f" "9e720b0c4ed90ce3735c94705f93b519191f5220e73dbacf6a4d71b89a0a6b0e" default)))
  '(fci-rule-color "#383838")
- '(helm-mode nil)
  '(nrepl-message-colors
    (quote
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
@@ -132,12 +155,6 @@
      (340 . "#94BFF3")
      (360 . "#DC8CC3"))))
  '(vc-annotate-very-old-color "#DC8CC3"))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:background nil)))))
 
 ;; Set up smart mode line
 (setq sml/theme 'respectful)
