@@ -110,6 +110,10 @@
 ;(delete 'term-mode evil-insert-state-modes)
 ;(add-to-list 'evil-emacs-state-modes 'term-mode)
 
+;; Use `ocp-indent` instead of tuaregs indent.
+(setq opam-share (substring (shell-command-to-string "opam config var share") 0 -1))
+(load-file (concat opam-share "/typerex/ocp-indent/ocp-indent.el"))
+
 (require 'rainbow-delimiters)
 (rainbow-delimiters-mode t)
 
