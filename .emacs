@@ -62,6 +62,10 @@
 
 (set-default 'truncate-lines t)
 
+;; Allow easy window switching with shift-<dir>
+(windmove-default-keybindings)
+(setq windmove-wrap-around t)
+
 ;; Get rid of that ugly welcome message.
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
