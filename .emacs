@@ -34,6 +34,7 @@
                           'multi-term
                           'ace-window
                           'slime
+                          'tuareg
                           )
 
 ;; Cleanup whitespace on every save
