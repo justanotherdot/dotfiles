@@ -1,3 +1,8 @@
+;;
+;; .emacs, Ryan James Spencer
+;;
+
+;; Prelude
 (require 'package)
 (when (>= emacs-major-version 24)
   (require 'package)
@@ -9,17 +14,13 @@
 
 ;; Credit to Aaron Bieber for this.
 (defun ensure-package-installed (&rest packages)
-  "Assure every package is installed, ask for installation if it’s not.
-
-   Return a list of installed packages or nil for every skipped package."
+  "Installs all uninstalled packages "
   (mapcar
-    (lambda (package)
-      (if (package-installed-p package)
-        nil
-        (if (y-or-n-p (format "Package %s is missing. Install it? " package))
-          (package-install package)
-          package)))
-    packages))
+   (lambda (package)
+     (if (package-installed-p package)
+         nil
+       (package-install package)))
+   packages))
 
 ;; Make sure to have downloaded archive description.
 (or (file-exists-p package-user-dir)
@@ -37,19 +38,38 @@
                           'slime
                           'tuareg
                           'magit
+                          'free-keys
+                          'bind-key
                           )
 
+;; Make reloading .emacs changes easier
+(defun reload-emacs ()
+  (interactive)
+  (load-file "~/.emacs"))
+(bind-key "C-x r e" 'reload-emacs)
+
+;; Set default font
 (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-11"))
 (set-face-attribute 'default t :font "DejaVu Sans Mono-11")
 
 ;; Cleanup whitespace on every save
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
+;; Show the time
+(display-time-mode t)
+
 (require 'multi-term)
 (setq multi-term-program "/bin/bash")
 
+;; Smoother window transitions
 (require 'ace-window)
-(global-set-key (kbd "M-p") 'ace-window)
+(bind-key "<C-tab>" 'ace-window)
+;; May remove these...
+;; (bind-key "M-p" 'ace-window)
+;; (bind-key "<C-tab>" 'other-window)
+;; Allow easy window switching with shift-<dir>
+;; (windmove-default-keybindings)
+;; (setq windmove-wrap-around t)
 
 (require 'cider)
 (setq cider-show-error-buffer nil)
@@ -59,18 +79,19 @@
 ;; (setq helm-mode-fuzzy-match t)
 ;; (setq helm-completions-in-region-fuzzy-match t)
 
-;; Don't let ido mess up dir/file making!
+;; Don't let ido steal focus when trying to create dirs/files
 (setq ido-auto-merge-work-directories-length -1)
 
 ;; Slime REPL
 (setq inferior-lisp-program (executable-find "sbcl"))
 
-;; Prevent line wraps
+;; Prevent line wrapping
 (set-default 'truncate-lines t)
+;; Toggle word wrapping for long lines
+(bind-key "C-'" 'visual-line-mode)
 
-;; Allow easy window switching with shift-<dir>
-(windmove-default-keybindings)
-(setq windmove-wrap-around t)
+;; For helpful configuration
+(bind-key "C-h C-k" 'free-keys)
 
 ;; Get rid of that ugly welcome message.
 (setq inhibit-splash-screen t)
@@ -92,22 +113,21 @@
 ;(add-to-list 'default-frame-alist '(width . 120))
 
 ;; Make linum-mode a keyboard toggle
-(global-set-key (kbd "C-M-l") 'linum-mode)
+(bind-key "C-M-l" 'linum-mode)
 (column-number-mode t)
-
 
 (require 'evil)
 (evil-mode t)
 
 (require 'evil-surround)
-(evil-surround-mode t)
+(global-evil-surround-mode 1)
 
 ;; Easily resize windows in a frame.
 ;; Acts weirdly in different windows
-(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "S-C-<left>")  'shrink-window-horizontally)
 (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
-(global-set-key (kbd "S-C-<down>") 'shrink-window)
-(global-set-key (kbd "S-C-<up>") 'enlarge-window)
+(global-set-key (kbd "S-C-<down>")  'shrink-window)
+(global-set-key (kbd "S-C-<up>")    'enlarge-window)
 
 ;; Forcefully remove evil-mode (basically) from term states
 ;; One can use `ctl-z` to toggle evil-mode back on
@@ -117,6 +137,7 @@
 (require 'rainbow-delimiters)
 (rainbow-delimiters-mode t)
 
+;; Ido niceties
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (ido-mode t)
@@ -167,6 +188,6 @@
  '(vc-annotate-very-old-color "#DC8CC3"))
 
 ;; Set up smart mode line
-;; This needs to be after custom-vars
+;; This needs to be after custom-vars, apparently.
 (setq sml/theme 'respectful)
 (sml/setup)
