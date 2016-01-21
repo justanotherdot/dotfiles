@@ -26,6 +26,7 @@
     (package-refresh-contents))
 
 (ensure-package-installed 'evil
+                          'evil-surround
                           'helm
                           'key-chord
                           'rainbow-delimiters
@@ -36,6 +37,9 @@
                           'slime
                           'tuareg
                           )
+
+(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-10"))
+(set-face-attribute 'default t :font "DejaVu Sans Mono-10")
 
 ;; Cleanup whitespace on every save
 (add-hook 'before-save-hook 'whitespace-cleanup)
@@ -109,10 +113,6 @@
 ;; One can use `ctl-z` to toggle evil-mode back on
 ;(delete 'term-mode evil-insert-state-modes)
 ;(add-to-list 'evil-emacs-state-modes 'term-mode)
-
-;; Use `ocp-indent` instead of tuaregs indent.
-(setq opam-share (substring (shell-command-to-string "opam config var share") 0 -1))
-(load-file (concat opam-share "/typerex/ocp-indent/ocp-indent.el"))
 
 (require 'rainbow-delimiters)
 (rainbow-delimiters-mode t)
