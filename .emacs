@@ -36,6 +36,7 @@
                           'ace-window
                           'slime
                           'tuareg
+                          'magit
                           )
 
 (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-11"))
@@ -64,6 +65,7 @@
 ;; Slime REPL
 (setq inferior-lisp-program (executable-find "sbcl"))
 
+;; Prevent line wraps
 (set-default 'truncate-lines t)
 
 ;; Allow easy window switching with shift-<dir>
@@ -74,6 +76,7 @@
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
 
+;; Highlight matching parens
 (show-paren-mode t)
 
 ;; Only spaces
@@ -88,13 +91,10 @@
 ;(add-to-list 'default-frame-alist '(height . 60))
 ;(add-to-list 'default-frame-alist '(width . 120))
 
-;; Linenums!
-(global-linum-mode t)
+;; Make linum-mode a keyboard toggle
+(global-set-key (kbd "C-M-l") 'linum-mode)
 (column-number-mode t)
 
-;; Turn off linum mode for certain major modes
-(add-hook 'term-mode-hook (lambda () (linum-mode -1)))
-(add-hook 'multi-term-mode-hook (lambda () (linum-mode -1)))
 
 (require 'evil)
 (evil-mode t)
@@ -121,12 +121,13 @@
 (setq ido-everywhere t)
 (ido-mode t)
 
+;; Not sure about helm mode just yet...
 ;(require 'helm)
 ;;(helm-mode t)
 
 ;; Reset escape key
 (require 'key-chord)
-(key-chord-mode 1)
+(key-chord-mode t)
 (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
 
 (custom-set-variables
@@ -166,5 +167,6 @@
  '(vc-annotate-very-old-color "#DC8CC3"))
 
 ;; Set up smart mode line
+;; This needs to be after custom-vars
 (setq sml/theme 'respectful)
 (sml/setup)
