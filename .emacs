@@ -38,8 +38,8 @@
                           'tuareg
                           )
 
-(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-10"))
-(set-face-attribute 'default t :font "DejaVu Sans Mono-10")
+(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-11"))
+(set-face-attribute 'default t :font "DejaVu Sans Mono-11")
 
 ;; Cleanup whitespace on every save
 (add-hook 'before-save-hook 'whitespace-cleanup)
