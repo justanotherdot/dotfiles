@@ -45,8 +45,6 @@ export PROMPT_COMMAND='history -a'
 shopt -s histappend
 # Turn on negative globs
 shopt -s extglob
-# Set vi keybidnings (in addition to .inputrc)
-set -o vi
 
 #Setup our prompt
 if [[ -n `echo $LANG | egrep -i "utf-?8" ` ]]; then
@@ -92,7 +90,7 @@ orphans() {
 update-env() {
     builtin cd "$HOME"
     # install pathogen
-    if [[ ! -f ~/.vim/autoload/pathogen.vim ]]; then 
+    if [[ ! -f ~/.vim/autoload/pathogen.vim ]]; then
         mkdir -p ~/.vim/autoload ~/.vim/bundle && \
         curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
     fi

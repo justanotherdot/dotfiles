@@ -40,6 +40,8 @@
                           'magit
                           'free-keys
                           'bind-key
+                          'tuareg
+                          'erlang
                           )
 
 ;; Make reloading .emacs changes easier
@@ -60,6 +62,7 @@
 
 (require 'multi-term)
 (setq multi-term-program "/bin/bash")
+(bind-key "C-x t" 'multi-term)
 
 ;; Smoother window transitions
 (require 'ace-window)
