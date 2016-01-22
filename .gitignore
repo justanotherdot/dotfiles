@@ -1,5 +1,9 @@
 !.bash_profile
 !.bashrc
+!.config/base16-gnome-terminal
+!.config/base16-shell
+!.config/base16-xfce4-terminal
+!.config/base16-xresources
 !.config/terminator/config
 !.emacs
 !.ghci
@@ -13,6 +17,8 @@
 !.spacemacs
 !.tmux.conf
 !.toprc
+!.vim/bundle/Vundle.vim
+!.vim/bundle/gruvbox
 !.vimrc
 !.xbindkeysrc
 !.yaourtrc
