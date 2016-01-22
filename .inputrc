@@ -1,4 +1,4 @@
-set editing-mode vi
+set editing-mode emacs
 $if python
     TAB: tab-insert
     "\e[2~": complete

@@ -28,6 +28,7 @@
 
 (ensure-package-installed 'evil
                           'evil-surround
+                          'evil-magit
                           'helm
                           'key-chord
                           'rainbow-delimiters
@@ -124,6 +125,9 @@
 
 (require 'evil-surround)
 (global-evil-surround-mode 1)
+
+(require 'evil-magit)
+(evil-define-key evil-magit-state magit-mode-map "?" 'evil-search-backward)
 
 ;; Easily resize windows in a frame.
 ;; Acts weirdly in different windows

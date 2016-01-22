@@ -45,6 +45,8 @@ export PROMPT_COMMAND='history -a'
 shopt -s histappend
 # Turn on negative globs
 shopt -s extglob
+# Set editing mode to emacs
+set -o emacs
 
 #Setup our prompt
 if [[ -n `echo $LANG | egrep -i "utf-?8" ` ]]; then
