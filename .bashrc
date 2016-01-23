@@ -81,14 +81,6 @@ update-system() {
     clean-house
 }
 
-orphans() {
-    if [[ ! -n $(pacman -Qdt) ]]; then
-        echo "No orphans to remove."
-    else
-        sudo pacman -Rns $(pacman -Qdtq)
-    fi
-}
-
 # Properly pull from the dotfiles repo and its nested submodules
 update-env() {
     builtin cd "$HOME"
@@ -123,14 +115,4 @@ cabal-check() {
             done
         fi
     fi
-}
-
-clean-house() {
-    orphans
-    sudo -s <<EOF
-paccache -rvk1 # same as `sudo pacman -Sc` but verbose
-pacman-optimize && sync
-updatedb
-EOF
-
 }

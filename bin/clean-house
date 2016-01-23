@@ -14,7 +14,7 @@ else
     else
         sudo pacman -Rns $(pacman -Qdtq)
     fi
-    paccache -rvk1 # same as `sudo pacman -Sc` but verbose
+    pacman -Scv #paccache -rvk1
     pacman-optimize && sync
     updatedb
 fi
