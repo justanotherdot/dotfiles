@@ -1,0 +1,15 @@
+#!/bin/bash
+#
+# THIS SCRIPT REQUIRES INOTIFY
+#
+# Checks a directory for changes and runs actions based on, e.g. saves.
+#
+# (c) 2015, 2016 Ryan James Spencer
+
+SECONDS=0
+
+while inotifywait -qq -e modify `pwd`; do
+    $@
+    DURATION=$SECONDS
+    echo "That took $(( $DURATION/60 )) minutes and $(( $DURATION % 60 )) seconds."
+done

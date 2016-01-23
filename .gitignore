@@ -25,5 +25,5 @@
 !.yaourtrc
 !LICENSE.md
 !README.md
-!~/bin/clean-house
-!~/bin/watcher
+!bin/clean-house
+!bin/watcher
