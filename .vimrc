@@ -168,7 +168,7 @@ cmap w!! w !sudo tee > /dev/null %
 set pastetoggle=<leader>p
 
 "line numbers
-set number
+"set number
 "current cursor position
 set ruler
 
