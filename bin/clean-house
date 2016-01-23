@@ -4,6 +4,8 @@
 # ! Must be run as root
 #
 # (c) 2016 Ryan James Spencer
+# 
+# -o Only clean orphans
 
 if [ `id -u` != "0" ]; then
     echo "This script must be run with root priviledges." 1>&2
@@ -14,7 +16,9 @@ else
     else
         sudo pacman -Rns $(pacman -Qdtq)
     fi
-    pacman -Scv #paccache -rvk1
-    pacman-optimize && sync
-    updatedb
+    if [ "$1" != "-o" ]; then
+        pacman -Scv #paccache -rvk1
+        pacman-optimize && sync
+        updatedb
+    fi
 fi
