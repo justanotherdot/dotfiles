@@ -78,6 +78,7 @@ update-system() {
     sudo pacman -Syyu
     yaourt -Syyu --aur
     yaourt -Syyua --devel # Update all version control packages
+    clean-house
 }
 
 orphans() {
@@ -122,4 +123,14 @@ cabal-check() {
             done
         fi
     fi
+}
+
+clean-house() {
+    orphans
+    sudo -s <<EOF
+paccache -rvk1 # same as `sudo pacman -Sc` but verbose
+pacman-optimize && sync
+updatedb
+EOF
+
 }
