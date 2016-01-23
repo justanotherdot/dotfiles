@@ -20,5 +20,5 @@ while inotifywait -qq -e modify `pwd`; do
     seconds=$(dc <<< "$x 60 % p")
     elapsed="$seconds.$elapsedMilli"
 
-    echo -e "\nElapsed time : $elapsed ms"
+    echo -e "\nThat took ${elapsed}s"
 done
