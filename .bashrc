@@ -78,7 +78,6 @@ update-system() {
     sudo pacman -Syyu
     yaourt -Syyu --aur
     yaourt -Syyua --devel # Update all version control packages
-    clean-house
 }
 
 # Properly pull from the dotfiles repo and its nested submodules

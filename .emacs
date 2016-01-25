@@ -28,9 +28,10 @@
 
 (ensure-package-installed 'evil
                           'evil-surround
+                          'evil-escape
                           'evil-magit
                           'helm
-                          'key-chord
+                          ;; 'key-chord
                           'rainbow-delimiters
                           'smart-mode-line
                           'cider
@@ -124,7 +125,19 @@
 (evil-mode t)
 
 (require 'evil-surround)
-(global-evil-surround-mode 1)
+(global-evil-surround-mode t)
+
+(require 'evil-escape)
+(evil-escape-mode t)
+
+;; I'm not sure if this nullifies the key-chord approach
+(setq-default evil-escape-key-sequence "jk")
+(setq-default evil-escape-delay 0.2)
+
+;; Reset escape key
+;; (require 'key-chord)
+;; (key-chord-mode t)
+;; (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
 
 (require 'evil-magit)
 (evil-define-key evil-magit-state magit-mode-map "?" 'evil-search-backward)
@@ -152,11 +165,6 @@
 ;; Not sure about helm mode just yet...
 ;(require 'helm)
 ;;(helm-mode t)
-
-;; Reset escape key
-(require 'key-chord)
-(key-chord-mode t)
-(key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
