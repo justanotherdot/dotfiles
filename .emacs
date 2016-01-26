@@ -44,6 +44,9 @@
                           'bind-key
                           'tuareg
                           'erlang
+                          'gnugo
+                          'go-mode
+                          'inf-ruby
                           )
 
 ;; Make reloading .emacs changes easier
