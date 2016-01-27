@@ -47,6 +47,7 @@
                           'gnugo
                           'go-mode
                           'inf-ruby
+                          'php-mode
                           )
 
 ;; Make reloading .emacs changes easier
