@@ -43,7 +43,13 @@
                           'bind-key
                           'tuareg
                           'erlang
+<<<<<<< HEAD
                           'markdown-preview-mode
+=======
+                          'gnugo
+                          'go-mode
+                          'inf-ruby
+>>>>>>> 6a8eb3198c0a747e19580dc7eb1f535fabf89330
                           )
 
 ;; Make reloading .emacs changes easier
