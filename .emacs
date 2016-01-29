@@ -30,7 +30,6 @@
                           'evil-escape
                           'evil-magit
                           'helm
-                          ;; 'key-chord
                           'rainbow-delimiters
                           'smart-mode-line
                           'cider
@@ -47,6 +46,8 @@
                           'gnugo
                           'go-mode
                           'inf-ruby
+                          'php-mode
+                          'elixir-mode
                           )
 
 ;; Make reloading .emacs changes easier
@@ -72,20 +73,9 @@
 ;; Smoother window transitions
 (require 'ace-window)
 (bind-key "<C-tab>" 'ace-window)
-;; May remove these...
-;; (bind-key "M-p" 'ace-window)
-;; (bind-key "<C-tab>" 'other-window)
-;; Allow easy window switching with shift-<dir>
-;; (windmove-default-keybindings)
-;; (setq windmove-wrap-around t)
 
 (require 'cider)
 (setq cider-show-error-buffer nil)
-
-;; (require 'helm)
-;; (global-set-key (kbd "M-x") 'helm-M-x)
-;; (setq helm-mode-fuzzy-match t)
-;; (setq helm-completions-in-region-fuzzy-match t)
 
 ;; Don't let ido steal focus when trying to create dirs/files
 (setq ido-auto-merge-work-directories-length -1)
@@ -108,7 +98,7 @@
 ;; Highlight matching parens
 (setq show-paren-delay 0)
 (show-paren-mode t)
-(setq show-paren-style 'mixed) ;; Also 'expression to just show encapsulated expression
+(setq show-paren-style 'mixed)
 
 ;; Only spaces
 (setq-default indent-tabs-mode nil)
@@ -117,10 +107,6 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-
-;; Change the size
-;(add-to-list 'default-frame-alist '(height . 60))
-;(add-to-list 'default-frame-alist '(width . 120))
 
 ;; Make linum-mode a keyboard toggle
 (bind-key "C-M-l" 'linum-mode)
@@ -139,25 +125,14 @@
 (setq-default evil-escape-key-sequence "jk")
 (setq-default evil-escape-delay 0.2)
 
-;; Reset escape key
-;; (require 'key-chord)
-;; (key-chord-mode t)
-;; (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
-
 (require 'evil-magit)
 (evil-define-key evil-magit-state magit-mode-map "?" 'evil-search-backward)
 
 ;; Easily resize windows in a frame.
-;; Acts weirdly in different windows
 (global-set-key (kbd "S-C-<left>")  'shrink-window-horizontally)
 (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
 (global-set-key (kbd "S-C-<down>")  'shrink-window)
 (global-set-key (kbd "S-C-<up>")    'enlarge-window)
-
-;; Forcefully remove evil-mode (basically) from term states
-;; One can use `ctl-z` to toggle evil-mode back on
-;(delete 'term-mode evil-insert-state-modes)
-;(add-to-list 'evil-emacs-state-modes 'term-mode)
 
 (require 'rainbow-delimiters)
 (rainbow-delimiters-mode t)
@@ -166,10 +141,6 @@
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (ido-mode t)
-
-;; Not sure about helm mode just yet...
-;(require 'helm)
-;;(helm-mode t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
