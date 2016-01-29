@@ -108,7 +108,7 @@
 ;; Highlight matching parens
 (setq show-paren-delay 0)
 (show-paren-mode t)
-(setq show-paren-style 'expression)
+(setq show-paren-style 'mixed) ;; Also 'expression to just show encapsulated expression
 
 ;; Only spaces
 (setq-default indent-tabs-mode nil)
