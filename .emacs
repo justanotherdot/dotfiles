@@ -66,7 +66,7 @@
 
 ;; Setup keybind for magit-status
 (require 'magit)
-(bind-key "M-g" 'magit-status)
+(bind-key "M-\\" 'magit-status)
 
 ;; Set default font
 (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-11"))
