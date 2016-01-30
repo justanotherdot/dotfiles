@@ -25,6 +25,11 @@
 (or (file-exists-p package-user-dir)
     (package-refresh-contents))
 
+(defun kill-other-buffers ()
+  "Kill all other buffers."
+  (interactive)
+  (mapc 'kill-buffer (delq (current-buffer) (buffer-list))))
+
 (ensure-package-installed 'evil
                           'evil-surround
                           'evil-escape
@@ -61,7 +66,7 @@
 
 ;; Setup keybind for magit-status
 (require 'magit)
-(bind-key "C-c g" 'magit-status)
+(bind-key "M-g" 'magit-status)
 
 ;; Set default font
 (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-11"))
@@ -83,6 +88,9 @@
 
 (require 'cider)
 (setq cider-show-error-buffer nil)
+
+;; go-mode gofmt before save
+(add-hook 'before-save-hook #'gofmt-before-save)
 
 ;; Don't let ido steal focus when trying to create dirs/files
 (setq ido-auto-merge-work-directories-length -1)
