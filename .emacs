@@ -43,6 +43,7 @@
                           'slime
                           'tuareg
                           'magit
+                          'git-timemachine
                           'free-keys
                           'bind-key
                           'tuareg
@@ -57,6 +58,7 @@
                           'rust-mode
                           'cmake-mode
                           )
+
 
 ;; Make reloading .emacs changes easier
 (defun reload-emacs ()
@@ -129,6 +131,14 @@
 
 (require 'evil)
 (evil-mode t)
+
+;; Make evil keybindings work in git-timemachine
+;; see http://blog.binchen.org/posts/use-git-timemachine-with-evil.html
+(require 'git-timemachine)
+(eval-after-load 'git-timemachine
+  '(progn
+     (evil-make-overriding-map git-timemachine-mode-map 'normal)
+     (add-hook 'git-timemachine-mode-hook #'evil-normalize-keymaps)))
 
 (require 'evil-surround)
 (global-evil-surround-mode t)

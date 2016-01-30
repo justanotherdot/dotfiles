@@ -49,8 +49,7 @@ shopt -s extglob
 set -o emacs
 
 #Setup our prompt
-if [[ -n `echo $LANG | egrep -i "utf-?8" ` ]]; then
-    #PS1="[\d, \@ | \w ]\n↪ "
+if [[ -n `echo $LANG | egrep -i "utf-?8"` ]]; then
     PS1="[\d, \@ | \w ]\nλ "
 else
     PS1="[\d, \@ | \w ]\n&  "
