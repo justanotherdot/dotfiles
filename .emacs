@@ -48,6 +48,8 @@
                           'inf-ruby
                           'php-mode
                           'elixir-mode
+                          'scala-mode2
+                          'cmake-mode
                           )
 
 ;; Make reloading .emacs changes easier
