@@ -58,6 +58,10 @@
   (load-file "~/.emacs"))
 (bind-key "C-x r e" 'reload-emacs)
 
+;; Setup keybind for magit-status
+(require 'magit)
+(bind-key "C-x g" 'magit-status)
+
 ;; Set default font
 (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-11"))
 (set-face-attribute 'default t :font "DejaVu Sans Mono-11")
