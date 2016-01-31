@@ -30,6 +30,14 @@
   (interactive)
   (mapc 'kill-buffer (delq (current-buffer) (buffer-list))))
 
+(defun kill-other-buffers-and-windows ()
+  "Kill all buffers and windows except the currently selected."
+  (interactive)
+  (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
+  (delete-other-windows))
+
+(bind-key "C-c k" 'kill-other-buffers-and-windows)
+
 (ensure-package-installed 'evil
                           'evil-surround
                           'evil-escape
