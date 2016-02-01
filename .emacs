@@ -36,9 +36,8 @@
   (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
   (delete-other-windows))
 
-(bind-key "C-c k" 'kill-other-buffers-and-windows)
-
-(ensure-package-installed 'evil
+(ensure-package-installed 'gruvbox-theme
+                          'evil
                           'evil-surround
                           'evil-escape
                           'evil-magit
@@ -65,8 +64,17 @@
                           'scala-mode2
                           'rust-mode
                           'cmake-mode
+                          'ggtags
+                          'company
                           )
 
+
+;; Make sure that bind-key is loaded.
+(require 'bind-key)
+(bind-key "C-c k" 'kill-other-buffers-and-windows)
+
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;; Make reloading .emacs changes easier
 (defun reload-emacs ()
