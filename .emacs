@@ -71,7 +71,7 @@
 
 ;; Make sure that bind-key is loaded.
 (require 'bind-key)
-(bind-key "C-c k" 'kill-other-buffers-and-windows)
+(bind-key "C-c 1" 'kill-other-buffers-and-windows)
 
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
@@ -84,7 +84,7 @@
 
 ;; Setup keybind for magit-status
 (require 'magit)
-(bind-key "M-\\" 'magit-status)
+(bind-key "C-c g" 'magit-status)
 
 ;; Set default font
 (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-11"))
