@@ -48,6 +48,7 @@
                           'multi-term
                           'ace-window
                           'slime
+                          'haskell-mode
                           'tuareg
                           'magit
                           'git-timemachine
