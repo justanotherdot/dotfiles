@@ -15,11 +15,11 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'syntastic'
+" Plugin 'syntastic'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'morhetz/gruvbox'
 Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+" Plugin 'plasticboy/vim-markdown'
 Plugin 'luochen1990/rainbow'
 Plugin 'chriskempson/base16-vim'
 Plugin 'ntpeters/vim-better-whitespace'
@@ -27,26 +27,26 @@ Plugin 'bling/vim-airline'
 Plugin 'Twinside/vim-hoogle'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-sleuth'
+" Plugin 'tpope/vim-repeat'
+" Plugin 'tpope/vim-eunuch'
+" Plugin 'tpope/vim-sleuth'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'dag/vim2hs'
-Plugin 'bitc/vim-hdevtools'
-Plugin 'majutsushi/tagbar' " Don't know about this one just yet
+" Plugin 'scrooloose/nerdtree'
+" Plugin 'dag/vim2hs'
+" Plugin 'bitc/vim-hdevtools'
+" Plugin 'majutsushi/tagbar' " Don't know about this one just yet
 Plugin 'jimenezrick/vimerl'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
+" Plugin 'MarcWeber/vim-addon-mw-utils'
+" Plugin 'tomtom/tlib_vim'
 "Plugin 'garbas/vim-snipmate'
 "Plugin 'honza/vim-snippets'
 "Plugin 'mattn/emmet-vim'
-Plugin 'tpope/vim-fireplace'
-Plugin 'tpope/vim-classpath'
+" Plugin 'tpope/vim-fireplace'
+" Plugin 'tpope/vim-classpath'
 "Plugin 'guns/vim-clojure-static'
-Plugin 'kovisoft/slimv'
-Plugin 'maxbrunsfeld/vim-yankstack'
+" Plugin 'kovisoft/slimv'
+" Plugin 'maxbrunsfeld/vim-yankstack'
 
 call vundle#end()
 
@@ -178,8 +178,8 @@ set incsearch
 set magic
 
 " Need to figure out how to disable this for haskell syntax
-let g:rainbow_active = 1
-au FileType haskell :RainbowToggle
+" let g:rainbow_active = 1
+" au FileType haskell :RainbowToggle
 
 nnoremap <leader>. :CtrlPTag<cr>
 
