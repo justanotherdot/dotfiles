@@ -60,7 +60,6 @@ alias ls="ls --color=always -F"
 alias grep="grep --color=always"
 alias df='df -h'
 alias tty-clock='tty-clock -b -C 7 -c'
-alias emacs='emacs -nw'
 alias clisp='clisp -q'
 
 # More complex aliases
