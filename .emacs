@@ -38,6 +38,7 @@
 
 (ensure-package-installed 'gruvbox-theme
                           'base16-theme
+                          'hl-todo
                           'evil
                           'evil-surround
                           'evil-escape
@@ -74,6 +75,9 @@
 ;; Make sure that bind-key is loaded.
 (require 'bind-key)
 (bind-key "C-c 1" 'kill-other-buffers-and-windows)
+
+(require 'hl-todo)
+(hl-todo-mode t)
 
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
