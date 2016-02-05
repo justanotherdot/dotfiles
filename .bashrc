@@ -16,6 +16,11 @@ if [[ -e "/usr/bin/lxqt-openssh-askpass" && -z $SSH_ASKPASS ]]; then
     SSH_ASKPASS="/usr/bin/lxqt-openssh-askpass"
 fi
 
+# Common aliases
+alias ls="ls -F"
+alias df='df -h'
+alias tty-clock='tty-clock -b -C 7 -c'
+alias clisp='clisp -q'
 
 # Let some applications know we're using XFCE
 export DE="XFCE"
@@ -55,12 +60,6 @@ else
     PS1="[\d, \@ | \w ]\n&  "
 fi
 
-# Common aliases
-alias ls="ls --color=always -F"
-alias grep="grep --color=always"
-alias df='df -h'
-alias tty-clock='tty-clock -b -C 7 -c'
-alias clisp='clisp -q'
 
 # More complex aliases
 function cd() {

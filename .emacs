@@ -173,6 +173,9 @@
 (require 'evil-escape)
 (evil-escape-mode t)
 
+(require 'smart-mode-line)
+(sml/setup)
+
 ;; I'm not sure if this nullifies the key-chord approach
 (setq-default evil-escape-key-sequence "jk")
 (setq-default evil-escape-delay 0.2)
@@ -194,6 +197,7 @@
 (setq ido-everywhere t)
 (ido-mode t)
 
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -202,40 +206,13 @@
  '(custom-enabled-themes (quote (base16-ocean-dark)))
  '(custom-safe-themes
    (quote
-    ("50e7f9d112e821e42bd2b8410d50de966c35c7434dec12ddea99cb05dd368dd8" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" default)))
- '(evil-escape-mode t)
- '(fci-rule-color "#383838")
- '(markdown-preview-style "http://kevinburke.bitbucket.org/markdowncss/markdown.css")
- '(nrepl-message-colors
+    ("a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "e1551b5516e0a439b6ab019ba00cee866e735f66f22ff67a5d882ad0f1383454" "70000dc33dbd9be73686fb5c23e471137da9866ff65b36e8e43315f719495640" "50e7f9d112e821e42bd2b8410d50de966c35c7434dec12ddea99cb05dd368dd8" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" default)))
+ '(safe-local-variable-values
    (quote
-    ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
- '(vc-annotate-background "#2B2B2B")
- '(vc-annotate-color-map
-   (quote
-    ((20 . "#BC8383")
-     (40 . "#CC9393")
-     (60 . "#DFAF8F")
-     (80 . "#D0BF8F")
-     (100 . "#E0CF9F")
-     (120 . "#F0DFAF")
-     (140 . "#5F7F5F")
-     (160 . "#7F9F7F")
-     (180 . "#8FB28F")
-     (200 . "#9FC59F")
-     (220 . "#AFD8AF")
-     (240 . "#BFEBBF")
-     (260 . "#93E0E3")
-     (280 . "#6CA0A3")
-     (300 . "#7CB8BB")
-     (320 . "#8CD0D3")
-     (340 . "#94BFF3")
-     (360 . "#DC8CC3"))))
- '(vc-annotate-very-old-color "#DC8CC3"))
-
-;; Set up smart mode line
-;; This needs to be after custom-vars, apparently.
-(setq sml/theme 'respectful)
-(sml/setup)
+    ((eval when
+           (fboundp
+            (quote rainbow-mode))
+           (rainbow-mode 1))))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
