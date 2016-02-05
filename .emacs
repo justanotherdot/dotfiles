@@ -172,9 +172,6 @@
 (require 'evil-escape)
 (evil-escape-mode t)
 
-(require 'smart-mode-line)
-(sml/setup)
-
 ;; I'm not sure if this nullifies the key-chord approach
 (setq-default evil-escape-key-sequence "jk")
 (setq-default evil-escape-delay 0.2)
@@ -196,7 +193,6 @@
 (setq ido-everywhere t)
 (ido-mode t)
 
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -205,7 +201,7 @@
  '(custom-enabled-themes (quote (base16-ocean-dark)))
  '(custom-safe-themes
    (quote
-    ("b04425cc726711a6c91e8ebc20cf5a3927160681941e06bc7900a5a5bfe1a77f" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "e1551b5516e0a439b6ab019ba00cee866e735f66f22ff67a5d882ad0f1383454" "70000dc33dbd9be73686fb5c23e471137da9866ff65b36e8e43315f719495640" "50e7f9d112e821e42bd2b8410d50de966c35c7434dec12ddea99cb05dd368dd8" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" default)))
+    ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "b04425cc726711a6c91e8ebc20cf5a3927160681941e06bc7900a5a5bfe1a77f" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "e1551b5516e0a439b6ab019ba00cee866e735f66f22ff67a5d882ad0f1383454" "70000dc33dbd9be73686fb5c23e471137da9866ff65b36e8e43315f719495640" "50e7f9d112e821e42bd2b8410d50de966c35c7434dec12ddea99cb05dd368dd8" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" default)))
  '(safe-local-variable-values
    (quote
     ((eval when
@@ -218,3 +214,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; Must be below custom-vars
+(require 'smart-mode-line)
+(setq sml/theme 'respectful)
+(sml/setup)
