@@ -1,7 +1,7 @@
 ;;
 ;; .emacs, Ryan James Spencer
 ;;
-;; Prelude
+
 (require 'package)
 (when (>= emacs-major-version 24)
   (require 'package)
@@ -71,10 +71,10 @@
                           'cmake-mode
                           'ggtags
                           'company
+                          'rainbow-mode
                           )
 
 
-;; Make sure that bind-key is loaded.
 (require 'bind-key)
 (bind-key "C-c 1" 'kill-other-buffers-and-windows)
 
@@ -91,7 +91,7 @@
 (defun reload-emacs ()
   (interactive)
   (load-file "~/.emacs"))
-(bind-key "C-x r e" 'reload-emacs)
+(bind-key "C-x r l" 'reload-emacs)
 
 ;; Setup keybind for magit-status
 (require 'magit)
@@ -152,8 +152,7 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
-;; Make linum-mode a keyboard toggle
-(bind-key "C-M-l" 'linum-mode)
+;; Tell which column point is on
 (column-number-mode t)
 
 (require 'evil)
@@ -206,7 +205,7 @@
  '(custom-enabled-themes (quote (base16-ocean-dark)))
  '(custom-safe-themes
    (quote
-    ("a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "e1551b5516e0a439b6ab019ba00cee866e735f66f22ff67a5d882ad0f1383454" "70000dc33dbd9be73686fb5c23e471137da9866ff65b36e8e43315f719495640" "50e7f9d112e821e42bd2b8410d50de966c35c7434dec12ddea99cb05dd368dd8" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" default)))
+    ("b04425cc726711a6c91e8ebc20cf5a3927160681941e06bc7900a5a5bfe1a77f" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "e1551b5516e0a439b6ab019ba00cee866e735f66f22ff67a5d882ad0f1383454" "70000dc33dbd9be73686fb5c23e471137da9866ff65b36e8e43315f719495640" "50e7f9d112e821e42bd2b8410d50de966c35c7434dec12ddea99cb05dd368dd8" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" default)))
  '(safe-local-variable-values
    (quote
     ((eval when
