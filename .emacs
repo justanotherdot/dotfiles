@@ -39,6 +39,8 @@
 (ensure-package-installed 'gruvbox-theme
                           'base16-theme
                           'hl-todo
+                          'clj-refactor
+                          'clojure-cheatsheet
                           'evil
                           'evil-surround
                           'evil-escape
@@ -81,6 +83,9 @@
 
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
+
+(add-hook 'cider-repl-mode-hook #'company-mode)
+(add-hook 'cider-mode-hook #'company-mode)
 
 ;; Make reloading .emacs changes easier
 (defun reload-emacs ()
