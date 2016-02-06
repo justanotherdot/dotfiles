@@ -73,7 +73,6 @@
                           'scala-mode2
                           'slime
                           'tuareg
-                          'tuareg
 
                           '2048-game    ;; Games
                           'chess
