@@ -36,44 +36,52 @@
   (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
   (delete-other-windows))
 
-(ensure-package-installed 'gruvbox-theme
-                          'base16-theme
-                          'hl-todo
-                          'clj-refactor
-                          'clojure-cheatsheet
-                          'evil
-                          'evil-surround
+(ensure-package-installed 'evil         ;; Essential
                           'evil-escape
                           'evil-magit
-                          'helm
-                          'rainbow-delimiters
-                          'smart-mode-line
-                          'cider
-                          'multi-term
-                          'ace-window
-                          'slime
-                          'haskell-mode
-                          'tuareg
-                          'magit
-                          'git-timemachine
-                          'free-keys
-                          'bind-key
-                          'tuareg
-                          'erlang
-                          'markdown-preview-mode
-                          'gnugo
-                          'go-mode
-                          'inf-ruby
-                          'php-mode
-                          'elixir-mode
-                          'scala-mode2
-                          'rust-mode
-                          'cmake-mode
-                          'ggtags
-                          'company
-                          'rainbow-mode
-                          )
+                          'evil-surround
 
+                          'base16-theme ;; Aesthetic
+                          'gruvbox-theme
+                          'rainbow-delimiters
+                          'rainbow-mode
+                          'smart-mode-line
+
+                          'ace-window   ;; Productivity
+                          'bind-key
+                          'company
+                          'free-keys
+                          'ggtags
+                          'git-timemachine
+                          'helm
+                          'hl-todo
+                          'magit
+                          'multi-term
+
+                          'cider        ;; Programming
+                          'clj-refactor
+                          'clojure-cheatsheet
+                          'cmake-mode
+                          'elixir-mode
+                          'erlang
+                          'go-mode
+                          'haskell-mode
+                          'inf-ruby
+                          'markdown-preview-mode
+                          'php-mode
+                          'rust-mode
+                          'scala-mode2
+                          'slime
+                          'tuareg
+                          'tuareg
+
+                          '2048-game    ;; Games
+                          'chess
+                          'ducpel
+                          'gnugo
+                          'poker
+                          'sokoban
+                          )
 
 (require 'bind-key)
 (bind-key "C-c 1" 'kill-other-buffers-and-windows)
@@ -193,6 +201,10 @@
 (setq ido-everywhere t)
 (ido-mode t)
 
+(require 'smart-mode-line)
+(setq sml/theme 'respectful)
+(add-hook 'after-init-hook 'sml/setup)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -214,8 +226,3 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
-;; Must be below custom-vars
-(require 'smart-mode-line)
-(setq sml/theme 'respectful)
-(sml/setup)
