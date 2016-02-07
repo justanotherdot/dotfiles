@@ -117,6 +117,8 @@
 (require 'multi-term)
 (setq multi-term-program "/bin/bash")
 (bind-key "C-x t" 'multi-term)
+;; Turn off colorscheme when in tty, i.e. `emacs -nw`
+(add-to-list 'default-frame-alist '(tty-color-mode . -1))
 
 ;; Smoother window transitions
 (require 'ace-window)
