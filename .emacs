@@ -2,7 +2,6 @@
 ;; .emacs, Ryan James Spencer
 ;;
 
-(require 'package)
 (when (>= emacs-major-version 24)
   (require 'package)
   (add-to-list
@@ -168,6 +167,9 @@
 
 (require 'evil)
 (evil-mode t)
+;; Allow evil (almost) everywhere
+;; (setq evil-normal-state-modes (append evil-motion-state-modes evil-normal-state-modes))
+;; (setq evil-motion-state-modes nil)
 
 ;; Make evil keybindings work in git-timemachine
 ;; see http://blog.binchen.org/posts/use-git-timemachine-with-evil.html
