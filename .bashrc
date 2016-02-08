@@ -6,7 +6,7 @@
 # Only source color schemes when emacs isn't running
 if [ -z `pgrep emacs` ]; then
     # Base16 Shell
-    BASE16_SHELL="$HOME/.config/base16-shell/base16-ocean.dark.sh"
+    BASE16_SHELL="$HOME/.config/base16-shell/base16-eighties.dark.sh"
     [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 fi
 
@@ -33,8 +33,7 @@ if [[ $TERM == 'screen' ]]; then
     export TERM='screen-256color'
 fi
 
-
-export EDITOR='emacs'
+export EDITOR='vim'
 export PAGER='less'
 export PATH=$HOME/.rvm/bin:$HOME/go/bin:$HOME/.gem/ruby/2.3.0/bin:$HOME/.cabal/bin:$HOME/bin:$PATH
 export GOPATH=$HOME/go

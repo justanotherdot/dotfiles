@@ -91,8 +91,10 @@
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
 
+(require 'cider)
 (add-hook 'cider-repl-mode-hook #'company-mode)
 (add-hook 'cider-mode-hook #'company-mode)
+;; (setq cider-repl-display-help-banner nil)
 
 ;; Make reloading .emacs changes easier
 (defun reload-emacs ()
@@ -118,7 +120,7 @@
 (setq multi-term-program "/bin/bash")
 (bind-key "C-x t" 'multi-term)
 ;; Turn off colorscheme when in tty, i.e. `emacs -nw`
-(add-to-list 'default-frame-alist '(tty-color-mode . -1))
+;;(add-to-list 'default-frame-alist '(tty-color-mode . -1))
 
 ;; Smoother window transitions
 (require 'ace-window)
@@ -210,10 +212,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (base16-ocean-dark)))
+ '(custom-enabled-themes (quote (zenburn)))
  '(custom-safe-themes
    (quote
-    ("50e7f9d112e821e42bd2b8410d50de966c35c7434dec12ddea99cb05dd368dd8" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" default))))
+    ("20e359ef1818a838aff271a72f0f689f5551a27704bf1c9469a5c2657b417e6c" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" default))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

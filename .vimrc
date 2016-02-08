@@ -28,6 +28,7 @@ Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
+Plugin 'jnurmine/zenburn'
 " Plugin 'MarcWeber/vim-addon-mw-utils'
 " Plugin 'bitc/vim-hdevtools'
 " Plugin 'dag/vim2hs'
@@ -124,10 +125,9 @@ let g:syntastic_check_on_wq = 0
 " set list
 " set listchar=tab:>.,trail:.,extends:#,nbsp:.
 
-let base16colorspace=256
 syntax on
-colorscheme base16-ocean
-set bg=dark
+colorscheme zenburn
+" set bg=dark
 
 "Enhance command-line completions
 set wildmenu
