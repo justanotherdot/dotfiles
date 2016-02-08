@@ -124,8 +124,9 @@ let g:syntastic_check_on_wq = 0
 " set list
 " set listchar=tab:>.,trail:.,extends:#,nbsp:.
 
+let base16colorspace=256
 syntax on
-colorscheme gruvbox
+colorscheme base16-ocean
 set bg=dark
 
 "Enhance command-line completions

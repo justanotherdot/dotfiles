@@ -3,12 +3,10 @@
 #
 # Ryan James Spencer
 
-# Only import gruvbox colors if emacs not running.
+# Only source color schemes when emacs isn't running
 if [ -z `pgrep emacs` ]; then
-    # Gruvbox
-    source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
     # Base16 Shell
-    BASE16_SHELL="$HOME/.config/base16-shell/base16-eighties.dark.sh"
+    BASE16_SHELL="$HOME/.config/base16-shell/base16-ocean.dark.sh"
     [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 fi
 
@@ -28,15 +26,15 @@ export DE="XFCE"
 # Avoid infinite loop issues with interactive mode
 [[ $- != *i* ]] && return
 
+unset LS_COLORS
+
 # If in screen or tmux, adjust for 256 palette
-if [[ $TERM == 'screen' ]]
-then
+if [[ $TERM == 'screen' ]]; then
     export TERM='screen-256color'
-else
-    export TERM='xterm-256color'
 fi
 
-export EDITOR='vim'
+
+export EDITOR='emacs'
 export PAGER='less'
 export PATH=$HOME/.rvm/bin:$HOME/go/bin:$HOME/.gem/ruby/2.3.0/bin:$HOME/.cabal/bin:$HOME/bin:$PATH
 export GOPATH=$HOME/go
@@ -59,7 +57,6 @@ if [[ -n `echo $LANG | egrep -i "utf-?8"` ]]; then
 else
     PS1="[\d, \@ | \w ]\n&  "
 fi
-
 
 # More complex aliases
 function cd() {
