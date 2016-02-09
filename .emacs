@@ -72,6 +72,7 @@
                           'scala-mode2
                           'slime
                           'tuareg
+                          'typescript-mode
 
                           '2048-game    ;; Games
                           'chess
@@ -99,7 +100,7 @@
 (defun reload-emacs ()
   (interactive)
   (load-file "~/.emacs"))
-(bind-key "C-x r l" 'reload-emacs)
+(bind-key "C-x r e" 'reload-emacs)
 
 ;; Setup keybind for magit-status
 (require 'magit)
