@@ -71,6 +71,7 @@
                           'scala-mode2
                           'slime
                           'tuareg
+                          'typescript-mode
 
                           '2048-game    ;; Games
                           'chess
