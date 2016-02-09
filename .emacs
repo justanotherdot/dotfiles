@@ -40,8 +40,7 @@
                           'evil-magit
                           'evil-surround
 
-                          'base16-theme ;; Aesthetic
-                          'gruvbox-theme
+                          'zenburn-theme
                           'rainbow-delimiters
                           'rainbow-mode
                           'smart-mode-line
@@ -99,7 +98,7 @@
 (defun reload-emacs ()
   (interactive)
   (load-file "~/.emacs"))
-(bind-key "C-x r l" 'reload-emacs)
+(bind-key "C-x r e" 'reload-emacs)
 
 ;; Setup keybind for magit-status
 (require 'magit)
