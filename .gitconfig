@@ -1,8 +1,9 @@
 [user]
 	email = spencer.ryanjames@gmail.com
 	name = Ryan James Spencer
-	anme = justanotherdot
 [push]
 	default = simple
 [merge]
 	tool = meld
+[alias]
+    st = status
