@@ -1,9 +1,16 @@
 [user]
-	email = spencer.ryanjames@gmail.com
-	name = Ryan James Spencer
+        email = spencer.ryanjames@gmail.com
+        name = Ryan James Spencer
 [push]
-	default = simple
+        default = simple
 [merge]
-	tool = meld
+        tool = meld
 [alias]
-    st = status
+    st = status -s -b
+    di = diff
+    co = checkout
+    ci = commit
+    br = branch
+    l = log --oneline --decorate --graph
+    fixup = commit --amend -C HEAD
+    timeline = log --graph --branches --pretty=oneline --
