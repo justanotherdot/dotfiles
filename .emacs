@@ -39,9 +39,9 @@
                           'evil-escape
                           'evil-magit
                           'evil-surround
+                          'evil-ediff
 
-                          'base16-theme ;; Aesthetic
-                          'gruvbox-theme
+                          'zenburn-theme
                           'rainbow-delimiters
                           'rainbow-mode
                           'smart-mode-line
@@ -56,6 +56,7 @@
                           'hl-todo
                           'magit
                           'multi-term
+                          'ediff
 
                           'cider        ;; Programming
                           'clj-refactor
@@ -73,6 +74,7 @@
                           'slime
                           'tuareg
                           'typescript-mode
+                          'gitconfig-mode
 
                           '2048-game    ;; Games
                           'chess

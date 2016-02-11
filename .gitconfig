@@ -6,4 +6,14 @@
 [merge]
 	tool = meld
 [alias]
-    st = status
+	l = log --oneline --decorate --graph
+	st = status -s -b
+	di = diff
+	co = checkout
+	ci = commit
+	br = branch
+	bl = git clame -C # Does not include line-moves
+	wip = git commit -m "WIP"
+	diw = diff --color-words=.
+	fixup = commit --amend -C HEAD
+	timeline = log --graph --branches --pretty=oneline --
