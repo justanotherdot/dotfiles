@@ -168,9 +168,6 @@
 
 (require 'evil)
 (evil-mode t)
-;; Allow evil (almost) everywhere
-;; (setq evil-normal-state-modes (append evil-motion-state-modes evil-normal-state-modes))
-;; (setq evil-motion-state-modes nil)
 
 ;; Make evil keybindings work in git-timemachine
 ;; see http://blog.binchen.org/posts/use-git-timemachine-with-evil.html
@@ -186,10 +183,11 @@
 (require 'evil-escape)
 (evil-escape-mode t)
 
-;; I'm not sure if this nullifies the key-chord approach
+;; Co-map escape key for evil-modes
 (setq-default evil-escape-key-sequence "jk")
 (setq-default evil-escape-delay 0.2)
 
+;; Make '?' search backwards instead of bringing up help
 (require 'evil-magit)
 (evil-define-key evil-magit-state magit-mode-map "?" 'evil-search-backward)
 
