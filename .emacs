@@ -205,6 +205,10 @@
 (setq ido-everywhere t)
 (ido-mode t)
 
+;; Indent switch statements normally
+(c-set-offset 'case-label '+)
+
+
 (require 'smart-mode-line)
 (setq sml/theme 'respectful)
 (add-hook 'after-init-hook 'sml/setup)
