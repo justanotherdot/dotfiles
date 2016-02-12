@@ -75,6 +75,7 @@
                           'tuareg
                           'typescript-mode
                           'gitconfig-mode
+                          'json-mode
 
                           '2048-game    ;; Games
                           'chess
@@ -210,6 +211,9 @@
 ;; Indent switch statements normally
 (c-set-offset 'case-label '+)
 
+;; Avy keybindings
+(bind-key "M-g g" 'avy-goto-line)
+(bind-key "M-g c" 'avy-goto-char)
 
 (require 'smart-mode-line)
 (setq sml/theme 'respectful)
