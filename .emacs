@@ -76,6 +76,7 @@
                           'typescript-mode
                           'gitconfig-mode
                           'json-mode
+                          'web-mode
 
                           '2048-game    ;; Games
                           'chess
@@ -118,6 +119,9 @@
 
 ;; Show the time
 (display-time-mode t)
+
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
 (require 'multi-term)
 (setq multi-term-program "/bin/bash")
