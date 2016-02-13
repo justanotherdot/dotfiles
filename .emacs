@@ -32,7 +32,7 @@
 (defun kill-other-buffers-and-windows ()
   "Kill all buffers and windows except the currently selected."
   (interactive)
-  (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
+  (mapc 'kill-buffer (delq '(current-buffer *scratch*) (buffer-list)))
   (delete-other-windows))
 
 (ensure-package-installed 'evil         ;; Essential
