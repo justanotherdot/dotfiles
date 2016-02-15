@@ -153,6 +153,8 @@
 ;; For helpful configuration
 (bind-key "C-h C-k" 'free-keys)
 
+(bind-key "C-M-;" 'align-regexp)
+
 ;; Get rid of that ugly welcome message.
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
@@ -218,6 +220,9 @@
 ;; Avy keybindings
 (bind-key "M-g g" 'avy-goto-line)
 (bind-key "M-g c" 'avy-goto-char)
+
+;; Follow url link at point
+(bind-key "C-&" 'browse-url-at-point)
 
 (require 'smart-mode-line)
 (setq sml/theme 'respectful)
