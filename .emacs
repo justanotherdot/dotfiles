@@ -40,6 +40,8 @@
                           'evil-magit
                           'evil-surround
                           'evil-ediff
+                          'evil-org
+                          'evil-paredit
 
                           'zenburn-theme
                           'rainbow-delimiters
@@ -177,6 +179,11 @@
 
 (require 'evil)
 (evil-mode t)
+
+;; Make evil-mode omnipresent
+(evil-set-initial-state 'info-mode 'normal)
+(setq evil-normal-state-modes (append evil-motion-state-modes evil-normal-state-modes))
+(setq evil-motion-state-modes nil)
 
 ;; Make evil keybindings work in git-timemachine
 ;; see http://blog.binchen.org/posts/use-git-timemachine-with-evil.html
