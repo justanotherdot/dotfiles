@@ -92,7 +92,7 @@
 (bind-key "C-c 1" 'kill-other-buffers-and-windows)
 
 (require 'hl-todo)
-(hl-todo-mode t)
+(global-hl-todo-mode t)
 
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)

@@ -28,6 +28,7 @@ Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-sleuth'
 Plugin 'jnurmine/zenburn'
 " Plugin 'MarcWeber/vim-addon-mw-utils'
 " Plugin 'bitc/vim-hdevtools'
@@ -47,7 +48,6 @@ Plugin 'jnurmine/zenburn'
 " Plugin 'tpope/vim-eunuch'
 " Plugin 'tpope/vim-fireplace'
 " Plugin 'tpope/vim-repeat'
-" Plugin 'tpope/vim-sleuth'
 
 call vundle#end()
 
