@@ -231,9 +231,51 @@
 ;; Follow url link at point
 (bind-key "C-&" 'browse-url-at-point)
 
+;; GNU Global / gtags stuff
+(defun gtags-root-dir ()
+  "Returns GTAGS root directory or nil if doesn't exist."
+  (with-temp-buffer
+    (if (zerop (call-process "global" nil t nil "-pr"))
+        (buffer-substring (point-min) (1- (point-max)))
+      nil)))
+
+(defun gtags-update ()
+  "Make GTAGS incremental update"
+  (call-process "global" nil nil nil "-u"))
+
+(defun gtags-update-hook ()
+  (when (gtags-root-dir)
+    (gtags-update)))
+
+(add-hook 'after-save-hook #'gtags-update-hook)
+
+;; Fix some keybindings problems with evil and ggtags
+;; @see https://bitbucket.org/lyro/evil/issue/511/let-certain-minor-modes-key-bindings
+(eval-after-load 'ggtags
+  '(progn
+     (evil-make-overriding-map ggtags-mode-map 'normal)
+     ;; force update evil keymaps after ggtags-mode loaded
+     (add-hook 'ggtags-mode-hook #'evil-normalize-keymaps)))
+
+;; And fix the missing vi binding for jumping to a tag
+(defun ggtags-evil-jump ()
+  (interactive)
+  (call-interactively (key-binding (kbd "M-."))))
+
+(eval-after-load "evil-maps"
+    '(define-key evil-motion-state-map "\C-]" 'ggtags-evil-jump))
+
+;; Turn on ggtags for c modes
+(require 'ggtags)
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
+              (ggtags-mode 1))))
+
 (require 'smart-mode-line)
 (setq sml/theme 'respectful)
 (add-hook 'after-init-hook 'sml/setup)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
