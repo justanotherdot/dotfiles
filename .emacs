@@ -59,6 +59,7 @@
                           'magit
                           'multi-term
                           'ediff
+                          'ssh
 
                           'cider        ;; Programming
                           'clj-refactor
@@ -289,6 +290,8 @@
            (insert (current-kill 0)))))
 
 (bind-key "C-c e" 'fc-eval-and-replace)
+
+(setq tramp-default-method "ssh")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
