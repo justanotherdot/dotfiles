@@ -13,6 +13,7 @@ fi
 #if [[ -e "/usr/bin/lxqt-openssh-askpass" && -z $SSH_ASKPASS ]]; then
 #    SSH_ASKPASS="/usr/bin/lxqt-openssh-askpass"
 #fi
+SSH_ASKPASS="/usr/lib/seahorse/seahorse-ssh-askpass"
 
 # Common aliases
 alias ls="ls -F"
