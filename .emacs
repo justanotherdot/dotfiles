@@ -102,6 +102,7 @@
 (add-hook 'cider-repl-mode-hook #'company-mode)
 (add-hook 'cider-mode-hook #'company-mode)
 (setq cider-repl-display-help-banner nil)
+(add-hook 'clojure-mode-hook #'paredit-mode)
 
 ;; Make reloading .emacs changes easier
 (defun reload-emacs ()

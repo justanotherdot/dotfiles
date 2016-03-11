@@ -54,6 +54,10 @@
     m:0xd + c:113
     Control+Shift+Alt + Left
 
-"dmenu_run -b -sb white -sf black -fn '-*-terminus-medium-r-normal-*-14-*-*-*-*-*-*-*'"
-    m:0x8 + c:40
-    Alt + d
+#############################################
+# Application shortcuts                     #
+#############################################
+#"dmenu_run -b -sb white -sf black -fn '-*-terminus-medium-r-normal-*-14-*-*-*-*-*-*-*'"
+#    m:0x8 + c:40
+#    Alt + d
+
