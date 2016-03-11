@@ -61,7 +61,8 @@
                           'ediff
                           'ssh
 
-                          'cider        ;; Programming
+                          'aggressive-indent ;; Programming
+                          'cider
                           'clj-refactor
                           'clojure-cheatsheet
                           'cmake-mode
@@ -216,7 +217,8 @@
 (global-set-key (kbd "S-C-<up>")    'enlarge-window)
 
 (require 'rainbow-delimiters)
-(rainbow-delimiters-mode t)
+(add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
+;; (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;; Ido niceties
 (setq ido-enable-flex-matching t)
@@ -293,6 +295,9 @@
 (bind-key "C-c e" 'fc-eval-and-replace)
 
 (setq tramp-default-method "ssh")
+
+(require 'aggressive-indent)
+(add-hook 'clojure-mode-hook #'aggressive-indent-mode)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
