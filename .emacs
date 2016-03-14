@@ -167,7 +167,7 @@
 ;; Highlight matching parens
 (setq show-paren-delay 0)
 (show-paren-mode t)
-(setq show-paren-style 'mixed)
+(setq show-paren-style 'parenthesis)
 
 ;; Only spaces
 (setq-default indent-tabs-mode nil)
