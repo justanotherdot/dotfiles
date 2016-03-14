@@ -183,6 +183,9 @@
 (require 'evil)
 (evil-mode t)
 
+(require 'evil-paredit)
+(add-hook 'paredit-mode-hook #'evil-paredit-mode)
+
 ;; Make evil-mode omnipresent
 (evil-set-initial-state 'info-mode 'normal)
 (setq evil-normal-state-modes (append evil-motion-state-modes evil-normal-state-modes))
