@@ -10,16 +10,12 @@ if [ -z `pgrep emacs` ]; then
     [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 fi
 
-if [[ -e "/usr/bin/lxqt-openssh-askpass" && -z $SSH_ASKPASS ]]; then
-    SSH_ASKPASS="/usr/bin/lxqt-openssh-askpass"
-fi
-
 # Common aliases
 alias ls="ls -F"
 alias df='df -h'
 alias tty-clock='tty-clock -b -C 7 -c'
 alias clisp='clisp -q'
-alias swipl='swipl --traditional'
+alias swipl='swipl --traditional' # Prevent lists being treated as dicts
 
 # Let some applications know we're using XFCE
 export DE="XFCE"
@@ -34,7 +30,7 @@ if [[ $TERM == 'screen' ]]; then
     export TERM='screen-256color'
 fi
 
-export EDITOR='vim'
+export EDITOR='emacs'
 export PAGER='less'
 export PATH=$HOME/.rvm/bin:$HOME/go/bin:$HOME/.gem/ruby/2.3.0/bin:$HOME/.cabal/bin:$HOME/bin:$PATH
 export GOPATH=$HOME/go
