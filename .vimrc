@@ -31,23 +31,6 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-sleuth'
 Plugin 'jnurmine/zenburn'
 Plugin 'scrooloose/nerdtree'
-" Plugin 'MarcWeber/vim-addon-mw-utils'
-" Plugin 'bitc/vim-hdevtools'
-" Plugin 'dag/vim2hs'
-" Plugin 'garbas/vim-snipmate'
-" Plugin 'guns/vim-clojure-static'
-" Plugin 'honza/vim-snippets'
-" Plugin 'kovisoft/slimv'
-" Plugin 'majutsushi/tagbar' " Don't know about this one just yet
-" Plugin 'mattn/emmet-vim'
-" Plugin 'maxbrunsfeld/vim-yankstack'
-" Plugin 'plasticboy/vim-markdown'
-" Plugin 'syntastic'
-" Plugin 'tomtom/tlib_vim'
-" Plugin 'tpope/vim-classpath'
-" Plugin 'tpope/vim-eunuch'
-" Plugin 'tpope/vim-fireplace'
-" Plugin 'tpope/vim-repeat'
 
 call vundle#end()
 
@@ -60,7 +43,6 @@ endif
 
 execute pathogen#infect()
 execute pathogen#helptags()
-
 
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
@@ -80,6 +62,9 @@ endif
 
 "Do not close buffers; hide them instead.
 set hidden
+
+" Allow tags to be accessed for multiple-hierarchy
+set tags+=tags;~
 
 " The default for 'backspace' is very confusing to new users, so change it to a
 " more sensible value.  Add "set backspace&" to your ~/.vimrc to reset it.
