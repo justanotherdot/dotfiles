@@ -90,6 +90,8 @@
                           'sokoban
                           )
 
+(blink-cursor-mode 0)
+
 (require 'bind-key)
 (bind-key "C-c 1" 'kill-other-buffers-and-windows)
 
