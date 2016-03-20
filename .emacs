@@ -60,6 +60,7 @@
                           'multi-term
                           'ediff
                           'ssh
+                          'latex-preview-pane
 
                           'aggressive-indent ;; Programming
                           'cider
