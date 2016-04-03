@@ -122,8 +122,6 @@
 ;; Set default font
 (add-to-list 'default-frame-alist '(font . "Fira Mono-11"))
 (set-face-attribute 'default t :font "Fira Mono-11")
-;; (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-11"))
-;; (set-face-attribute 'default t :font "DejaVu Sans Mono-11")
 
 ;; Cleanup whitespace on every save
 (add-hook 'before-save-hook 'whitespace-cleanup)
