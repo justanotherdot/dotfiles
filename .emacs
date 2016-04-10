@@ -44,6 +44,7 @@
                           'evil-paredit
 
                           'zenburn-theme
+                          'base16-theme
                           'rainbow-delimiters
                           'rainbow-mode
                           'smart-mode-line
@@ -120,8 +121,8 @@
 (bind-key "C-c g" 'magit-status)
 
 ;; Set default font
-(add-to-list 'default-frame-alist '(font . "Fira Mono-11"))
-(set-face-attribute 'default t :font "Fira Mono-11")
+(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-11"))
+(set-face-attribute 'default t :font "DejaVu Sans Mono-11")
 
 ;; Cleanup whitespace on every save
 (add-hook 'before-save-hook 'whitespace-cleanup)
@@ -311,10 +312,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-term-color-vector
+   [unspecified "#2b303b" "#bf616a" "#a3be8c" "#ebcb8b" "#8fa1b3" "#b48ead" "#8fa1b3" "#c0c5ce"] t)
  '(custom-enabled-themes (quote (zenburn)))
  '(custom-safe-themes
    (quote
-    ("20e359ef1818a838aff271a72f0f689f5551a27704bf1c9469a5c2657b417e6c" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" default))))
+    ("e24679edfdea016519c0e2d4a5e57157a11f928b7ef4361d00c23a7fe54b8e01" "50e7f9d112e821e42bd2b8410d50de966c35c7434dec12ddea99cb05dd368dd8" "20e359ef1818a838aff271a72f0f689f5551a27704bf1c9469a5c2657b417e6c" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" default))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
