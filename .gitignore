@@ -25,6 +25,6 @@
 !.yaourtrc
 !LICENSE.md
 !README.md
-!bin/clean-house
+!bin/sweep
 !bin/watcher
 !./lein/profiles.clj
