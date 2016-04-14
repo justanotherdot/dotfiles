@@ -6,6 +6,7 @@
 !.config/base16-xfce4-terminal
 !.config/base16-xresources
 !.config/terminator/config
+!.i3/config
 !.emacs
 !.ghci
 !.gitconfig
