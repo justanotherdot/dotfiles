@@ -8,27 +8,27 @@
 #############################################
 
 #Raise volume (mouse)
-"amixer set Master 5%+"
-   b:9
-
-#Lower volume (mouse)
-"amixer set Master 5%-"
-   b:8
-
-# Raise Volume
-"amixer set Master 5%+ unmute"
-    m:0x0 + c:123
-    XF86AudioRaiseVolume
-
-# Lower Volume
-"amixer set Master 5%- unmute"
-    m:0x0 + c:122
-    XF86AudioLowerVolume
-
-# Toggle Audio
-"amixer set Master toggle"
-    m:0x0 + c:121
-    XF86AudioMute
+#"amixer set Master 5%+"
+#   b:9
+#
+##Lower volume (mouse)
+#"amixer set Master 5%-"
+#   b:8
+#
+## Raise Volume
+#"amixer set Master 5%+ unmute"
+#    m:0x0 + c:123
+#    XF86AudioRaiseVolume
+#
+## Lower Volume
+#"amixer set Master 5%- unmute"
+#    m:0x0 + c:122
+#    XF86AudioLowerVolume
+#
+## Toggle Audio
+#"amixer set Master toggle"
+#    m:0x0 + c:121
+#    XF86AudioMute
 
 #############################################
 # Wallpaper commands                        #
@@ -60,4 +60,3 @@
 #"dmenu_run -b -sb white -sf black -fn '-*-terminus-medium-r-normal-*-14-*-*-*-*-*-*-*'"
 #    m:0x8 + c:40
 #    Alt + d
-
