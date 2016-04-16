@@ -16,6 +16,7 @@ alias df='df -h'
 alias tty-clock='tty-clock -b -C 7 -c'
 alias clisp='clisp -q'
 alias swipl='swipl --traditional' # Prevent lists being treated as dicts
+alias open='xdg-open'
 
 # Let some applications know we're using XFCE
 export DE="XFCE"
