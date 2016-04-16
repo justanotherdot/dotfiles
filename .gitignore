@@ -30,3 +30,4 @@
 !bin/sweep
 !bin/watcher
 !./lein/profiles.clj
+!.compton.conf

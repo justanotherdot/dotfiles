@@ -1,16 +1,20 @@
 [global_config]
-  custom_url_handler = google-chrome-stable
+  borderless = True
+  custom_url_handler = firefox
+  dbus = True
   enabled_plugins = TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, Logger, LaunchpadBugURLHandler
   focus = system
   hide_from_taskbar = True
-  inactive_color_offset = 0.99
+  inactive_color_offset = 1.0
   suppress_multiple_term_dialog = True
   tab_position = hidden
+  title_font = DejaVu Sans Mono 11
   title_hide_sizetext = True
-  title_inactive_bg_color = "#fbfbfb"
+  title_inactive_bg_color = "#ffffff"
+  title_inactive_fg_color = "#ffffff"
   title_receive_bg_color = "#00ff7e"
   title_transmit_bg_color = "#ffffff"
-  title_transmit_fg_color = "#000000"
+  title_use_system_font = False
   use_custom_url_handler = True
 [keybindings]
   broadcast_all = <Shift><Alt>a
@@ -30,97 +34,14 @@
     [[[window0]]]
       parent = ""
       type = Window
-  [[Edit_Large]]
-    [[[child0]]]
-      order = 0
-      parent = ""
-      position = 0:27
-      size = 1920, 1021
-      type = Window
-    [[[child1]]]
-      order = 0
-      parent = child0
-      position = 961
-      type = HPaned
-    [[[child3]]]
-      order = 1
-      parent = child1
-      position = 510
-      type = VPaned
-    [[[terminal2]]]
-      order = 0
-      parent = child1
-      profile = default
-      type = Terminal
-    [[[terminal4]]]
-      order = 0
-      parent = child3
-      profile = default
-      type = Terminal
-    [[[terminal5]]]
-      order = 1
-      parent = child3
-      profile = default
-      type = Terminal
-  [[Sidebar]]
-    [[[child0]]]
-      order = 0
-      parent = ""
-      position = 960:27
-      size = 960, 1021
-      type = Window
-    [[[child1]]]
-      order = 0
-      parent = child0
-      position = 510
-      type = VPaned
-    [[[child3]]]
-      order = 1
-      parent = child1
-      position = 480
-      type = HPaned
-    [[[terminal2]]]
-      order = 0
-      parent = child1
-      profile = default
-      type = Terminal
-    [[[terminal4]]]
-      order = 0
-      parent = child3
-      profile = default
-      type = Terminal
-    [[[terminal5]]]
-      order = 1
-      parent = child3
-      profile = default
-      type = Terminal
-  [[Sidebar_v2]]
-    [[[child0]]]
-      order = 0
-      parent = ""
-      position = 960:27
-      size = 960, 1021
-      type = Window
-    [[[child1]]]
-      order = 0
-      parent = child0
-      position = 510
-      type = VPaned
-    [[[terminal2]]]
-      order = 0
-      parent = child1
-      profile = default
-      type = Terminal
-    [[[terminal3]]]
-      order = 1
-      parent = child1
-      profile = default
-      type = Terminal
 [plugins]
 [profiles]
   [[default]]
     background_color = "#2d2d2d"
+    background_darkness = 0.81
     background_image = None
+    copy_on_selection = True
+    cursor_blink = False
     cursor_color = "#d3d0c8"
     font = DejaVu Sans Mono 11
     foreground_color = "#d3d0c8"
