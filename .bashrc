@@ -10,6 +10,8 @@ if [[ -z `pgrep emacs` ]]; then
     [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 fi
 
+DE=generic
+
 # Common aliases
 alias ls="ls -F"
 alias df='df -h'
