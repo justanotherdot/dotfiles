@@ -11,6 +11,3 @@
 
 # Start X11 automatically after login
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
-
-# Start keychain wrapper for ssh-agent
-eval `keychain --eval id_rsa`

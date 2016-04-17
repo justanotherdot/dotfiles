@@ -20,8 +20,9 @@ alias clisp='clisp -q'
 alias swipl='swipl --traditional' # Prevent lists being treated as dicts
 alias open='xdg-open'
 
-# Let some applications know we're using XFCE
-export DE="XFCE"
+# Start keychain wrapper for ssh-agent
+#eval $(keychain --eval id_rsa --quiet)
+eval $(keychain --eval --quiet)
 
 # Avoid infinite loop issues with interactive mode
 [[ $- != *i* ]] && return
