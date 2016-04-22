@@ -23,7 +23,7 @@ alias swipl='swipl --traditional' # Prevent lists being treated as dicts
 alias open='xdg-open'
 
 # Start keychain wrapper for ssh-agent
-eval $(keychain --eval id_rsa --quiet)
+#eval $(keychain --eval id_rsa --quiet)
 
 # Avoid infinite loop issues with interactive mode
 [[ $- != *i* ]] && return
