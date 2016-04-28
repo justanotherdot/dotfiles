@@ -10,6 +10,8 @@ if [[ -z `pgrep emacs` ]]; then
     [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 fi
 
+# Trick xdg-open into thinking we are in XFCE
+XDG_CURRENT_DESKTOP=XFCE
 DE=xfce
 
 # Common aliases
@@ -22,7 +24,6 @@ alias open='xdg-open'
 
 # Start keychain wrapper for ssh-agent
 #eval $(keychain --eval id_rsa --quiet)
-eval $(keychain --eval --quiet)
 
 # Avoid infinite loop issues with interactive mode
 [[ $- != *i* ]] && return
@@ -68,10 +69,11 @@ function cd() {
 }
 
 # Arch Linux specific
-update-system() {
+update-sys() {
     sudo pacman -Syyu
     yaourt -Syyu --aur
     yaourt -Syyua --devel # Update all version control packages
+    sudo sweep # Sweep does arch linux specific cleanup
 }
 
 # Properly pull from the dotfiles repo and its nested submodules
@@ -90,6 +92,7 @@ update-env() {
     vim +PluginInstall +qall
 }
 
+# Helper for update-env(). Installs all cabal files from CABAL_PRGMS_WNT
 cabal-check() {
     if command -v cabal >/dev/null 2>&1; then
         CABAL_PRGMS_WNT=(hlint hdevtools hasktags pointfree hoogle gtk2hs-buildtools ThreadScope)
