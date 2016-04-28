@@ -34,25 +34,25 @@
 # Wallpaper commands                        #
 #############################################
 
-## Delete current bg image
-#"variety -t"
-#    m:0xc + c:28
-#    Control+Alt + t
-#
-## Go to prev bg image
-#"variety -f"
-#    m:0xc + c:41
-#    Control+Alt + f
-#
-## Go to next image
-#"variety -n"
-#    m:0xd + c:114
-#    Control+Shift+Alt + Right
-#
-## Go to previous image
-#"variety -p"
-#    m:0xd + c:113
-#    Control+Shift+Alt + Left
+# Delete current bg image
+"variety -t"
+    m:0x40 + c:28
+    Mod4 + t
+
+# Go to prev bg image
+"variety -f"
+    m:0x40 + c:41
+    Mod4 + f
+
+# Go to next image
+"variety -n"
+    m:0x40 + c:57
+    Mod4 + n
+
+# Go to previous image
+"variety -p"
+    m:0x40 + c:33
+    Mod4 + p
 
 #############################################
 # Application shortcuts                     #

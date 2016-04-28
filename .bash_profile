@@ -10,4 +10,4 @@
 . /home/rjs/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 # Start X11 automatically after login
-[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx 
