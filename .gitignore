@@ -30,3 +30,4 @@
 !bin/watcher
 !./lein/profiles.clj
 !.compton.conf
+!.Xresources

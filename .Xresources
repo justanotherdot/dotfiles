@@ -1,0 +1,12 @@
+rofi.color-normal: #2d2d2d, #ffffff, #2d2d2d, #19b283, #ffffff
+rofi.color-urgent: #2d2d2d, #ffffff, #2d2d2d, #19b283, #ffffff
+rofi.color-active: #2d2d2d, #ffffff, #2d2d2d, #19b283, #ffffff
+rofi.color-window: #2d2d2d, #2d2d2d
+rofi.separator-style: none
+rofi.padding: 5
+rofi.width: 30
+rofi.lines: 3
+rofi.font: DejaVu Sans Mono Book 14
+rofi.borderwidth: 0
+rofi.fuzzy: true
+rofi.terminal: gnome-terminal
