@@ -8,12 +8,12 @@
 #############################################
 
 #Raise volume (mouse)
-#"amixer set Master 5%+"
-#   b:9
+"amixer set Master 5%+"
+   b:9
 #
 ##Lower volume (mouse)
-#"amixer set Master 5%-"
-#   b:8
+"amixer set Master 5%-"
+   b:8
 #
 ## Raise Volume
 #"amixer set Master 5%+ unmute"
@@ -53,10 +53,3 @@
 "variety -p"
     m:0x40 + c:33
     Mod4 + p
-
-#############################################
-# Application shortcuts                     #
-#############################################
-#"dmenu_run -b -sb white -sf black -fn '-*-terminus-medium-r-normal-*-14-*-*-*-*-*-*-*'"
-#    m:0x8 + c:40
-#    Alt + d
