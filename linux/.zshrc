@@ -3,7 +3,8 @@
 
 # Set up the prompt
 autoload -Uz promptinit && promptinit
-export PS1="[%D{%a %b %f}, %@ | %~]"$'\n'"%Bλ%b "
+source "$HOME/tmp/zsh-git-prompt/zshrc.sh"
+export PROMPT="[%D{%a %b %f}, %@ | %~ $(git_super_status)]"$'\n'"%Bλ%b "
 # prompt adam1
 
 # Colorscheme
@@ -16,14 +17,8 @@ setopt extendedglob autocd correctall globdots interactivecomments
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
 
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-export GOPATH=$HOME/work/go
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$HOME/.rbenv/bin
-export PATH=$PATH:$HOME/.rbenv/plugins/ruby-build/bin
-
+# Source profile for environment exports.
+source '.profile'
 eval "$(rbenv init -)"
 
 export TERM='xterm-256color'
