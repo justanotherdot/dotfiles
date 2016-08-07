@@ -18,7 +18,7 @@ setopt extendedglob autocd correctall globdots interactivecomments
 bindkey -e
 
 # Source profile for environment exports.
-source '.profile'
+source $HOME/.profile
 eval "$(rbenv init -)"
 
 export TERM='xterm-256color'
@@ -40,6 +40,12 @@ alias grep='egrep --color=auto'
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
+
+# Watch for changes when running test fixtures
+sentry() {
+	echo "Watching files for changes"
+	while inotifywait -q --exclude .swp -e modify -r .; do $@; done;
+}
 
 # Use modern completion system
 autoload -Uz compinit
