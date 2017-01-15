@@ -19,7 +19,8 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
-export GOPATH=$HOME/work/go
-export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$HOME/.rbenv/bin
 export PATH=$PATH:$HOME/.rbenv/plugins/ruby-build/bin
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/work/go/bin
+export GOPATH=$HOME/work/go
