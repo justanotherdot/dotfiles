@@ -1,5 +1,0 @@
-set editing-mode emacs
-$if python
-    TAB: tab-insert
-    "\e[2~": complete
-$endif
