@@ -7,4 +7,6 @@
 	commend = commit --amend --no-edit
   s = status --short --branch
   l = log --oneline
+  c = commit
+  b = branch
   new = '!git init && git commit -m "root" --allow-empty'
