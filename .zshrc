@@ -16,6 +16,8 @@ eval "$(keychain --eval -Q --quiet id_rsa)"
 setopt histignorealldups sharehistory extendedhistory BRACE_CCL
 setopt extendedglob globdots interactivecomments
 
+unsetopt nomatch
+
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
 set -o vi
@@ -30,6 +32,10 @@ alias ls='ls -F --color=auto'
 alias grep='grep --color=auto'
 alias grep='egrep --color=auto'
 alias tmux='tmux -2'
+
+if [ -e "$HOME/.aliases" ]; then
+  source "$HOME/.aliases"
+fi
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=10000

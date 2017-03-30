@@ -1,14 +1,15 @@
-[user]
-	email = rspencer@freelancer.com
-	name = Ryan Spencer
+[include]
+  path = /home/rjs/.gitcreds
 [push]
 	default = simple
 [alias]
+  s       = status --short --branch
+  l       = log --oneline
+  c       = commit
+  b       = branch
+  co      = checkout
+  new     = '!git init && git commit -m "root" --allow-empty'
+  jump    = "!f() { git stash; git checkout $1; git stash drop; }; f"
 	commend = commit --amend --no-edit
-  s = status --short --branch
-  l = log --oneline
-  c = commit
-  b = branch
-  new = '!git init && git commit -m "root" --allow-empty'
 [core]
 	excludesfile = /home/rjs/.gitignore_global

@@ -7,7 +7,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'arcticicestudio/nord-vim'
 Plug 'bitc/vim-hdevtools'
 Plug 'eagletmt/neco-ghc'
-Plug 'ervandew/supertab'
 Plug 'fatih/vim-go'
 Plug 'godlygeek/tabular'
 Plug 'itchyny/lightline.vim'
@@ -25,6 +24,7 @@ Plug 'suan/vim-instant-markdown'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'wesQ3/vim-windowswap'
+Plug 'benjie/neomake-local-eslint.vim'
 
 call plug#end()
 
@@ -33,7 +33,7 @@ let g:lightline = {
       \ }
 
 set cmdheight=1
-set completeopt=menuone,menu,longest
+set completeopt=menuone,longest,preview
 set expandtab
 set mouse=a
 set nofoldenable
@@ -90,3 +90,8 @@ let g:haskellmode_completion_ghc = 0
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 let g:ack_autoclose=1
+
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_jsx_enabled_makers = ['eslint']
+
+let g:netrw_banner = 0
