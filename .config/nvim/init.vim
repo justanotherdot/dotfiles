@@ -95,3 +95,7 @@ let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_jsx_enabled_makers = ['eslint']
 
 let g:netrw_banner = 0
+
+let g:NERDSpaceDelims = 1
+
+set clipboard=unnamedplus

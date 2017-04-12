@@ -9,6 +9,7 @@ export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/scripts"
+export PATH="$PATH:$HOME/.cargo/bin"
 export GOPATH="$HOME/go"
 
 eval "$(keychain --eval -Q --quiet id_rsa)"
@@ -27,6 +28,8 @@ export TERM=xterm-256color
 export EDITOR='nvim'
 export PAGER='less'
 
+alias nv='nvim'
+alias nvf="nvim -c':Files'"
 alias df='df -h'
 alias ls='ls -F --color=auto'
 alias grep='grep --color=auto'
