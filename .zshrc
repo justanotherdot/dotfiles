@@ -12,7 +12,11 @@ export PATH="$PATH:$HOME/scripts"
 export PATH="$PATH:$HOME/.cargo/bin"
 export GOPATH="$HOME/go"
 
-eval "$(keychain --eval -Q --quiet id_rsa)"
+if [[ hostname = "spacecadet" ]]; then
+  eval "$(keychain --eval -Q --quiet id_ed25519)"
+else
+  eval "$(keychain --eval -Q --quiet id_rsa)"
+fi
 
 setopt histignorealldups sharehistory extendedhistory BRACE_CCL
 setopt extendedglob globdots interactivecomments
