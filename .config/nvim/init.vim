@@ -5,11 +5,13 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'airblade/vim-gitgutter'
 Plug 'arcticicestudio/nord-vim'
+Plug 'atelierbram/Base2Tone-vim'
+Plug 'benjie/neomake-local-eslint.vim'
 Plug 'bitc/vim-hdevtools'
 Plug 'eagletmt/neco-ghc'
 Plug 'fatih/vim-go'
 Plug 'godlygeek/tabular'
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'kamwitsta/nordisk'
@@ -24,13 +26,12 @@ Plug 'suan/vim-instant-markdown'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'wesQ3/vim-windowswap'
-Plug 'benjie/neomake-local-eslint.vim'
 
 call plug#end()
 
-let g:lightline = {
-      \ 'colorscheme': 'nord',
-      \ }
+" let g:lightline = {
+      " \ 'colorscheme': 'nord',
+      " \ }
 
 set cmdheight=1
 set completeopt=menuone,longest,preview
@@ -50,7 +51,9 @@ set wildmode=longest,list,full
 
 " Always call `let` before changing colorscheme.
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-colorscheme nord
+" colorscheme nord
+colo Base2Tone_EveningDark
+" colo Base2Tone_PoolDark
 
 let mapleader = ","
 
