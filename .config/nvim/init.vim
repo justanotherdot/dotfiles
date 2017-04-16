@@ -10,10 +10,9 @@ Plug 'benjie/neomake-local-eslint.vim'
 Plug 'bitc/vim-hdevtools'
 Plug 'eagletmt/neco-ghc'
 Plug 'fatih/vim-go'
-Plug 'godlygeek/tabular'
-" Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-easy-align'
 Plug 'kamwitsta/nordisk'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'mileszs/ack.vim'
@@ -28,10 +27,6 @@ Plug 'tpope/vim-surround'
 Plug 'wesQ3/vim-windowswap'
 
 call plug#end()
-
-" let g:lightline = {
-      " \ 'colorscheme': 'nord',
-      " \ }
 
 set cmdheight=1
 set completeopt=menuone,longest,preview
@@ -52,18 +47,14 @@ set wildmode=longest,list,full
 " Always call `let` before changing colorscheme.
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " colorscheme nord
-colo Base2Tone_EveningDark
-" colo Base2Tone_PoolDark
+" colo Base2Tone_EveningDark
+colo Base2Tone_PoolDark
 
 let mapleader = ","
 
 autocmd! BufWritePost * Neomake
 
 nnoremap <leader><leader> :noh<CR>
-
-vmap a= :Tabularize /=<CR>
-vmap a; :Tabularize /::<CR>
-vmap a- :Tabularize /-><CR>
 
 au FileType gitcommit set tw=72
 
@@ -84,6 +75,9 @@ imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
+
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 " Advanced customization using autoload functions
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
