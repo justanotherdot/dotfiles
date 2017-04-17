@@ -12,6 +12,7 @@ for dotfile in $dotfiles; do
   # Backup all the respective files.
   # TODO Want a better way to do multiple backups.
   if [[ -f "$HOME/$dotfile" ]]; then
+    # TODO There is a 'backup' flag for `cp`.
     cp -vf "$HOME/$dotfile" "$HOME/$backup_dir/$dotfile"
   fi
   # TODO Improve this with an env-var that designates the dotfile git repo.
