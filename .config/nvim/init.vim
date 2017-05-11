@@ -15,10 +15,12 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'kamwitsta/nordisk'
 Plug 'martinda/Jenkinsfile-vim-syntax'
+Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
 Plug 'nbouscal/vim-stylish-haskell'
 Plug 'neomake/neomake'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
 Plug 'suan/vim-instant-markdown'
@@ -43,6 +45,8 @@ set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git,.cabal-sandbox
 set wildignorecase
 set wildmenu
 set wildmode=longest,list,full
+" set spell
+" set spelllang=en_us
 
 " Always call `let` before changing colorscheme.
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -82,17 +86,23 @@ nmap ga <Plug>(EasyAlign)
 " Advanced customization using autoload functions
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
-" Disable haskell-vim omnifunc
-let g:haskellmode_completion_ghc = 0
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-
 let g:ack_autoclose=1
 
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_jsx_enabled_makers = ['eslint']
+let g:neoformat_try_formatprg = 1
+autocmd FileType javascript.jsx,javascript set formatprg=prettier\ --single-quote\ --trailing-comma\ all\ --stdin
+
+" Neoformat on save.
+" augroup fmt
+  " autocmd!
+  " autocmd BufWritePre * Neoformat
+" augroup END
 
 let g:netrw_banner = 0
 
 let g:NERDSpaceDelims = 1
 
 set clipboard=unnamedplus
+
+autocmd BufEnter * EnableStripWhitespaceOnSave
