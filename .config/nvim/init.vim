@@ -3,12 +3,14 @@
 
 call plug#begin('~/.local/share/nvim/plugged')
 
+Plug 'Quramy/tsuquyomi'
 Plug 'airblade/vim-gitgutter'
 Plug 'arcticicestudio/nord-vim'
 Plug 'atelierbram/Base2Tone-vim'
 Plug 'benjie/neomake-local-eslint.vim'
 Plug 'bitc/vim-hdevtools'
 Plug 'eagletmt/neco-ghc'
+Plug 'ervandew/supertab'
 Plug 'fatih/vim-go'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -106,3 +108,5 @@ let g:NERDSpaceDelims = 1
 set clipboard=unnamedplus
 
 autocmd BufEnter * EnableStripWhitespaceOnSave
+
+set omnifunc=syntaxcomplete#Complete
