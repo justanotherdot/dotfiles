@@ -5,18 +5,14 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'Quramy/tsuquyomi'
 Plug 'airblade/vim-gitgutter'
-Plug 'arcticicestudio/nord-vim'
 Plug 'atelierbram/Base2Tone-vim'
 Plug 'benjie/neomake-local-eslint.vim'
 Plug 'bitc/vim-hdevtools'
-Plug 'eagletmt/neco-ghc'
 Plug 'ervandew/supertab'
 Plug 'fatih/vim-go'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'kamwitsta/nordisk'
-Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
 Plug 'nbouscal/vim-stylish-haskell'
@@ -69,6 +65,8 @@ let g:rustfmt_autosave = 1
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
 nmap <c-p> :Files<cr>
+" nmap <silent> 0 :Buffers<CR>
+" map / :BLines<CR>
 nmap <leader>s :StripWhitespace<cr>
 
 " Mapping selecting mappings
