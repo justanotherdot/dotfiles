@@ -13,7 +13,6 @@ Plug 'fatih/vim-go'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
 Plug 'nbouscal/vim-stylish-haskell'
 Plug 'neomake/neomake'
@@ -45,6 +44,7 @@ set wildmenu
 set wildmode=longest,list,full
 " set spell
 " set spelllang=en_us
+
 
 " Always call `let` before changing colorscheme.
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -90,8 +90,7 @@ let g:ack_autoclose=1
 
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_jsx_enabled_makers = ['eslint']
-let g:neoformat_try_formatprg = 1
-autocmd FileType javascript.jsx,javascript set formatprg=prettier\ --single-quote\ --trailing-comma\ all\ --stdin
+" autocmd FileType javascript.jsx,javascript set formatprg=prettier\ --single-quote\ --trailing-comma\ all\ --stdin
 
 " Neoformat on save.
 " augroup fmt

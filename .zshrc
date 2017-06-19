@@ -32,8 +32,8 @@ export TERM=xterm-256color
 export EDITOR='nvim'
 export PAGER='less'
 
-alias nv='nvim'
-alias nvf="nvim -c':Files'"
+alias v='nvim'
+alias vzv="nvim -c':Files'"
 alias df='df -h'
 alias ls='ls -F --color=auto'
 alias grep='grep --color=auto'
