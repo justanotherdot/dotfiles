@@ -6,9 +6,11 @@
   a       = add
   b       = branch
   c       = commit
+  d       = diff
   l       = log --oneline
   s       = status --short --branch
   co      = checkout
+  mt      = mergetool
   cost    = "!f() { git diff --stat --oneline "$1" | tail -1 | awk '{print $6-$4}'; }; f"
   jump    = "!f() { git stash; git checkout "$1"; git stash drop; }; f"
   slap    = stash apply

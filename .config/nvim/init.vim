@@ -3,20 +3,17 @@
 
 call plug#begin('~/.local/share/nvim/plugged')
 
+Plug 'Quramy/tsuquyomi'
 Plug 'airblade/vim-gitgutter'
-Plug 'arcticicestudio/nord-vim'
 Plug 'atelierbram/Base2Tone-vim'
 Plug 'benjie/neomake-local-eslint.vim'
 Plug 'bitc/vim-hdevtools'
-Plug 'eagletmt/neco-ghc'
+Plug 'ervandew/supertab'
 Plug 'fatih/vim-go'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'kamwitsta/nordisk'
-Plug 'martinda/Jenkinsfile-vim-syntax'
-Plug 'mattn/emmet-vim'
-Plug 'mileszs/ack.vim'
+Plug 'mhinz/vim-grepper'
 Plug 'nbouscal/vim-stylish-haskell'
 Plug 'neomake/neomake'
 Plug 'ntpeters/vim-better-whitespace'
@@ -45,13 +42,12 @@ set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git,.cabal-sandbox
 set wildignorecase
 set wildmenu
 set wildmode=longest,list,full
-" set spell
-" set spelllang=en_us
+set grepprg=rg\ --vimgrep
 
-" Always call `let` before changing colorscheme.
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-" colorscheme nord
-" colo Base2Tone_EveningDark
+let g:grepper = {
+    \ 'tools': ['rg']
+    \ }
+
 colo Base2Tone_PoolDark
 
 let mapleader = ","
@@ -64,21 +60,15 @@ au FileType gitcommit set tw=72
 
 let g:rustfmt_autosave = 1
 
-let g:ackprg = 'ag --nogroup --nocolor --column'
-
 nmap <c-p> :Files<cr>
+nmap <c-b> :Buffers<cr>
+nmap <c-_> :BLines<cr>
+nmap <c-f> :Ag<cr>
 nmap <leader>s :StripWhitespace<cr>
 
-" Mapping selecting mappings
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
-
-" Insert mode completion
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
+" Grep for keywords
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
 
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
@@ -86,12 +76,24 @@ nmap ga <Plug>(EasyAlign)
 " Advanced customization using autoload functions
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
-let g:ack_autoclose=1
+" Make fzf match colorscheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_jsx_enabled_makers = ['eslint']
-let g:neoformat_try_formatprg = 1
-autocmd FileType javascript.jsx,javascript set formatprg=prettier\ --single-quote\ --trailing-comma\ all\ --stdin
+" autocmd FileType javascript.jsx,javascript set formatprg=prettier\ --single-quote\ --trailing-comma\ all\ --stdin
 
 " Neoformat on save.
 " augroup fmt
@@ -99,10 +101,23 @@ autocmd FileType javascript.jsx,javascript set formatprg=prettier\ --single-quot
   " autocmd BufWritePre * Neoformat
 " augroup END
 
+function! s:fzf_statusline()
+  " Override statusline as you like
+  highlight fzf1 ctermfg=161 ctermbg=251
+  highlight fzf2 ctermfg=23 ctermbg=251
+  highlight fzf3 ctermfg=237 ctermbg=251
+  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
+endfunction
+
+autocmd! User FzfStatusLine call <SID>fzf_statusline()
+
 let g:netrw_banner = 0
 
 let g:NERDSpaceDelims = 1
 
+" Just use the system clipboard by default
 set clipboard=unnamedplus
 
 autocmd BufEnter * EnableStripWhitespaceOnSave
+
+set omnifunc=syntaxcomplete#Complete

@@ -39,7 +39,7 @@ export EDITOR='nvim'
 export PAGER='less'
 
 alias v='nvim'
-alias vf="nvim -c':Files'"
+alias vzv="nvim -c':Files'"
 alias df='df -h'
 alias ls='ls -F'
 alias tmux='tmux -2'
