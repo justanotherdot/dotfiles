@@ -6,11 +6,17 @@ prompt pure
 
 export PATH="$PATH:$HOME/bin/phabricator/arcanist/bin"
 export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:$HOME/bin/arcanist/bin"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/scripts"
 export PATH="$PATH:$HOME/.cargo/bin"
+
 export GOPATH="$HOME/go"
+
+# NVM setup.
+export NVM_DIR="$HOME/.nvm"
+source "/usr/local/opt/nvm/nvm.sh"
 
 if [[ hostname = "spacecadet" ]]; then
   eval "$(keychain --eval -Q --quiet id_ed25519)"
@@ -32,12 +38,10 @@ export TERM=xterm-256color
 export EDITOR='nvim'
 export PAGER='less'
 
-alias nv='nvim'
-alias nvf="nvim -c':Files'"
+alias v='nvim'
+alias vf="nvim -c':Files'"
 alias df='df -h'
-alias ls='ls -F --color=auto'
-alias grep='grep --color=auto'
-alias grep='egrep --color=auto'
+alias ls='ls -F'
 alias tmux='tmux -2'
 
 if [ -e "$HOME/.aliases" ]; then
@@ -58,7 +62,6 @@ zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s

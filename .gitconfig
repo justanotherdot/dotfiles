@@ -19,3 +19,6 @@
   started = "!git init && git commit -m "root" --allow-empty"
 [core]
 	excludesfile = /home/rjs/.gitignore_global
+[user]
+	name = Ryan James Spencer
+	email = rspencer@freelancer.com
