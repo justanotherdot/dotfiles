@@ -28,7 +28,6 @@ bindkey -e
 set -o vi
 
 export TERM=xterm-256color
-
 export EDITOR='nvim'
 export PAGER='less'
 
