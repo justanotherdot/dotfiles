@@ -4,25 +4,27 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'Quramy/tsuquyomi'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'atelierbram/Base2Tone-vim'
 Plug 'benjie/neomake-local-eslint.vim'
-Plug 'bitc/vim-hdevtools'
-Plug 'ervandew/supertab'
 Plug 'fatih/vim-go'
+Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'mhinz/vim-grepper'
-Plug 'nbouscal/vim-stylish-haskell'
 Plug 'neomake/neomake'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'parsonsmatt/intero-neovim'
 Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
 Plug 'suan/vim-instant-markdown'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
 Plug 'wesQ3/vim-windowswap'
 
 call plug#end()
@@ -30,6 +32,8 @@ call plug#end()
 set cmdheight=1
 set completeopt=menuone,longest,preview
 set expandtab
+set grepprg=rg\ --vimgrep
+set inccommand=nosplit
 set mouse=a
 set nofoldenable
 set nojoinspaces
@@ -42,17 +46,18 @@ set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git,.cabal-sandbox
 set wildignorecase
 set wildmenu
 set wildmode=longest,list,full
-set grepprg=rg\ --vimgrep
 
-let g:grepper = {
-    \ 'tools': ['rg']
-    \ }
+let g:deoplete#enable_at_startup = 1
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
+set omnifunc=syntaxcomplete#Complete
+
+" Don't miss snippets with short names
+call deoplete#custom#set('ultisnips', 'matchers', ['matcher_fuzzy'])
 
 colo Base2Tone_PoolDark
 
 let mapleader = ","
-
-autocmd! BufWritePost * Neomake
 
 nnoremap <leader><leader> :noh<CR>
 
@@ -60,15 +65,14 @@ au FileType gitcommit set tw=72
 
 let g:rustfmt_autosave = 1
 
-nmap <c-p> :Files<cr>
-nmap <c-b> :Buffers<cr>
-nmap <c-_> :BLines<cr>
-nmap <c-f> :Ag<cr>
-nmap <leader>s :StripWhitespace<cr>
+"Fix scrolling issues with nvim and gnome-terminal.
+let $COLORTERM = "gnome-terminal"
 
-" Grep for keywords
-nmap gs <plug>(GrepperOperator)
-xmap gs <plug>(GrepperOperator)
+nmap <leader><space> :Files<cr>
+nmap <leader>b :Buffers<cr>
+nmap <leader>/ :BLines<cr>
+nmap <leader>f :Rg<cr>
+nmap <leader>s :StripWhitespace<cr>
 
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
@@ -91,33 +95,57 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
+" Workaround for ugly green column in search results.
+command! -bang BLines
+  \ call fzf#vim#buffer_lines(<q-args>, {'options': '--no-color'}, <bang>0)
+command! -bang Ag
+  \ call fzf#vim#ag(<q-args>, {'options': '--no-color'}, <bang>0)
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=never '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+au! BufWritePost * Neomake
+
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_jsx_enabled_makers = ['eslint']
-" autocmd FileType javascript.jsx,javascript set formatprg=prettier\ --single-quote\ --trailing-comma\ all\ --stdin
-
-" Neoformat on save.
-" augroup fmt
-  " autocmd!
-  " autocmd BufWritePre * Neoformat
-" augroup END
-
-function! s:fzf_statusline()
-  " Override statusline as you like
-  highlight fzf1 ctermfg=161 ctermbg=251
-  highlight fzf2 ctermfg=23 ctermbg=251
-  highlight fzf3 ctermfg=237 ctermbg=251
-  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
-endfunction
-
-autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
 let g:netrw_banner = 0
 
 let g:NERDSpaceDelims = 1
+
+" autocmd FileType haskell set formatprg=hfmt
+au FileType haskell setlocal formatprg=stylish-haskell
+au FileType javascript setlocal formatprg=prettier\ --single-quote\ --trailing-comma\ all\ --stdin
+
+let g:neoformat_try_formatprg = 1
+
+" Run neoformat on save.
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * Neoformat
+augroup END
+
+autocmd FileType less setlocal expandtab shiftwidth=4 softtabstop=4
 
 " Just use the system clipboard by default
 set clipboard=unnamedplus
 
 autocmd BufEnter * EnableStripWhitespaceOnSave
 
-set omnifunc=syntaxcomplete#Complete
+" Make escape work in the Neovim terminal.
+tnoremap <leader><Esc> <C-\><C-n>
+
+" Make navigation into and out of Neovim terminal splits nicer.
+tnoremap <C-h> <C-\><C-N><C-w>h
+tnoremap <C-j> <C-\><C-N><C-w>j
+tnoremap <C-k> <C-\><C-N><C-w>k
+tnoremap <C-l> <C-\><C-N><C-w>l
+
+" I like relative numbering when in normal mode.
+autocmd TermOpen * setlocal conceallevel=0 colorcolumn=0
+
+" Prefer Neovim terminal insert mode to normal mode.
+autocmd BufEnter term://* startinsert
