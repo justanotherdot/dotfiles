@@ -48,9 +48,11 @@ set wildmenu
 set wildmode=longest,list,full
 
 let g:deoplete#enable_at_startup = 1
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
+inoremap <expr><Tab> pumvisible() ? "\<c-n>" : "\<Tab>"
+inoremap <expr><s-Tab> pumvisible() ? "\<c-p>" : "\<Tab>"
 set omnifunc=syntaxcomplete#Complete
+
+let g:airline_powerline_fonts = 1
 
 " Don't miss snippets with short names
 call deoplete#custom#set('ultisnips', 'matchers', ['matcher_fuzzy'])
@@ -69,7 +71,7 @@ let g:rustfmt_autosave = 1
 let $COLORTERM = "gnome-terminal"
 
 nmap <leader><space> :Files<cr>
-nmap <leader>b :Buffers<cr>
+nmap <leader>. :Buffers<cr>
 nmap <leader>/ :BLines<cr>
 nmap <leader>f :Rg<cr>
 nmap <leader>s :StripWhitespace<cr>
@@ -115,6 +117,9 @@ let g:neomake_jsx_enabled_makers = ['eslint']
 let g:netrw_banner = 0
 
 let g:NERDSpaceDelims = 1
+inoremap <C-_> <C-o>:call NERDComment(0,"toggle")<CR>
+vnoremap <C-_> :call NERDComment(0,"toggle")<CR>
+nnoremap <C-_> :call NERDComment(0,"toggle")<CR>
 
 " autocmd FileType haskell set formatprg=hfmt
 au FileType haskell setlocal formatprg=stylish-haskell
@@ -129,6 +134,7 @@ augroup fmt
 augroup END
 
 autocmd FileType less setlocal expandtab shiftwidth=4 softtabstop=4
+autocmd FileType php setlocal expandtab shiftwidth=4 softtabstop=4
 
 " Just use the system clipboard by default
 set clipboard=unnamedplus
@@ -148,4 +154,5 @@ tnoremap <C-l> <C-\><C-N><C-w>l
 autocmd TermOpen * setlocal conceallevel=0 colorcolumn=0
 
 " Prefer Neovim terminal insert mode to normal mode.
+"
 autocmd BufEnter term://* startinsert
