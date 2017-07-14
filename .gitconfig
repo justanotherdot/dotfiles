@@ -20,7 +20,14 @@
 	commend = commit --amend --no-edit
   started = "!git init && git commit -m "root" --allow-empty"
 [core]
-	excludesfile = /home/rjs/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [user]
 	name = Ryan James Spencer
 	email = rspencer@freelancer.com
+[mergetool "Kaleidoscope"]
+  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+  trustExitCode = true
+[mergetool]
+  prompt = false
+[merge]
+  tool = Kaleidoscope
