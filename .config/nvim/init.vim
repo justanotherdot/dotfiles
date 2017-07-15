@@ -1,16 +1,15 @@
-" file: .config/nvim/init.vim | .nvimrc
+" file: .config/nvim/init.vim
 " author: Ryan James Spencer
 
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'Quramy/tsuquyomi'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
+Plug 'ajh17/VimCompletesMe'
 Plug 'atelierbram/Base2Tone-vim'
 Plug 'benjie/neomake-local-eslint.vim'
 Plug 'fatih/vim-go'
-Plug 'honza/vim-snippets'
+Plug 'idris-hackers/idris-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
@@ -29,6 +28,9 @@ Plug 'wesQ3/vim-windowswap'
 
 call plug#end()
 
+colo Base2Tone_PoolDark
+
+set clipboard=unnamedplus " System clipboard.
 set cmdheight=1
 set completeopt=menuone,longest,preview
 set expandtab
@@ -47,43 +49,16 @@ set wildignorecase
 set wildmenu
 set wildmode=longest,list,full
 
-let g:deoplete#enable_at_startup = 1
-inoremap <expr><Tab> pumvisible() ? "\<c-n>" : "\<Tab>"
-inoremap <expr><s-Tab> pumvisible() ? "\<c-p>" : "\<Tab>"
-set omnifunc=syntaxcomplete#Complete
-
+let $COLORTERM = 'gnome-terminal' "Fix scrolling issues with nvim and gnome-terminal.
+let g:NERDSpaceDelims = 1
 let g:airline_powerline_fonts = 1
-
-" Don't miss snippets with short names
-call deoplete#custom#set('ultisnips', 'matchers', ['matcher_fuzzy'])
-
-colo Base2Tone_PoolDark
-
-let mapleader = ","
-
-nnoremap <leader><leader> :noh<CR>
-
-au FileType gitcommit set tw=72
-
+let g:neoformat_try_formatprg = 1
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_jsx_enabled_makers = ['eslint']
+let g:netrw_banner = 0
 let g:rustfmt_autosave = 1
-
-"Fix scrolling issues with nvim and gnome-terminal.
-let $COLORTERM = "gnome-terminal"
-
-nmap <leader><space> :Files<cr>
-nmap <leader>. :Buffers<cr>
-nmap <leader>/ :BLines<cr>
-nmap <leader>f :Rg<cr>
-nmap <leader>s :StripWhitespace<cr>
-
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-
-" Advanced customization using autoload functions
-inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
-
-" Make fzf match colorscheme
-let g:fzf_colors =
+let mapleader = ','
+let g:fzf_colors = 
 \ { 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],
   \ 'hl':      ['fg', 'Comment'],
@@ -97,6 +72,28 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
+nnoremap <leader><leader> :noh<CR>
+nmap <leader><space> :Files<cr>
+nmap <leader>. :Buffers<cr>
+nmap <leader>/ :BLines<cr>
+nmap <leader>s :StripWhitespace<cr>
+nmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
+inoremap <C-_> <C-o>:call NERDComment(0,'toggle')<CR>
+nnoremap <C-_> :call NERDComment(0,'toggle')<CR>
+vnoremap <C-_> :call NERDComment(0,'toggle')<CR>
+tnoremap <leader><Esc> <C-\><C-n>
+
+au BufEnter * EnableStripWhitespaceOnSave
+au BufEnter term://* startinsert " Prefer Neovim terminal insert mode to normal mode.
+au FileType gitcommit set tw=72
+au FileType haskell setlocal formatprg=stylish-haskell
+au FileType javascript setlocal formatprg=prettier\ --single-quote\ --trailing-comma\ all\ --stdin
+au FileType less setlocal expandtab shiftwidth=4 softtabstop=4
+au FileType php setlocal expandtab shiftwidth=4 softtabstop=4
+au TermOpen * setlocal conceallevel=0 colorcolumn=0
+au! BufWritePost * Neomake
+
 " Workaround for ugly green column in search results.
 command! -bang BLines
   \ call fzf#vim#buffer_lines(<q-args>, {'options': '--no-color'}, <bang>0)
@@ -108,51 +105,3 @@ command! -bang -nargs=* Rg
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
-
-au! BufWritePost * Neomake
-
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_jsx_enabled_makers = ['eslint']
-
-let g:netrw_banner = 0
-
-let g:NERDSpaceDelims = 1
-inoremap <C-_> <C-o>:call NERDComment(0,"toggle")<CR>
-vnoremap <C-_> :call NERDComment(0,"toggle")<CR>
-nnoremap <C-_> :call NERDComment(0,"toggle")<CR>
-
-" autocmd FileType haskell set formatprg=hfmt
-au FileType haskell setlocal formatprg=stylish-haskell
-au FileType javascript setlocal formatprg=prettier\ --single-quote\ --trailing-comma\ all\ --stdin
-
-let g:neoformat_try_formatprg = 1
-
-" Run neoformat on save.
-augroup fmt
-  autocmd!
-  autocmd BufWritePre * Neoformat
-augroup END
-
-autocmd FileType less setlocal expandtab shiftwidth=4 softtabstop=4
-autocmd FileType php setlocal expandtab shiftwidth=4 softtabstop=4
-
-" Just use the system clipboard by default
-set clipboard=unnamedplus
-
-autocmd BufEnter * EnableStripWhitespaceOnSave
-
-" Make escape work in the Neovim terminal.
-tnoremap <leader><Esc> <C-\><C-n>
-
-" Make navigation into and out of Neovim terminal splits nicer.
-tnoremap <C-h> <C-\><C-N><C-w>h
-tnoremap <C-j> <C-\><C-N><C-w>j
-tnoremap <C-k> <C-\><C-N><C-w>k
-tnoremap <C-l> <C-\><C-N><C-w>l
-
-" I like relative numbering when in normal mode.
-autocmd TermOpen * setlocal conceallevel=0 colorcolumn=0
-
-" Prefer Neovim terminal insert mode to normal mode.
-"
-autocmd BufEnter term://* startinsert
