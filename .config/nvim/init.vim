@@ -24,7 +24,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
-Plug 'wesQ3/vim-windowswap'
 
 call plug#end()
 
