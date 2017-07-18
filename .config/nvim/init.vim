@@ -56,9 +56,8 @@ let g:neoformat_try_formatprg = 1
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_jsx_enabled_makers = ['eslint']
 let g:netrw_banner = 0
-let g:rustfmt_autosave = 1
 let mapleader = ','
-let g:fzf_colors = 
+let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],
   \ 'hl':      ['fg', 'Comment'],
@@ -73,6 +72,7 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 nnoremap <leader><leader> :noh<CR>
+nmap <C-p> :Files<cr>
 nmap <leader><space> :Files<cr>
 nmap <leader>. :Buffers<cr>
 nmap <leader>/ :BLines<cr>
@@ -93,6 +93,10 @@ au FileType less setlocal expandtab shiftwidth=4 softtabstop=4
 au FileType php setlocal expandtab shiftwidth=4 softtabstop=4
 au TermOpen * setlocal conceallevel=0 colorcolumn=0
 au! BufWritePost * Neomake
+augroup fmt
+  au!
+  au BufWritePre * undojoin | Neoformat
+augroup END
 
 " Workaround for ugly green column in search results.
 command! -bang BLines
