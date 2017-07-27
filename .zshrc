@@ -1,8 +1,8 @@
 # file: .zshrc
 # author: Ryan James Spencer
-
+#
 autoload -Uz promptinit && promptinit
-prompt pure
+export PROMPT="%~"$'\n'"%Bη %b"
 
 export PATH="$PATH:$HOME/bin/phabricator/arcanist/bin"
 export PATH="$PATH:$HOME/bin"
@@ -10,6 +10,7 @@ export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/scripts"
 export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/.cabal/bin"
 export GOPATH="$HOME/go"
 
 if [[ hostname = "spacecadet" ]]; then
@@ -34,9 +35,8 @@ export PAGER='less'
 alias v='nvim'
 alias vzv="nvim -c':Files'"
 alias df='df -h'
-alias ls='ls -F --color=auto'
+alias ls='ls -F'
 alias grep='grep --color=auto'
-alias grep='egrep --color=auto'
 alias tmux='tmux -2'
 
 if [ -e "$HOME/.aliases" ]; then
