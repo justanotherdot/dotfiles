@@ -8,6 +8,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'ajh17/VimCompletesMe'
 Plug 'atelierbram/Base2Tone-vim'
 Plug 'benjie/neomake-local-eslint.vim'
+Plug 'chaoren/vim-wordmotion'
 Plug 'fatih/vim-go'
 Plug 'idris-hackers/idris-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -72,7 +73,6 @@ let g:fzf_colors =
 
 nnoremap <leader><leader> :noh<CR>
 nmap <C-p> :Files<cr>
-nmap <leader><space> :Files<cr>
 nmap <leader>. :Buffers<cr>
 nmap <leader>/ :BLines<cr>
 nmap <leader>s :StripWhitespace<cr>
@@ -81,7 +81,7 @@ xmap ga <Plug>(EasyAlign)
 inoremap <C-_> <C-o>:call NERDComment(0,'toggle')<CR>
 nnoremap <C-_> :call NERDComment(0,'toggle')<CR>
 vnoremap <C-_> :call NERDComment(0,'toggle')<CR>
-tnoremap <leader><Esc> <C-\><C-n>
+tnoremap <leader><space> <C-\><C-n>
 
 au BufEnter * EnableStripWhitespaceOnSave
 au BufEnter term://* startinsert " Prefer Neovim terminal insert mode to normal mode.
@@ -92,10 +92,10 @@ au FileType less setlocal expandtab shiftwidth=4 softtabstop=4
 au FileType php setlocal expandtab shiftwidth=4 softtabstop=4
 au TermOpen * setlocal conceallevel=0 colorcolumn=0
 au! BufWritePost * Neomake
-augroup fmt
-  au!
-  au BufWritePre * undojoin | Neoformat
-augroup END
+" augroup fmt
+"   au!
+"   au BufWritePre * undojoin | Neoformat
+" augroup END
 
 " Workaround for ugly green column in search results.
 command! -bang BLines
