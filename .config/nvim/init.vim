@@ -8,7 +8,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'ajh17/VimCompletesMe'
 Plug 'atelierbram/Base2Tone-vim'
 Plug 'benjie/neomake-local-eslint.vim'
-Plug 'chaoren/vim-wordmotion'
 Plug 'fatih/vim-go'
 Plug 'idris-hackers/idris-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
