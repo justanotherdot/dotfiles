@@ -12,8 +12,9 @@ export PATH="$PATH:$HOME/scripts"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.cabal/bin"
 export GOPATH="$HOME/go"
+export SSH_ASKPASS=''
 
-if [[ hostname = "spacecadet" ]]; then
+if [[ ! -f "$HOME.ssh/id_rsa" ]]; then
   eval "$(keychain --eval -Q --quiet id_ed25519)"
 else
   eval "$(keychain --eval -Q --quiet id_rsa)"
