@@ -71,12 +71,12 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 nnoremap <leader><leader> :noh<CR>
-nmap <C-p> :Files<cr>
-nmap <leader>. :Buffers<cr>
-nmap <leader>/ :BLines<cr>
-nmap <leader>s :StripWhitespace<cr>
-nmap ga <Plug>(EasyAlign)
-xmap ga <Plug>(EasyAlign)
+nnoremap <C-p> :Files<cr>
+nnoremap <leader>. :Buffers<cr>
+nnoremap <leader>/ :BLines<cr>
+nnoremap <leader>s :StripWhitespace<cr>
+nnoremap ga <Plug>(EasyAlign)
+xnoremap ga <Plug>(EasyAlign)
 inoremap <C-_> <C-o>:call NERDComment(0,'toggle')<CR>
 nnoremap <C-_> :call NERDComment(0,'toggle')<CR>
 vnoremap <C-_> :call NERDComment(0,'toggle')<CR>
@@ -91,6 +91,7 @@ au FileType less setlocal expandtab shiftwidth=4 softtabstop=4
 au FileType php setlocal expandtab shiftwidth=4 softtabstop=4
 au TermOpen * setlocal conceallevel=0 colorcolumn=0
 au! BufWritePost * Neomake
+" Not sure about the below 'undojoin'. Does weird stuff.
 " augroup fmt
 "   au!
 "   au BufWritePre * undojoin | Neoformat
@@ -101,9 +102,3 @@ command! -bang BLines
   \ call fzf#vim#buffer_lines(<q-args>, {'options': '--no-color'}, <bang>0)
 command! -bang Ag
   \ call fzf#vim#ag(<q-args>, {'options': '--no-color'}, <bang>0)
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=never '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
