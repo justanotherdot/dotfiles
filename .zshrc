@@ -14,7 +14,7 @@ export PATH="$PATH:$HOME/.cabal/bin"
 export GOPATH="$HOME/go"
 export SSH_ASKPASS=''
 
-if [[ ! -f "$HOME.ssh/id_rsa" ]]; then
+if [[ `hostname` != "rjs" ]]; then
   eval "$(keychain --eval -Q --quiet id_ed25519)"
 else
   eval "$(keychain --eval -Q --quiet id_rsa)"
