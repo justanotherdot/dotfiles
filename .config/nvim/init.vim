@@ -70,6 +70,10 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
 nnoremap <leader><leader> :noh<CR>
 nnoremap <C-p> :Files<cr>
 nnoremap <leader>. :Buffers<cr>
