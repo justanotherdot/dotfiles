@@ -74,11 +74,12 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+nnoremap <leader>f :%Neoformat<CR>
 nnoremap <leader><leader> :noh<CR>
-nnoremap <C-p> :Files<cr>
-nnoremap <leader>. :Buffers<cr>
-nnoremap <leader>/ :BLines<cr>
-nnoremap <leader>s :StripWhitespace<cr>
+nnoremap <C-p> :Files<CR>
+nnoremap <leader>. :Buffers<CR>
+nnoremap <leader>/ :BLines<CR>
+nnoremap <leader>s :StripWhitespace<CR>
 nnoremap ga <Plug>(EasyAlign)
 xnoremap ga <Plug>(EasyAlign)
 inoremap <C-_> <C-o>:call NERDComment(0,'toggle')<CR>
