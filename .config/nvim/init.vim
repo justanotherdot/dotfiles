@@ -74,10 +74,14 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+" nnoremap <A-1> 1gt
+" nnoremap <A-2> 2gt
+" nnoremap <A-3> 3gt
+" nnoremap <A-4> 4gt
 nnoremap <leader>f :%Neoformat<CR>
 nnoremap <leader><leader> :noh<CR>
 nnoremap <C-p> :Files<CR>
-nnoremap <leader>. :Buffers<CR>
+nnoremap <C-k> :Buffers<CR>
 nnoremap <leader>/ :BLines<CR>
 nnoremap <leader>s :StripWhitespace<CR>
 nnoremap ga <Plug>(EasyAlign)
