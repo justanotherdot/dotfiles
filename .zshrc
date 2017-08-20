@@ -1,24 +1,20 @@
 # file: .zshrc
 # author: Ryan James Spencer
-
+#
 autoload -Uz promptinit && promptinit
-prompt pure
+export PROMPT="%~"$'\n'"%Bη %b"
 
 export PATH="$PATH:$HOME/bin/phabricator/arcanist/bin"
 export PATH="$PATH:$HOME/bin"
-export PATH="$PATH:$HOME/bin/arcanist/bin"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/scripts"
 export PATH="$PATH:$HOME/.cargo/bin"
-
+export PATH="$PATH:$HOME/.cabal/bin"
 export GOPATH="$HOME/go"
+export SSH_ASKPASS=''
 
-# NVM setup.
-export NVM_DIR="$HOME/.nvm"
-source "/usr/local/opt/nvm/nvm.sh"
-
-if [[ hostname = "spacecadet" ]]; then
+if [[ `hostname` != "rjs" ]]; then
   eval "$(keychain --eval -Q --quiet id_ed25519)"
 else
   eval "$(keychain --eval -Q --quiet id_rsa)"
@@ -41,6 +37,7 @@ alias v='nvim'
 alias vzv="nvim -c':Files'"
 alias df='df -h'
 alias ls='ls -F'
+alias grep='grep --color=auto'
 alias tmux='tmux -2'
 
 if [ -e "$HOME/.aliases" ]; then
@@ -61,6 +58,9 @@ zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
+if [[ -f $(command -v dircolors) ]]; then
+  eval "$(dircolors -b)"
+fi
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
