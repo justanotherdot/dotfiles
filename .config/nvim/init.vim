@@ -3,7 +3,6 @@
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'Quramy/tsuquyomi'
 Plug 'airblade/vim-gitgutter'
 Plug 'ajh17/VimCompletesMe'
 Plug 'atelierbram/Base2Tone-vim'
@@ -13,9 +12,9 @@ Plug 'idris-hackers/idris-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'mhartington/nvim-typescript'
 Plug 'neomake/neomake'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'parsonsmatt/intero-neovim'
 Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
@@ -24,6 +23,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
+" Plug 'leafgarland/typescript-vim'
+Plug 'HerringtonDarkholme/yats.vim'
 
 call plug#end()
 
@@ -94,17 +95,17 @@ tnoremap <leader><space> <C-\><C-n>
 au BufEnter * EnableStripWhitespaceOnSave
 au BufEnter term://* startinsert " Prefer Neovim terminal insert mode to normal mode.
 au FileType gitcommit set tw=72
-au FileType haskell setlocal formatprg=stylish-haskell
+au FileType haskell setlocal formatprg=hindent " originally stylish-haskell
 au FileType javascript setlocal formatprg=prettier\ --single-quote\ --trailing-comma\ all\ --stdin
 au FileType less setlocal expandtab shiftwidth=4 softtabstop=4
 au FileType php setlocal expandtab shiftwidth=4 softtabstop=4
+au FileType typescript nnoremap <leader>t :TSType<CR>
 au TermOpen * setlocal conceallevel=0 colorcolumn=0
 au! BufWritePost * Neomake
-" Not sure about the below 'undojoin'. Does weird stuff.
-" augroup fmt
-"   au!
-"   au BufWritePre * undojoin | Neoformat
-" augroup END
+augroup fmt
+  au!
+  au BufWritePre *.hs Neoformat
+augroup END
 
 " Workaround for ugly green column in search results.
 command! -bang BLines

@@ -14,7 +14,7 @@
   cost    = "!f() { git diff --stat --oneline "$1" | tail -1 | awk '{print $6-$4}'; }; f"
   jump    = "!f() { git stash; git checkout "$1"; git stash drop; }; f"
   slap    = stash apply
-  fresh   = "!f() { repo=${1:-master}; git checkout "$repo" && git pull origin "$repo"; }; f"
+  fresh   = "!f() { repo=${1:-master}; git stash && git checkout "$repo" && git pull origin "$repo" && git co - && git stash pop; }; f"
   files   = "!f() { git show --pretty="" --name-only "$1"; }; f"
   spill   = "!git stash && git stash drop"
   squish  = "!git commit -a --fixup HEAD && git rebase -i --autosquash HEAD~2"
