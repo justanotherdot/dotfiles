@@ -23,8 +23,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
-" Plug 'leafgarland/typescript-vim'
-Plug 'HerringtonDarkholme/yats.vim'
+Plug 'leafgarland/typescript-vim'
+" Plug 'HerringtonDarkholme/yats.vim'
 
 call plug#end()
 
@@ -52,6 +52,7 @@ set wildmode=longest,list,full
 let $COLORTERM = 'gnome-terminal' "Fix scrolling issues with nvim and gnome-terminal.
 let g:NERDSpaceDelims = 1
 let g:airline_powerline_fonts = 1
+let g:airline_theme='Base2Tone_PoolDark'
 let g:neoformat_try_formatprg = 1
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_jsx_enabled_makers = ['eslint']
