@@ -8,22 +8,23 @@ Plug 'ajh17/VimCompletesMe'
 Plug 'atelierbram/Base2Tone-vim'
 Plug 'benjie/neomake-local-eslint.vim'
 Plug 'fatih/vim-go'
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'idris-hackers/idris-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'mhartington/nvim-typescript'
+Plug 'mhartington/nvim-typescript', { 'do': ':UpdateRemotePlugins' }
 Plug 'neomake/neomake'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'suan/vim-instant-markdown'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
-Plug 'HerringtonDarkholme/yats.vim'
 
 call plug#end()
 
@@ -47,6 +48,7 @@ set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git,.cabal-sandbox
 set wildignorecase
 set wildmenu
 set wildmode=longest,list,full
+set formatoptions-=o
 
 let $COLORTERM = 'gnome-terminal' "Fix scrolling issues with nvim and gnome-terminal.
 let g:NERDSpaceDelims = 1
@@ -96,15 +98,19 @@ au BufEnter * EnableStripWhitespaceOnSave
 au BufEnter term://* startinsert " Prefer Neovim terminal insert mode to normal mode.
 au FileType gitcommit set tw=72
 au FileType haskell setlocal formatprg=hindent " originally stylish-haskell
-au FileType javascript setlocal formatprg=prettier\ --single-quote\ --trailing-comma\ all\ --stdin
+au FileType javascript,typescript setlocal formatprg=prettier\ --single-quote\ --trailing-comma\ all\ --stdin
 au FileType less setlocal expandtab shiftwidth=4 softtabstop=4
 au FileType php setlocal expandtab shiftwidth=4 softtabstop=4
-au FileType typescript nnoremap <leader>t :TSType<CR>
+au FileType typescript let g:deoplete#enable_at_startup = 1
+au FileType typescript nnoremap <localleader>t :TSType<CR>
 au TermOpen * setlocal conceallevel=0 colorcolumn=0
 au! BufWritePost * Neomake
 augroup fmt
   au!
-  au BufWritePre *.hs Neoformat
+  " Don't use Neoformat for haskell.
+  au BufWritePre *.hs execute ':%!hindent'
+  au BufWritePre *.hs execute ':%!stylish-haskell'
+  " au BufWritePre *.js,*.py Neoformat
 augroup END
 
 " Workaround for ugly green column in search results.
