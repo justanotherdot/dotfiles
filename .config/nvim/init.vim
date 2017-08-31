@@ -73,6 +73,8 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
+command! -nargs=+ -complete=file -bar Rg silent! grep! <args>|cwindow|redraw!
+
 nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
@@ -81,7 +83,7 @@ nnoremap <A-l> <C-w>l
 " nnoremap <A-2> 2gt
 " nnoremap <A-3> 3gt
 " nnoremap <A-4> 4gt
-nnoremap K :silent!\ grep!\ "\b<C-R><C-W>\b"<CR>:cw<CR>|redraw!
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 nnoremap <leader>f :%Neoformat<CR>
 nnoremap <leader><leader> :noh<CR>
 nnoremap <C-p> :Files<CR>
