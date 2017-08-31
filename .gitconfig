@@ -18,6 +18,7 @@
   files   = "!f() { git show --pretty="" --name-only "$1"; }; f"
   spill   = "!git stash && git stash drop"
   squish  = "!git commit -a --fixup HEAD && git rebase -i --autosquash HEAD~2"
+  pullin  = "!f() { repo=${1:-master}; git checkout "$repo" && git pull origin "$repo" && git co - && git merge "$repo"; }; f"
   commend = commit --amend --no-edit
   started = "!git init && git commit -m "root" --allow-empty"
 [core]
