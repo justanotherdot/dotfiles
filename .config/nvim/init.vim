@@ -81,6 +81,7 @@ nnoremap <A-l> <C-w>l
 " nnoremap <A-2> 2gt
 " nnoremap <A-3> 3gt
 " nnoremap <A-4> 4gt
+nnoremap K :silent!\ grep!\ "\b<C-R><C-W>\b"<CR>:cw<CR>|redraw!
 nnoremap <leader>f :%Neoformat<CR>
 nnoremap <leader><leader> :noh<CR>
 nnoremap <C-p> :Files<CR>
