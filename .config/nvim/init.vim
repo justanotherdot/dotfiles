@@ -19,7 +19,6 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'suan/vim-instant-markdown'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
@@ -104,7 +103,6 @@ au FileType haskell setlocal formatprg=hindent " originally stylish-haskell
 au FileType javascript,typescript setlocal formatprg=prettier\ --single-quote\ --trailing-comma\ all\ --stdin
 au FileType less setlocal expandtab shiftwidth=4 softtabstop=4
 au FileType php setlocal expandtab shiftwidth=4 softtabstop=4
-au FileType typescript let g:deoplete#enable_at_startup = 1
 au FileType typescript nnoremap <localleader>t :TSType<CR>
 au TermOpen * setlocal conceallevel=0 colorcolumn=0
 au! BufWritePost * Neomake
