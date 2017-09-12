@@ -3,6 +3,7 @@
 
 call plug#begin('~/.local/share/nvim/plugged')
 
+Plug 'owickstrom/neovim-ghci'
 Plug 'airblade/vim-gitgutter'
 Plug 'ajh17/VimCompletesMe'
 Plug 'atelierbram/Base2Tone-vim'
@@ -99,7 +100,7 @@ tnoremap <leader><space> <C-\><C-n>
 au BufEnter * EnableStripWhitespaceOnSave
 au BufEnter term://* startinsert " Prefer Neovim terminal insert mode to normal mode.
 au FileType gitcommit set tw=72
-au FileType haskell setlocal formatprg=hindent " originally stylish-haskell
+au FileType haskell setlocal formatprg=stylish-haskell
 au FileType javascript,typescript setlocal formatprg=prettier\ --single-quote\ --trailing-comma\ all\ --stdin
 au FileType less setlocal expandtab shiftwidth=4 softtabstop=4
 au FileType php setlocal expandtab shiftwidth=4 softtabstop=4
@@ -107,10 +108,7 @@ au FileType typescript nnoremap <localleader>t :TSType<CR>
 au TermOpen * setlocal conceallevel=0 colorcolumn=0
 au! BufWritePost * Neomake
 augroup fmt
-  au!
-  " Don't use Neoformat for haskell.
-  au BufWritePre *.hs execute ':%!hindent'
-  au BufWritePre *.hs execute ':%!stylish-haskell'
+  au BufWritePre *.hs Neoformat
   " au BufWritePre *.js,*.py Neoformat
 augroup END
 
