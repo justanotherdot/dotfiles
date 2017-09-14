@@ -7,7 +7,7 @@
   b       = branch
   c       = commit
   d       = diff
-  l       = log --oneline
+  l       = log --oneline --stat
   s       = status --short --branch
   co      = checkout
   mt      = mergetool
@@ -23,3 +23,5 @@
   started = "!git init && git commit -m "root" --allow-empty"
 [core]
 	excludesfile = /home/rjs/.gitignore_global
+[merge]
+  tool="meld"
