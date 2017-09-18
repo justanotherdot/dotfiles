@@ -75,6 +75,7 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 command! -nargs=+ -complete=file -bar Rg silent! grep! <args>|cwindow|redraw!
+command! -complete=file -bar Date silent! put =strftime('%c')
 
 nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
