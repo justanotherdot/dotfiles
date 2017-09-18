@@ -3,20 +3,21 @@
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'owickstrom/neovim-ghci'
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'ajh17/VimCompletesMe'
 Plug 'atelierbram/Base2Tone-vim'
 Plug 'benjie/neomake-local-eslint.vim'
 Plug 'fatih/vim-go'
-Plug 'HerringtonDarkholme/yats.vim'
 Plug 'idris-hackers/idris-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'mhartington/nvim-typescript', { 'do': ':UpdateRemotePlugins' }
+Plug 'mustache/vim-mustache-handlebars'
 Plug 'neomake/neomake'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'owickstrom/neovim-ghci'
 Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
