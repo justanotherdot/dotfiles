@@ -84,6 +84,8 @@ nnoremap <A-l> <C-w>l
 " nnoremap <A-3> 3gt
 " nnoremap <A-4> 4gt
 nnoremap <A-;> ,
+nnoremap ]<space> :bn<CR>
+nnoremap [<space> :bp<CR>
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 nnoremap <leader>f :%Neoformat<CR>
 nnoremap <leader><leader> :noh<CR>
