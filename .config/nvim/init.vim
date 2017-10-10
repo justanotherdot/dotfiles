@@ -3,7 +3,7 @@
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'HerringtonDarkholme/yats.vim'
+" Plug 'HerringtonDarkholme/yats.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'ajh17/VimCompletesMe'
 Plug 'atelierbram/Base2Tone-vim'
@@ -13,7 +13,6 @@ Plug 'idris-hackers/idris-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'mhartington/nvim-typescript', { 'do': ':UpdateRemotePlugins' }
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'neomake/neomake'
 Plug 'ntpeters/vim-better-whitespace'
@@ -77,6 +76,8 @@ let g:fzf_colors =
 command! -nargs=+ -complete=file -bar Rg silent! grep! <args>|cwindow|redraw!
 command! -complete=file -bar Date silent! put =strftime('%c')
 
+" Write with sudo trick.
+cnoremap w!! w !sudo tee > /dev/null %
 nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
@@ -100,20 +101,19 @@ xnoremap ga <Plug>(EasyAlign)
 inoremap <C-_> <C-o>:call NERDComment(0,'toggle')<CR>
 nnoremap <C-_> :call NERDComment(0,'toggle')<CR>
 vnoremap <C-_> :call NERDComment(0,'toggle')<CR>
-tnoremap <leader><space> <C-\><C-n>
+tnoremap <leader><ESC> <C-\><C-n>
 
 au BufEnter * EnableStripWhitespaceOnSave
-au BufEnter term://* startinsert " Prefer Neovim terminal insert mode to normal mode.
+" au BufEnter term://* startinsert " Prefer Neovim terminal insert mode to normal mode.
 au FileType gitcommit set tw=72
-au FileType haskell setlocal formatprg=stylish-haskell
+au FileType haskell setlocal formatprg=hindent "stylish-haskell
 au FileType javascript,typescript setlocal formatprg=prettier\ --single-quote\ --trailing-comma\ all\ --stdin
 au FileType less setlocal expandtab shiftwidth=4 softtabstop=4
 au FileType php setlocal expandtab shiftwidth=4 softtabstop=4
-au FileType typescript nnoremap <localleader>t :TSType<CR>
 au TermOpen * setlocal conceallevel=0 colorcolumn=0
 au! BufWritePost * Neomake
 augroup fmt
-  au BufWritePre *.hs Neoformat
+  " au BufWritePre *.hs Neoformat
   " au BufWritePre *.js,*.py Neoformat
 augroup END
 
@@ -122,3 +122,4 @@ command! -bang BLines
   \ call fzf#vim#buffer_lines(<q-args>, {'options': '--no-color'}, <bang>0)
 command! -bang Ag
   \ call fzf#vim#ag(<q-args>, {'options': '--no-color'}, <bang>0)
+
