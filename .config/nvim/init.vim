@@ -3,7 +3,7 @@
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Plug 'HerringtonDarkholme/yats.vim'
+Plug 'leafgarland/typescript-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'ajh17/VimCompletesMe'
 Plug 'atelierbram/Base2Tone-vim'
@@ -32,7 +32,6 @@ colo Base2Tone_PoolDark
 
 set clipboard=unnamedplus " System clipboard.
 set cmdheight=1
-set completeopt=menuone,longest,preview
 set expandtab
 set grepprg=rg\ --vimgrep
 set inccommand=nosplit
@@ -91,6 +90,7 @@ nnoremap ]<space> :bn<CR>
 nnoremap [<space> :bp<CR>
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 nnoremap <leader>f :%Neoformat<CR>
+nnoremap <leader>m :Neomake<CR>
 nnoremap <leader><leader> :noh<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <C-k> :Buffers<CR>
@@ -98,18 +98,17 @@ nnoremap <leader>/ :BLines<CR>
 nnoremap <leader>s :StripWhitespace<CR>
 nnoremap ga <Plug>(EasyAlign)
 xnoremap ga <Plug>(EasyAlign)
+" <C-_> is <C-/>
 inoremap <C-_> <C-o>:call NERDComment(0,'toggle')<CR>
 nnoremap <C-_> :call NERDComment(0,'toggle')<CR>
 vnoremap <C-_> :call NERDComment(0,'toggle')<CR>
 tnoremap <leader><ESC> <C-\><C-n>
 
 au BufEnter * EnableStripWhitespaceOnSave
-" au BufEnter term://* startinsert " Prefer Neovim terminal insert mode to normal mode.
 au FileType gitcommit set tw=72
 au FileType haskell setlocal formatprg=hindent "stylish-haskell
-au FileType javascript,typescript setlocal formatprg=prettier\ --single-quote\ --trailing-comma\ all\ --stdin
-au FileType less setlocal expandtab shiftwidth=4 softtabstop=4
-au FileType php setlocal expandtab shiftwidth=4 softtabstop=4
+au FileType javascript,typescript setlocal formatprg=prettier\ --single-quote\ --trailing-comma\ all
+au FileType php,less setlocal expandtab shiftwidth=4 softtabstop=4
 au TermOpen * setlocal conceallevel=0 colorcolumn=0
 au! BufWritePost * Neomake
 augroup fmt
@@ -120,6 +119,8 @@ augroup END
 " Workaround for ugly green column in search results.
 command! -bang BLines
   \ call fzf#vim#buffer_lines(<q-args>, {'options': '--no-color'}, <bang>0)
+command! -bang Lines
+  \ call fzf#vim#lines(<q-args>, {'options': '--no-color'}, <bang>0)
 command! -bang Ag
   \ call fzf#vim#ag(<q-args>, {'options': '--no-color'}, <bang>0)
 

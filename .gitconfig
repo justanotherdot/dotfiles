@@ -4,11 +4,12 @@
 	default = simple
 [alias]
   a       = add
-  b       = branch
+  b       = branch -vv
   c       = commit
   d       = diff
   l       = log --oneline --stat
   s       = status --short --branch
+  m       = merge --no-ff
   co      = checkout
   mt      = mergetool
   cost    = "!f() { git diff --stat --oneline "$1" | tail -1 | awk '{print $6-$4}'; }; f"

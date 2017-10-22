@@ -1,16 +1,20 @@
 # file: .zshrc
 # author: Ryan James Spencer
 #
+
 autoload -Uz promptinit && promptinit
 export PROMPT="%~"$'\n'"%Bη %b"
 
 export PATH="$PATH:$HOME/bin/phabricator/arcanist/bin"
 export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:$HOME/go/bin"
+export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/scripts"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.cabal/bin"
+export PATH="$PATH:/opt/rakudo-star-2017.07/bin"
+export PATH="$PATH:/opt/rakudo-star-2017.07/share/perl6/site/bin"
 export GOPATH="$HOME/go"
 export SSH_ASKPASS=''
 
