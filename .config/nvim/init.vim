@@ -40,8 +40,9 @@ set nofoldenable
 set nojoinspaces
 set nowrap
 set ruler
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
 set termguicolors
 set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git,.cabal-sandbox
 set wildignorecase
@@ -110,7 +111,7 @@ au BufEnter * EnableStripWhitespaceOnSave
 au FileType gitcommit set tw=72
 au FileType haskell setlocal formatprg=stylish-haskell
 au FileType javascript,typescript setlocal formatprg=prettier\ --single-quote\ --trailing-comma\ all
-au FileType javascript,typescript setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+au FileType php,less setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 au TermOpen * setlocal conceallevel=0 colorcolumn=0
 au! BufWritePost * Neomake
 augroup fmt
