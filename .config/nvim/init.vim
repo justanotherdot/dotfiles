@@ -40,8 +40,8 @@ set nofoldenable
 set nojoinspaces
 set nowrap
 set ruler
-set shiftwidth=2
-set tabstop=2
+set shiftwidth=4
+set tabstop=4
 set termguicolors
 set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git,.cabal-sandbox
 set wildignorecase
@@ -50,6 +50,8 @@ set wildmode=longest,list,full
 set formatoptions-=o
 
 let $COLORTERM = 'gnome-terminal' "Fix scrolling issues with nvim and gnome-terminal.
+let g:ghci_command = 'stack repl'
+let g:ghci_command_line_options = '--ghci-options="-fobject-code"'
 let g:NERDSpaceDelims = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='Base2Tone_PoolDark'
@@ -106,9 +108,9 @@ tnoremap <leader><ESC> <C-\><C-n>
 
 au BufEnter * EnableStripWhitespaceOnSave
 au FileType gitcommit set tw=72
-au FileType haskell setlocal formatprg=hindent "stylish-haskell
+au FileType haskell setlocal formatprg=stylish-haskell
 au FileType javascript,typescript setlocal formatprg=prettier\ --single-quote\ --trailing-comma\ all
-au FileType php,less setlocal expandtab shiftwidth=4 softtabstop=4
+au FileType javascript,typescript setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 au TermOpen * setlocal conceallevel=0 colorcolumn=0
 au! BufWritePost * Neomake
 augroup fmt
