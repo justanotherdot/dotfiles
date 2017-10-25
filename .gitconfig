@@ -12,7 +12,7 @@
   m       = merge --no-ff
   co      = checkout
   mt      = mergetool
-  chk     = git show HEAD --name-only
+  chk     = show HEAD --name-only
   cost    = "!f() { git diff --stat --oneline "$1" | tail -1 | awk '{print $6-$4}'; }; f"
   jump    = "!f() { git stash; git checkout "$1"; git stash drop; }; f"
   slap    = stash apply
