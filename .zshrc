@@ -11,7 +11,9 @@ fi
 export SSH_ASKPASS=''
 
 if [[ "`which keychain`" != "keychain not found" ]]; then
-  if [[ `hostname` != "rjs" ]]; then
+  # Prefer twisted curve key over RSA.
+  # Unless we've set the environment to be work.
+  if [ -e "$HOME/.ssh/id_ed25519" ]; then
     eval "$(keychain --eval -Q --quiet id_ed25519)"
   else
     eval "$(keychain --eval -Q --quiet id_rsa)"
