@@ -1,27 +1,21 @@
 # file: .zshrc
 # author: Ryan James Spencer
-#
 
 autoload -Uz promptinit && promptinit
 export PROMPT="%~"$'\n'"%Bη %b"
 
-export PATH="$PATH:$HOME/bin/phabricator/arcanist/bin"
-export PATH="$PATH:$HOME/bin"
-export PATH="$PATH:$HOME/go/bin"
-export PATH="$PATH:/usr/local/go/bin"
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/scripts"
-export PATH="$PATH:$HOME/.cargo/bin"
-export PATH="$PATH:$HOME/.cabal/bin"
-export PATH="$PATH:/opt/rakudo-star-2017.07/bin"
-export PATH="$PATH:/opt/rakudo-star-2017.07/share/perl6/site/bin"
-export GOPATH="$HOME/go"
+if [ -e "$HOME/.paths" ]; then
+  source "$HOME/.paths"
+fi
+
 export SSH_ASKPASS=''
 
-if [[ `hostname` != "rjs" ]]; then
-  eval "$(keychain --eval -Q --quiet id_ed25519)"
-else
-  eval "$(keychain --eval -Q --quiet id_rsa)"
+if [[ "`which keychain`" != "keychain not found" ]]; then
+  if [[ `hostname` != "rjs" ]]; then
+    eval "$(keychain --eval -Q --quiet id_ed25519)"
+  else
+    eval "$(keychain --eval -Q --quiet id_rsa)"
+  fi
 fi
 
 setopt histignorealldups sharehistory extendedhistory BRACE_CCL
@@ -51,7 +45,7 @@ fi
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE=~/.zsh_history
+HISTFILE="$HOME/.zsh_history"
 
 # Use modern completion system
 autoload -Uz compinit
@@ -62,9 +56,6 @@ zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
 zstyle ':completion:*' menu select=long
