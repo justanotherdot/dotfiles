@@ -12,7 +12,6 @@ Plug 'fatih/vim-go'
 Plug 'idris-hackers/idris-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/vim-easy-align'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'neomake/neomake'
 Plug 'ntpeters/vim-better-whitespace'
@@ -25,6 +24,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
+Plug 'godlygeek/tabular'
 
 call plug#end()
 
@@ -54,6 +54,7 @@ let $COLORTERM = 'gnome-terminal' "Fix scrolling issues with nvim and gnome-term
 let g:ghci_command = 'stack repl'
 let g:ghci_command_line_options = '--ghci-options="-fobject-code"'
 let g:NERDSpaceDelims = 1
+let g:haskell_indent_disable = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='Base2Tone_PoolDark'
 let g:neoformat_try_formatprg = 1

@@ -15,6 +15,9 @@ export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.cabal/bin"
 export PATH="$PATH:/opt/rakudo-star-2017.07/bin"
 export PATH="$PATH:/opt/rakudo-star-2017.07/share/perl6/site/bin"
+export PATH="$PATH:$HOME/.npm-global/bin"
+export PATH="$PATH:$HOME/.npm-global/node/bin"
+export N_PREFIX="$HOME/.npm-global/node"
 export GOPATH="$HOME/go"
 export SSH_ASKPASS=''
 
