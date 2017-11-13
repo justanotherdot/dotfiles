@@ -7,7 +7,8 @@
   b       = branch -vv
   c       = commit
   d       = diff
-  l       = log --oneline --stat
+  l       = log --oneline
+  ll      = log --oneline --stat
   s       = status --short --branch
   m       = merge --no-ff
   co      = checkout
