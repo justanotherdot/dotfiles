@@ -5,6 +5,9 @@
 autoload -Uz promptinit && promptinit
 export PROMPT="%~"$'\n'"%Bη %b"
 
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
 export PATH="$PATH:$HOME/bin/phabricator/arcanist/bin"
 export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:$HOME/go/bin"
@@ -18,14 +21,11 @@ export PATH="$PATH:/opt/rakudo-star-2017.07/share/perl6/site/bin"
 export PATH="$PATH:$HOME/.npm-global/bin"
 export PATH="$PATH:$HOME/.npm-global/node/bin"
 export N_PREFIX="$HOME/.npm-global/node"
+export NPM_CONFIG_PREFIX="$HOME/.npm-global" # Out of paranoia.
 export GOPATH="$HOME/go"
 export SSH_ASKPASS=''
 
-if [[ `hostname` != "rjs" ]]; then
-  eval "$(keychain --eval -Q --quiet id_ed25519)"
-else
-  eval "$(keychain --eval -Q --quiet id_rsa)"
-fi
+eval "$(keychain --eval -Q --quiet id_ed25519)"
 
 setopt histignorealldups sharehistory extendedhistory BRACE_CCL
 setopt extendedglob globdots interactivecomments

@@ -29,3 +29,7 @@
 	excludesfile = /home/rjs/.gitignore_global
 [merge]
   tool="meld"
+[user]
+	name       = Ryan James Spencer
+	email      = spencer.ryanjames@gmail.com
+	signingkey = 3D3E0325

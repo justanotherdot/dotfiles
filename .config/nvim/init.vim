@@ -3,7 +3,6 @@
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'leafgarland/typescript-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'ajh17/VimCompletesMe'
 Plug 'atelierbram/Base2Tone-vim'
@@ -19,7 +18,6 @@ Plug 'owickstrom/neovim-ghci'
 Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
-Plug 'suan/vim-instant-markdown'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -108,14 +106,13 @@ nnoremap <C-_> :call NERDComment(0,'toggle')<CR>
 vnoremap <C-_> :call NERDComment(0,'toggle')<CR>
 tnoremap <leader><ESC> <C-\><C-n>
 
-au BufEnter * EnableStripWhitespaceOnSave
-au FileType gitcommit set tw=72
-au FileType haskell setlocal formatprg=stylish-haskell
-au FileType javascript,typescript setlocal formatprg=prettier\ --single-quote\ --trailing-comma\ all
-au FileType php,less setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
-au TermOpen * setlocal conceallevel=0 colorcolumn=0
-au! BufWritePost * Neomake
-augroup fmt
+augroup setup
+  au BufEnter * EnableStripWhitespaceOnSave
+  au FileType gitcommit set tw=72
+  au FileType haskell setlocal formatprg=stylish-haskell
+  au FileType javascript setlocal formatprg=prettier\ --single-quote\ --trailing-comma\ all
+  au TermOpen * setlocal conceallevel=0 colorcolumn=0
+  au! BufWritePost * Neomake
   " au BufWritePre *.hs Neoformat
   " au BufWritePre *.js,*.py Neoformat
 augroup END
