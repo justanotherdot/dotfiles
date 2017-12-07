@@ -6,8 +6,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'ajh17/VimCompletesMe'
 Plug 'atelierbram/Base2Tone-vim'
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 Plug 'benjie/neomake-local-eslint.vim'
 Plug 'fatih/vim-go'
+Plug 'godlygeek/tabular'
 Plug 'idris-hackers/idris-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -18,11 +20,11 @@ Plug 'owickstrom/neovim-ghci'
 Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
+Plug 'shime/vim-livedown'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
-Plug 'godlygeek/tabular'
 
 call plug#end()
 
@@ -31,7 +33,9 @@ colo Base2Tone_PoolDark
 set clipboard=unnamedplus " System clipboard.
 set cmdheight=1
 set expandtab
+set formatoptions-=o
 set grepprg=rg\ --vimgrep
+set hidden
 set inccommand=nosplit
 set mouse=a
 set nofoldenable
@@ -46,7 +50,6 @@ set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git,.cabal-sandbox
 set wildignorecase
 set wildmenu
 set wildmode=longest,list,full
-set formatoptions-=o
 
 let $COLORTERM = 'gnome-terminal' "Fix scrolling issues with nvim and gnome-terminal.
 let g:ghci_command = 'stack repl'
@@ -113,7 +116,9 @@ augroup setup
   au FileType javascript setlocal formatprg=prettier\ --single-quote\ --trailing-comma\ all
   au TermOpen * setlocal conceallevel=0 colorcolumn=0
   au! BufWritePost * Neomake
-  " au BufWritePre *.hs Neoformat
+  au BufWritePre *.hs Neoformat
+  au BufRead,BufNewFile *.md setocal spell
+  au FileType gitcommit setlocal spell
   " au BufWritePre *.js,*.py Neoformat
 augroup END
 
