@@ -23,7 +23,10 @@ export NPM_CONFIG_PREFIX="$HOME/.npm-global" # Out of paranoia.
 export GOPATH="$HOME/go"
 export SSH_ASKPASS=''
 
-eval "$(keychain --eval -Q --quiet id_ed25519)"
+if [ -z "$SSH_AUTH_SOCK" ]; then
+  eval `ssh-agent -s`
+  ssh-add
+fi
 
 setopt histignorealldups sharehistory extendedhistory BRACE_CCL
 setopt extendedglob globdots interactivecomments
