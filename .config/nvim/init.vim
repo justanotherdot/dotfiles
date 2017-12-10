@@ -110,15 +110,15 @@ vnoremap <C-_> :call NERDComment(0,'toggle')<CR>
 tnoremap <leader><ESC> <C-\><C-n>
 
 augroup setup
-  au BufEnter * EnableStripWhitespaceOnSave
-  au FileType gitcommit set tw=72
-  au FileType haskell setlocal formatprg=stylish-haskell
-  au FileType javascript setlocal formatprg=prettier\ --single-quote\ --trailing-comma\ all
-  au TermOpen * setlocal conceallevel=0 colorcolumn=0
+  au! BufEnter * EnableStripWhitespaceOnSave
+  au! FileType gitcommit set tw=72
+  au! FileType haskell setlocal formatprg=stylish-haskell
+  au! FileType javascript setlocal formatprg=prettier\ --single-quote\ --trailing-comma\ all
+  au! TermOpen * setlocal conceallevel=0 colorcolumn=0
   au! BufWritePost * Neomake
-  au BufWritePre *.hs Neoformat
-  au BufRead,BufNewFile *.md setocal spell
-  au FileType gitcommit setlocal spell
+  au! BufWritePre *.hs Neoformat
+  au! BufRead,BufNewFile *.md setocal spell
+  au! FileType gitcommit setlocal spell
   " au BufWritePre *.js,*.py Neoformat
 augroup END
 
