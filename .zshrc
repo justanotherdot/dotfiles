@@ -23,8 +23,6 @@ export NPM_CONFIG_PREFIX="$HOME/.npm-global" # Out of paranoia.
 export GOPATH="$HOME/go"
 export SSH_ASKPASS=''
 
-# Kill off pre-existing ssh-agent so `keychain' can spawn it's own.
-eval "$(kill -TERM $(pidof ssh-agent))"
 eval "$(keychain --eval -Q --quiet id_ed25519)"
 
 setopt histignorealldups sharehistory extendedhistory BRACE_CCL
