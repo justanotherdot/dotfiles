@@ -30,8 +30,6 @@ setopt extendedglob globdots interactivecomments
 
 unsetopt nomatch
 
-# Use emacs keybindings even if our EDITOR is set to vi
-bindkey -e
 set -o vi
 
 export TERM=xterm-256color
