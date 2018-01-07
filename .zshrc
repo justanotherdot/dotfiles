@@ -31,6 +31,7 @@ setopt extendedglob globdots interactivecomments
 unsetopt nomatch
 
 set -o vi
+set bell-style none
 
 export TERM=xterm-256color
 export EDITOR='nvim'
