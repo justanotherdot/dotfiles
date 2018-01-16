@@ -13,11 +13,9 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'neomake/neomake'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'owickstrom/neovim-ghci'
-Plug 'sbdchd/neoformat'
+" Plug 'owickstrom/neovim-ghci'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
-Plug 'shime/vim-livedown'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 
@@ -48,10 +46,11 @@ set wildmenu
 set wildmode=longest,list,full
 
 let $COLORTERM = 'gnome-terminal' "Fix scrolling issues with nvim and gnome-terminal.
+let g:haskell_enable_quantification = 1
+let g:haskell_indent_disable = 1
 let g:NERDSpaceDelims = 1
 let g:ghci_command = 'stack repl'
 let g:ghci_command_line_options = '--ghci-options="-fobject-code"'
-let g:neoformat_try_formatprg = 1
 let g:netrw_banner = 0
 let mapleader = ','
 let g:fzf_colors =
@@ -76,25 +75,20 @@ nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 nnoremap <C-k> :Buffers<CR>
 nnoremap <C-p> :Files<CR>
-nnoremap <C-_> :BLines<CR>
+nnoremap <leader><space> :BLines<CR>
 nnoremap <leader><leader> :noh<CR>
-nnoremap <leader>f :%Neoformat<CR>
-nnoremap <leader>f :Rg!<CR>
 nnoremap <leader>m :Neomake<CR>
 nnoremap <leader>s :StripWhitespace<CR>
-nnoremap [[ :bp<CR>
-nnoremap ]] :bn<CR>
+nnoremap <silent> <leader>rg :Rg <C-R><C-W><CR>
 tnoremap <leader><ESC> <C-\><C-n>
 
 augroup setup
   au! BufEnter * EnableStripWhitespaceOnSave
-  au! BufRead,BufNewFile *.md setocal spell
+  au! BufRead,BufNewFile *.md setlocal spell
   au! BufWritePost * Neomake
-  au! BufWritePre *.hs Neoformat
   au! FileType gitcommit set tw=72
   au! FileType gitcommit setlocal spell
-  au! FileType haskell setlocal formatprg=stylish-haskell
-  au! FileType javascript setlocal formatprg=prettier\ --no-semi\ --single-quote\ --trailing-comma\ none
+  au! FileType javascript setlocal formatprg=prettier\ -single-quote\ --trailing-comma\ none
   au! TermOpen * setlocal conceallevel=0 colorcolumn=0
 augroup END
 

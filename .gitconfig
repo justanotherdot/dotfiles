@@ -14,6 +14,7 @@
   co      = checkout
   mt      = mergetool
   chk     = show HEAD --name-only
+  fxu     = commit --fixup=head^
   cost    = "!f() { git diff --stat --oneline "$1" | tail -1 | awk '{print $6-$4}'; }; f"
   jump    = "!f() { git stash; git checkout "$1"; git stash drop; }; f"
   slap    = stash apply
@@ -24,7 +25,6 @@
   pullin  = "!f() { repo=${1:-master}; git checkout "$repo" && git pull origin "$repo" && git co - && git merge "$repo"; }; f"
   commend = commit --amend --no-edit
   started = "!git init && git commit -m "root" --allow-empty"
-	quick-stats = ! /usr/local/bin/git-quick-stats
 [core]
 	excludesfile = /home/rjs/.gitignore_global
 [merge]
