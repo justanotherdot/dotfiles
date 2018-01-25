@@ -13,11 +13,12 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'neomake/neomake'
 Plug 'ntpeters/vim-better-whitespace'
-" Plug 'owickstrom/neovim-ghci'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
@@ -48,6 +49,7 @@ set wildmode=longest,list,full
 let $COLORTERM = 'gnome-terminal' "Fix scrolling issues with nvim and gnome-terminal.
 let g:haskell_enable_quantification = 1
 let g:haskell_indent_disable = 1
+let g:airline_theme = 'Base2Tone_PoolDark'
 let g:NERDSpaceDelims = 1
 let g:ghci_command = 'stack repl'
 let g:ghci_command_line_options = '--ghci-options="-fobject-code"'
@@ -79,7 +81,8 @@ nnoremap <leader><space> :BLines<CR>
 nnoremap <leader><leader> :noh<CR>
 nnoremap <leader>m :Neomake<CR>
 nnoremap <leader>s :StripWhitespace<CR>
-nnoremap <silent> <leader>rg :Rg <C-R><C-W><CR>
+" nnoremap <silent> <leader>rg :Rg <C-R><C-W><CR>
+nnoremap <silent> <leader>rg :Rg <CR>
 tnoremap <leader><ESC> <C-\><C-n>
 
 augroup setup
