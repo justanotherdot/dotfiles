@@ -17,6 +17,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'floobits/floobits-neovim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
@@ -77,7 +79,8 @@ nnoremap <leader><space> :BLines<CR>
 nnoremap <leader><leader> :noh<CR>
 nnoremap <leader>m :Neomake<CR>
 nnoremap <leader>s :StripWhitespace<CR>
-nnoremap <silent> <leader>rg :Rg <C-R><C-W><CR>
+" nnoremap <silent> <leader>rg :Rg <C-R><C-W><CR>
+nnoremap <silent> <leader>rg :Rg <CR>
 tnoremap <leader><ESC> <C-\><C-n>
 nnoremap <leader>`` viws``<ESC>p
 nnoremap <leader>'' viws''<ESC>p
