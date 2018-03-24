@@ -5,7 +5,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'airblade/vim-gitgutter'
 Plug 'atelierbram/Base2Tone-vim'
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 Plug 'fatih/vim-go'
 Plug 'godlygeek/tabular'
 Plug 'idris-hackers/idris-vim'
@@ -13,11 +12,11 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'neomake/neomake'
 Plug 'ntpeters/vim-better-whitespace'
-" Plug 'owickstrom/neovim-ghci'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug 'floobits/floobits-neovim'
 
 call plug#end()
 
@@ -36,9 +35,11 @@ set nojoinspaces
 set nowrap
 set ruler
 set shiftwidth=2
+set shortmess+=A
 set softtabstop=2
 set tabstop=2
 set termguicolors
+set updatetime=100
 set visualbell
 set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git,.cabal-sandbox
 set wildignorecase
@@ -48,9 +49,6 @@ set wildmode=longest,list,full
 let $COLORTERM = 'gnome-terminal' "Fix scrolling issues with nvim and gnome-terminal.
 let g:haskell_enable_quantification = 1
 let g:haskell_indent_disable = 1
-let g:NERDSpaceDelims = 1
-let g:ghci_command = 'stack repl'
-let g:ghci_command_line_options = '--ghci-options="-fobject-code"'
 let g:netrw_banner = 0
 let mapleader = ','
 let g:fzf_colors =
@@ -81,6 +79,9 @@ nnoremap <leader>m :Neomake<CR>
 nnoremap <leader>s :StripWhitespace<CR>
 nnoremap <silent> <leader>rg :Rg <C-R><C-W><CR>
 tnoremap <leader><ESC> <C-\><C-n>
+nnoremap <leader>`` viws``<ESC>p
+nnoremap <leader>'' viws''<ESC>p
+nnoremap <leader>"" viws""<ESC>p
 
 augroup setup
   au! BufEnter * EnableStripWhitespaceOnSave
@@ -88,6 +89,8 @@ augroup setup
   au! BufWritePost * Neomake
   au! FileType gitcommit set tw=72
   au! FileType gitcommit setlocal spell
+  au! FileType haskell nnoremap <silent> <leader>ai
+        \ vip :sort r /\u.*/<CR> <Bar> :Tabularize /^import qualified\\|^import\\|^$<CR>
   au! FileType javascript setlocal formatprg=prettier\ -single-quote\ --trailing-comma\ none
   au! TermOpen * setlocal conceallevel=0 colorcolumn=0
 augroup END

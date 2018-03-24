@@ -16,6 +16,7 @@
   chk     = show HEAD --name-only
   fxu     = commit --fixup=head^
   cost    = "!f() { git diff --stat --oneline "$1" | tail -1 | awk '{print $6-$4}'; }; f"
+  grab    = "!f() { git clone git@github.com:"$1"; }; f"
   jump    = "!f() { git stash; git checkout "$1"; git stash drop; }; f"
   slap    = stash apply
   fresh   = "!f() { repo=${1:-master}; git stash && git checkout "$repo" && git pull origin "$repo" && git co - && git stash pop; }; f"

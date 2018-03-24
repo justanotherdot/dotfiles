@@ -17,11 +17,15 @@ export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/scripts"
 export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:$HOME/haskell/ghc-8.2.2/bin"
+export PATH="$PATH:$HOME/.mafia/versions"
+export PATH="$PATH:$HOME/.cache/rebar3/bin"
 
 export N_PREFIX="$HOME/.npm-global/node"
 export NPM_CONFIG_PREFIX="$HOME/.npm-global" # Out of paranoia.
 export GOPATH="$HOME/go"
 export SSH_ASKPASS=''
+export ERL_AFLAGS="-kernel shell_history enabled"
 
 eval $(keychain --eval -Q --quiet id_ed25519)
 
