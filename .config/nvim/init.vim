@@ -6,6 +6,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'atelierbram/Base2Tone-vim'
 Plug 'fatih/vim-go'
+Plug 'floobits/floobits-neovim'
 Plug 'godlygeek/tabular'
 Plug 'idris-hackers/idris-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -16,7 +17,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'floobits/floobits-neovim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -49,6 +49,8 @@ set wildmenu
 set wildmode=longest,list,full
 
 let $COLORTERM = 'gnome-terminal' "Fix scrolling issues with nvim and gnome-terminal.
+let g:airline#extensions#cursormode#enabled = 0 "Don't let airline mess up the cursor color
+let g:airline_theme='Base2Tone_PoolDark'
 let g:haskell_enable_quantification = 1
 let g:haskell_indent_disable = 1
 let g:netrw_banner = 0
