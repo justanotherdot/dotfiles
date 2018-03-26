@@ -15,12 +15,13 @@ Plug 'neomake/neomake'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'kamwitsta/flatwhite-vim'
 
 call plug#end()
+
 
 colo Base2Tone_PoolDark
 
@@ -71,22 +72,31 @@ let g:fzf_colors =
 
 cnoremap w!! w !sudo tee > /dev/null %
 nnoremap <A-;> ,
+tnoremap <A-h> <C-\><C-N><C-w>h
+tnoremap <A-j> <C-\><C-N><C-w>j
+tnoremap <A-k> <C-\><C-N><C-w>k
+tnoremap <A-l> <C-\><C-N><C-w>l
+inoremap <A-h> <C-\><C-N><C-w>h
+inoremap <A-j> <C-\><C-N><C-w>j
+inoremap <A-k> <C-\><C-N><C-w>k
+inoremap <A-l> <C-\><C-N><C-w>l
 nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 nnoremap <C-k> :Buffers<CR>
 nnoremap <C-p> :Files<CR>
-nnoremap <leader><space> :BLines<CR>
+nnoremap <leader>/ :BLines<CR>
 nnoremap <leader><leader> :noh<CR>
 nnoremap <leader>m :Neomake<CR>
 nnoremap <leader>s :StripWhitespace<CR>
-" nnoremap <silent> <leader>rg :Rg <C-R><C-W><CR>
 nnoremap <silent> <leader>rg :Rg <CR>
-tnoremap <leader><ESC> <C-\><C-n>
-nnoremap <leader>`` viws``<ESC>p
-nnoremap <leader>'' viws''<ESC>p
-nnoremap <leader>"" viws""<ESC>p
+nnoremap <leader>gs  :!git s<CR>
+nnoremap <leader>ga  :!git a .<CR>
+nnoremap <leader>gc  :!git c -am "
+nnoremap <leader>gpu :!git push<cr>
+nnoremap <leader>gpl :!git pull<CR>
+nnoremap <leader>gf  :!git fetch -a<CR>
 
 augroup setup
   au! BufEnter * EnableStripWhitespaceOnSave
