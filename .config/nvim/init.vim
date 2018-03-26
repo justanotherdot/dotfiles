@@ -91,12 +91,6 @@ nnoremap <leader><leader> :noh<CR>
 nnoremap <leader>m :Neomake<CR>
 nnoremap <leader>s :StripWhitespace<CR>
 nnoremap <silent> <leader>rg :Rg <CR>
-nnoremap <leader>gs  :!git s<CR>
-nnoremap <leader>ga  :!git a .<CR>
-nnoremap <leader>gc  :!git c -am "
-nnoremap <leader>gpu :!git push<cr>
-nnoremap <leader>gpl :!git pull<CR>
-nnoremap <leader>gf  :!git fetch -a<CR>
 
 augroup setup
   au! BufEnter * EnableStripWhitespaceOnSave
