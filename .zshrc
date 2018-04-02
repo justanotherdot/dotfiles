@@ -1,6 +1,5 @@
 # file: .zshrc
 # author: Ryan James Spencer
-#
 
 autoload -Uz promptinit && promptinit
 export PROMPT="%~"$'\n'"%Bη %b"
@@ -21,8 +20,6 @@ export PATH="$PATH:$HOME/haskell/ghc-8.2.2/bin"
 export PATH="$PATH:$HOME/.mafia/versions"
 export PATH="$PATH:$HOME/.cache/rebar3/bin"
 
-export N_PREFIX="$HOME/.npm-global/node"
-export NPM_CONFIG_PREFIX="$HOME/.npm-global" # Out of paranoia.
 export GOPATH="$HOME/go"
 export SSH_ASKPASS=''
 export ERL_AFLAGS="-kernel shell_history enabled"
@@ -42,15 +39,12 @@ export EDITOR='nvim'
 export PAGER='less'
 
 alias v='nvim'
-alias vzv="nvim -c':Files'"
 alias df='df -h'
 alias ls='ls -F'
 alias grep='grep --color=auto'
 alias tmux='tmux -2'
 
-if [ -e "$HOME/.aliases" ]; then
-  source "$HOME/.aliases"
-fi
+[ -e "$HOME/.aliases" ] && source "$HOME/.aliases"
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=10000
@@ -66,7 +60,7 @@ zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
+[ $(uname) = "Linux" ] && eval "$(dircolors -b)"
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
@@ -79,3 +73,7 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
