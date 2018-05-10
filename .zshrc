@@ -16,15 +16,16 @@ export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/scripts"
 export PATH="$PATH:/usr/local/go/bin"
-export PATH="$PATH:$HOME/haskell/ghc-8.2.2/bin"
 export PATH="$PATH:$HOME/.mafia/versions"
 export PATH="$PATH:$HOME/.cache/rebar3/bin"
+export PATH="$PATH:$HOME/haskell/ghc-current/bin"
 
 export GOPATH="$HOME/go"
 export SSH_ASKPASS=''
 export ERL_AFLAGS="-kernel shell_history enabled"
 export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export GPG_TTY=$(tty)
 
 eval $(keychain --eval -Q --quiet id_ed25519)
 

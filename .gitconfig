@@ -1,5 +1,5 @@
 [include]
-  path = /home/rjs/.gitcreds
+  path = /home/rjs/.gitlocal
 [push]
 	default = simple
 [alias]
@@ -19,6 +19,13 @@
   grab    = "!f() { git clone git@github.com:"$1"; }; f"
   jump    = "!f() { git stash; git checkout "$1"; git stash drop; }; f"
   slap    = stash apply
+  wash    = "!f() { \
+                if [ \"$1\" = \"master\" ]; then \
+                  echo 'Deleting master is probably not a good idea.'; \
+                else \
+                  git co master && git pull && git branch -d \"$1\" && git push origin --delete \"$1\"; \
+                fi;\
+              }; f"
   fresh   = "!f() { repo=${1:-master}; git stash && git checkout "$repo" && git pull origin "$repo" && git co - && git stash pop; }; f"
   files   = "!f() { git show --pretty="" --name-only "$1"; }; f"
   spill   = "!git stash && git stash drop"
@@ -28,9 +35,3 @@
   started = "!git init && git commit -m "root" --allow-empty"
 [core]
 	excludesfile = /home/rjs/.gitignore_global
-[merge]
-  tool="meld"
-[user]
-	name       = Ryan James Spencer
-	email      = spencer.ryanjames@gmail.com
-	signingkey = 3D3E0325
