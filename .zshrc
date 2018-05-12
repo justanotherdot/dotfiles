@@ -41,11 +41,15 @@ export TERM=xterm-256color
 export EDITOR='nvim'
 export PAGER='less'
 
+# Aliases
 alias v='nvim'
 alias df='df -h'
 alias ls='ls -F'
 alias grep='grep --color=auto'
-alias tmux='tmux -2'
+
+# Aliases for subshells
+today() { date +%Y-%m-%d; }
+export today
 
 [ -e "$HOME/.aliases" ] && source "$HOME/.aliases"
 
