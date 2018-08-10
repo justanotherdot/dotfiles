@@ -43,13 +43,21 @@ export PAGER='less'
 
 # Aliases
 alias v='nvim'
+alias vzv="nvim -c':files'"
 alias df='df -h'
 alias ls='ls -F'
 alias grep='grep --color=auto'
+alias rgc='rg -l "<{7} HEAD"'
+alias rgl='rg -l'
 
 # Aliases for subshells
 today() { date +%Y-%m-%d; }
+vdiff() { v -p $(rgc); }
+vrg() { v -p $(rgl "$1"); }
+
 export today
+export vdiff
+export vrg
 
 [ -e "$HOME/.aliases" ] && source "$HOME/.aliases"
 
