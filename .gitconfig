@@ -8,6 +8,7 @@
   c       = commit
   d       = diff
   l       = log --oneline
+  f       = fetch
   ll      = log --oneline --stat
   s       = status --short --branch
   m       = merge --no-ff
@@ -15,23 +16,24 @@
   mt      = mergetool
   chk     = show HEAD --name-only
   fxu     = commit --fixup=head^
+  dno     = diff --name-only
+  foa     = fetch origin -a
+  llg     = log --oneline --stat --graph --decorate
+  copr    = "!f() { git fetch origin pull/$1/head:pr$1 && git checkout pr$1; }; f"
   cost    = "!f() { git diff --stat --oneline "$1" | tail -1 | awk '{print $6-$4}'; }; f"
   grab    = "!f() { git clone git@github.com:"$1"; }; f"
   jump    = "!f() { git stash; git checkout "$1"; git stash drop; }; f"
+  slop    = stash pop
   slap    = stash apply
-  wash    = "!f() { \
-                if [ \"$1\" = \"master\" ]; then \
-                  echo 'Deleting master is probably not a good idea.'; \
-                else \
-                  git co master && git pull && git branch -d \"$1\" && git push origin --delete \"$1\"; \
-                fi;\
-              }; f"
   fresh   = "!f() { repo=${1:-master}; git stash && git checkout "$repo" && git pull origin "$repo" && git co - && git stash pop; }; f"
   files   = "!f() { git show --pretty="" --name-only "$1"; }; f"
+  scrub   = "!f() { git branch --merged master | grep -v '^[ *]*master$' | xargs git branch -d; }; f"
+  sofar   = log --after=\"last sunday\" --before=\"this saturday\" --oneline
   spill   = "!git stash && git stash drop"
   squish  = "!git commit -a --fixup HEAD && git rebase -i --autosquash HEAD~2"
   pullin  = "!f() { repo=${1:-master}; git checkout "$repo" && git pull origin "$repo" && git co - && git merge "$repo"; }; f"
   commend = commit --amend --no-edit
+  standup = log --after=\"yesterday morning\" --before=\"today\" --oneline --author\"Ryan James Spencer\"
   started = "!git init && git commit -m "root" --allow-empty"
 [core]
 	excludesfile = /home/rjs/.gitignore_global
