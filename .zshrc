@@ -18,6 +18,7 @@ export PATH="$PATH:$HOME/scripts"
 export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:$HOME/.mafia/versions"
 export PATH="$PATH:$HOME/.cache/rebar3/bin"
+export PATH="$PATH:$HOME/.mix/escripts"
 export PATH="$PATH:$HOME/haskell/ghc-current/bin"
 
 export GOPATH="$HOME/go"
@@ -43,12 +44,13 @@ export PAGER='less'
 
 # Aliases
 alias v='nvim'
-alias vzv="nvim -c':files'"
+alias vzv="nvim -c':Files'"
 alias df='df -h'
 alias ls='ls -F'
 alias grep='grep --color=auto'
-alias rgc='rg -l "<{7} HEAD"'
+alias rgc='rg --hidden -l "<{7} HEAD"'
 alias rgl='rg -l'
+alias k='kubectl'
 
 # Aliases for subshells
 today() { date +%Y-%m-%d; }
@@ -59,6 +61,7 @@ export today
 export vdiff
 export vrg
 
+# External aliases
 [ -e "$HOME/.aliases" ] && source "$HOME/.aliases"
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
@@ -69,6 +72,11 @@ HISTFILE=~/.zsh_history
 # Use modern completion system
 autoload -Uz compinit
 compinit
+
+# Speed up git autocompletion
+__git_files () {
+    _wanted files expl 'local files' _files
+}
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
@@ -92,3 +100,5 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
