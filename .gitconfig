@@ -9,15 +9,24 @@
   d       = diff
   l       = log --oneline
   f       = fetch
-  ll      = log --oneline --stat
   s       = status --short --branch
+  r       = rebase
   m       = merge --no-ff
+  p       = push
+  ll      = log --oneline --stat
+  lg      = log --oneline --graph
+  dc      = diff --cached
   co      = checkout
   mt      = mergetool
+  fo      = fetch origin
+  fp      = fetch -p
+  it      = "!f() { git fetch --prune && git rebase origin/"$(git current)";  }; f"
   chk     = show HEAD --name-only
+  rbs     = rebase
   fxu     = commit --fixup=head^
   dno     = diff --name-only
   foa     = fetch origin -a
+  pfl     = push --force-with-lease
   llg     = log --oneline --stat --graph --decorate
   copr    = "!f() { git fetch origin pull/$1/head:pr$1 && git checkout pr$1; }; f"
   cost    = "!f() { git diff --stat --oneline "$1" | tail -1 | awk '{print $6-$4}'; }; f"
@@ -25,15 +34,34 @@
   jump    = "!f() { git stash; git checkout "$1"; git stash drop; }; f"
   slop    = stash pop
   slap    = stash apply
+  root    = rev-parse --show-toplevel
   fresh   = "!f() { repo=${1:-master}; git stash && git checkout "$repo" && git pull origin "$repo" && git co - && git stash pop; }; f"
   files   = "!f() { git show --pretty="" --name-only "$1"; }; f"
   scrub   = "!f() { git branch --merged master | grep -v '^[ *]*master$' | xargs git branch -d; }; f"
   sofar   = log --after=\"last sunday\" --before=\"this saturday\" --oneline
   spill   = "!git stash && git stash drop"
+  scrub   = "!f() { git branch --merged master | grep -v '^[ *]*master$' | xargs git branch -d; }; f"
+  sofar   = log --after=\"last sunday\" --before=\"this saturday\" --author=\"Ryan James Spencer\" --oneline
+  story   = log --oneline --reverse -p --
   squish  = "!git commit -a --fixup HEAD && git rebase -i --autosquash HEAD~2"
-  pullin  = "!f() { repo=${1:-master}; git checkout "$repo" && git pull origin "$repo" && git co - && git merge "$repo"; }; f"
+  tracks  = rev-parse --abbrev-ref --symbolic-full-name @{u}
   commend = commit --amend --no-edit
   standup = log --after=\"yesterday morning\" --before=\"today\" --oneline --author\"Ryan James Spencer\"
   started = "!git init && git commit -m "root" --allow-empty"
+  standup = log --after=\"yesterday morning\" --before=\"today\" --oneline --author=\"Ryan James Spencer\"
+  current = rev-parse --abbrev-ref HEAD
 [core]
 	excludesfile = /home/rjs/.gitignore_global
+[merge]
+  ;tool="meld"
+  tool="nvim -d"
+[user]
+	name       = Ryan James Spencer
+	email      = spencer.ryanjames@gmail.com
+  signingkey = 9868FC172FF5808D
+[commit]
+  gpgsign = true
+[gpg]
+  program = gpg
+[rebase]
+	autosquash = true
