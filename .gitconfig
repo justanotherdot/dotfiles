@@ -12,7 +12,6 @@
   s       = status --short --branch
   r       = rebase
   m       = merge --no-ff
-  p       = push
   ll      = log --oneline --stat
   lg      = log --oneline --graph
   dc      = diff --cached
@@ -58,7 +57,7 @@
 [user]
 	name       = Ryan James Spencer
 	email      = spencer.ryanjames@gmail.com
-  signingkey = 9868FC172FF5808D
+  signingkey = 16FF00035547C5DC
 [commit]
   gpgsign = true
 [gpg]
