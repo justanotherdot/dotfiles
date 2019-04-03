@@ -27,6 +27,9 @@
   foa     = fetch origin -a
   pfl     = push --force-with-lease
   llg     = log --oneline --stat --graph --decorate
+  wta     = worktree add
+  wtr     = worktree remove
+  wtl     = worktree list
   copr    = "!f() { git fetch origin pull/$1/head:pr$1 && git checkout pr$1; }; f"
   cost    = "!f() { git diff --stat --oneline "$1" | tail -1 | awk '{print $6-$4}'; }; f"
   grab    = "!f() { git clone git@github.com:"$1"; }; f"
