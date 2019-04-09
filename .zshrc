@@ -48,13 +48,20 @@ alias vzv="nvim -c':Files'"
 alias df='df -h'
 alias ls='ls -F'
 alias grep='grep --color=auto'
-alias rgc='rg --hidden -l "<{7} HEAD"'
+alias rgc='rg --hidden -l "<{7}"'
 alias rgl='rg -l'
 alias k='kubectl'
 
 # Aliases for subshells
 today() { date +%Y-%m-%d; }
-vdiff() { v -p $(rgc); }
+vdiff() {
+  results=$(rgc)
+  if [ -z "$results" ]; then
+    echo "No files found with marked conflicts"
+  else
+    v -p $(rgc);
+  fi
+}
 vrg() { v -p $(rgl "$1"); }
 
 export today
@@ -97,8 +104,30 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Defer initialization of nvm until nvm, node or a node-dependent command is
+# run. Ensure this block is only run once if .zshrc gets sourced multiple times
+# by checking whether __init_nvm is a function.
+if [ -s "$HOME/.nvm/nvm.sh" ] && [ ! "$(type -w __init_nvm | awk '{print $2}')" = function ]; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+  declare -a __node_commands=('nvm' 'node' 'npm' 'yarn' 'gulp' 'grunt' 'webpack')
+  function __init_nvm() {
+    for i in "${__node_commands[@]}"; do unalias $i; done
+    . "$NVM_DIR"/nvm.sh
+    unset __node_commands
+    unset -f __init_nvm
+  }
+  for i in "${__node_commands[@]}"; do alias $i='__init_nvm && '$i; done
+fi
 
-if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
+# Ditto for kubectl
+if [ /usr/local/bin/kubectl ] && [ ! "$(type -w __init_kubectl | awk '{print $2}')" = function ]; then
+  declare -a __kubectl_commands=('kubectl')
+  function __init_kubectl() {
+    for i in "${__kubectl_commands[@]}"; do unalias $i; done
+    source <(kubectl completion zsh)
+    unset __kubectl_commands
+    unset -f __init_kubectl
+  }
+  for i in "${__kubectl_commands[@]}"; do alias $i='__init_kubectl && '$i; done
+fi
