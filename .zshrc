@@ -48,13 +48,20 @@ alias vzv="nvim -c':Files'"
 alias df='df -h'
 alias ls='ls -F'
 alias grep='grep --color=auto'
-alias rgc='rg --hidden -l "<{7} HEAD"'
+alias rgc='rg --hidden -l "<{7}"'
 alias rgl='rg -l'
 alias k='kubectl'
 
 # Aliases for subshells
 today() { date +%Y-%m-%d; }
-vdiff() { v -p $(rgc); }
+vdiff() {
+  results=$(rgc)
+  if [ -z "$results" ]; then
+    echo "No files found with marked conflicts"
+  else
+    v -p $(rgc);
+  fi
+}
 vrg() { v -p $(rgl "$1"); }
 
 export today
