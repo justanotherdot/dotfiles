@@ -27,6 +27,7 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export GPG_TTY=$(tty)
+export CDPATH="$HOME/repos"
 
 eval $(keychain --eval -Q --quiet id_ed25519)
 
