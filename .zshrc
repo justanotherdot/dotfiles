@@ -7,27 +7,28 @@ export PROMPT="%~"$'\n'"%Bη %b"
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
-export PATH="$PATH:$HOME/.cabal/bin"
-export PATH="$PATH:$HOME/.cargo/bin"
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/.npm-global/bin"
-export PATH="$PATH:$HOME/.npm-global/node/bin"
-export PATH="$PATH:$HOME/bin"
-export PATH="$PATH:$HOME/go/bin"
-export PATH="$PATH:$HOME/scripts"
-export PATH="$PATH:/usr/local/go/bin"
-export PATH="$PATH:$HOME/.mafia/versions"
-export PATH="$PATH:$HOME/.cache/rebar3/bin"
-export PATH="$PATH:$HOME/.mix/escripts"
-export PATH="$PATH:$HOME/haskell/ghc-current/bin"
+PATH="$PATH:$HOME/.cabal/bin"
+PATH="$PATH:$HOME/.cargo/bin"
+PATH="$PATH:$HOME/.local/bin"
+PATH="$PATH:$HOME/.npm-global/bin"
+PATH="$PATH:$HOME/.npm-global/node/bin"
+PATH="$PATH:$HOME/bin"
+PATH="$PATH:$HOME/go/bin"
+PATH="$PATH:$HOME/scripts"
+PATH="$PATH:/usr/local/go/bin"
+PATH="$PATH:$HOME/.mafia/versions"
+PATH="$PATH:$HOME/.cache/rebar3/bin"
+PATH="$PATH:$HOME/.mix/escripts"
+PATH="$PATH:$HOME/haskell/ghc-current/bin"
 
-export GOPATH="$HOME/go"
-export SSH_ASKPASS=''
-export ERL_AFLAGS="-kernel shell_history enabled"
-export FZF_DEFAULT_COMMAND='fd --type f'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export GPG_TTY=$(tty)
-export CDPATH="$HOME/repos"
+GOPATH="$HOME/go"
+SSH_ASKPASS=''
+ERL_AFLAGS="-kernel shell_history enabled"
+FZF_DEFAULT_COMMAND='fd --type f'
+FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+GPG_TTY=$(tty)
+CDPATH="$HOME/repos:$HOME/work/repos"
+FZF_DEFAULT_OPTS='--color bw'
 
 eval $(keychain --eval -Q --quiet id_ed25519)
 
@@ -78,6 +79,7 @@ SAVEHIST=10000
 HISTFILE=~/.zsh_history
 
 # Use modern completion system
+fpath+=~/.zfunc
 autoload -Uz compinit
 compinit
 
@@ -104,6 +106,8 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.ghcup/env ] && source ~/.ghcup/env
+eval "$(rbenv init -)"
 
 # Defer initialization of nvm until nvm, node or a node-dependent command is
 # run. Ensure this block is only run once if .zshrc gets sourced multiple times
@@ -131,4 +135,9 @@ if [ /usr/local/bin/kubectl ] && [ ! "$(type -w __init_kubectl | awk '{print $2}
     unset -f __init_kubectl
   }
   for i in "${__kubectl_commands[@]}"; do alias $i='__init_kubectl && '$i; done
+fi
+
+if [ -f /usr/local/bin/vault ]; then
+  autoload -U +X bashcompinit && bashcompinit
+  complete -o nospace -C /usr/local/bin/vault vault
 fi
