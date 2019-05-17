@@ -137,5 +137,7 @@ if [ /usr/local/bin/kubectl ] && [ ! "$(type -w __init_kubectl | awk '{print $2}
   for i in "${__kubectl_commands[@]}"; do alias $i='__init_kubectl && '$i; done
 fi
 
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/vault vault
+if [ -f /usr/local/bin/vault ]; then
+  autoload -U +X bashcompinit && bashcompinit
+  complete -o nospace -C /usr/local/bin/vault vault
+fi
