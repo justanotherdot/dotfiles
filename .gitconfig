@@ -22,7 +22,7 @@
   it      = "!f() { git fetch --prune && git rebase origin/"$(git current)";  }; f"
   chk     = show HEAD --name-only
   rbs     = rebase
-  fxu     = commit --fixup=head^
+  fxu     = commit -a --fixup HEAD
   dno     = diff --name-only
   foa     = fetch origin -a
   pfl     = push --force-with-lease
@@ -62,7 +62,7 @@
 	email      = spencer.ryanjames@gmail.com
   signingkey = 16FF00035547C5DC
 [commit]
-  gpgsign = true
+  gpgsign = false
 [gpg]
   program = gpg
 [rebase]
