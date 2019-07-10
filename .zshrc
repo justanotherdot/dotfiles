@@ -20,15 +20,17 @@ PATH="$PATH:$HOME/.mafia/versions"
 PATH="$PATH:$HOME/.cache/rebar3/bin"
 PATH="$PATH:$HOME/.mix/escripts"
 PATH="$PATH:$HOME/haskell/ghc-current/bin"
+export PATH
 
-GOPATH="$HOME/go"
-SSH_ASKPASS=''
-ERL_AFLAGS="-kernel shell_history enabled"
-FZF_DEFAULT_COMMAND='fd --type f'
-FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-GPG_TTY=$(tty)
-CDPATH="$HOME/repos:$HOME/work/repos"
-FZF_DEFAULT_OPTS='--color bw'
+export GOPATH="$HOME/go"
+export SSH_ASKPASS=''
+export ERL_AFLAGS="-kernel shell_history enabled"
+export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export GPG_TTY=$(tty)
+export CDPATH="$HOME/repos:$HOME/work/repos" # Set this locally in vimrc?
+export FZF_DEFAULT_OPTS='--color bw'
+export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src/
 
 eval $(keychain --eval -Q --quiet id_ed25519)
 
@@ -53,8 +55,15 @@ alias grep='grep --color=auto'
 alias rgc='rg --hidden -l "<{7}"'
 alias rgl='rg -l'
 alias k='kubectl'
+alias jot='v ~/notes/$(today).md'
+alias open='xdg-open'
+alias fd='fdfind'
+alias hunks="rg -U '<{7}.*(\n.*)+={7}(\n.*)+>{7}.*'"
 
 # Aliases for subshells
+raise() {
+  git p 2>&1 | awk '/http/ {print $2}' | xargs xdg-open
+}
 today() { date +%Y-%m-%d; }
 vdiff() {
   results=$(rgc)
@@ -69,6 +78,7 @@ vrg() { v -p $(rgl "$1"); }
 export today
 export vdiff
 export vrg
+export raise
 
 # External aliases
 [ -e "$HOME/.aliases" ] && source "$HOME/.aliases"
@@ -107,7 +117,6 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.ghcup/env ] && source ~/.ghcup/env
-eval "$(rbenv init -)"
 
 # Defer initialization of nvm until nvm, node or a node-dependent command is
 # run. Ensure this block is only run once if .zshrc gets sourced multiple times

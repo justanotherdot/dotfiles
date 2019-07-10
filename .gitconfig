@@ -20,6 +20,8 @@
   fo      = fetch origin
   fp      = fetch -p
   it      = "!f() { git fetch --prune && git rebase origin/"$(git current)";  }; f"
+  com     = checkout master
+  fpr     = "!f() { git fp && git r origin/master; }; f"
   chk     = show HEAD --name-only
   rbs     = rebase
   fxu     = commit --fixup=head^
