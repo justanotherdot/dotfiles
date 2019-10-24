@@ -19,12 +19,15 @@
   mt      = mergetool
   fo      = fetch origin
   fp      = fetch -p
-  it      = "!f() { git fetch --prune && git rebase origin/"$(git current)";  }; f"
+  up      = "!f() { git it && git p; }; f"
+  it      = "!f() { git fp && git r origin/master; }; f"
+  pr      = raise
+  fpr     = "!f() { git fetch --prune && git rebase origin/"$(git current)";  }; f"
   com     = checkout master
-  fpr     = "!f() { git fp && git r origin/master; }; f"
   chk     = show HEAD --name-only
   rbs     = rebase
-  fxu     = commit --fixup=head^
+  fxu     = commit --fixup=HEAD
+  rom     = "!f() { git r -i $(git merge-base origin/master HEAD); }; f"
   dno     = diff --name-only
   foa     = fetch origin -a
   pfl     = push --force-with-lease
@@ -32,7 +35,9 @@
   wta     = worktree add
   wtr     = worktree remove
   wtl     = worktree list
+  ret     = "!f() { git com && git it && git tidy; }; f"
   copr    = "!f() { git fetch origin pull/$1/head:pr$1 && git checkout pr$1; }; f"
+  tidy    = "!f() { git b | rg ': gone' | awk '{print $1}' | xargs git b -D; }; f"
   cost    = "!f() { git diff --stat --oneline "$1" | tail -1 | awk '{print $6-$4}'; }; f"
   grab    = "!f() { git clone git@github.com:"$1"; }; f"
   jump    = "!f() { git stash; git checkout "$1"; git stash drop; }; f"
@@ -47,6 +52,7 @@
   scrub   = "!f() { git branch --merged master | grep -v '^[ *]*master$' | xargs git branch -d; }; f"
   sofar   = log --after=\"last sunday\" --before=\"this saturday\" --author=\"Ryan James Spencer\" --oneline
   story   = log --oneline --reverse -p --
+  raise   = "!f() { git up 2>&1 | awk '/http/ { print $2 }' | xargs xdg-open; }; f"
   squish  = "!git commit -a --fixup HEAD && git rebase -i --autosquash HEAD~2"
   tracks  = rev-parse --abbrev-ref --symbolic-full-name @{u}
   commend = commit --amend --no-edit

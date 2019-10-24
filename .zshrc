@@ -57,7 +57,6 @@ alias rgl='rg -l'
 alias k='kubectl'
 alias jot='v ~/notes/$(today).md'
 alias open='xdg-open'
-alias fd='fdfind'
 alias hunks="rg -U '<{7}.*(\n.*)+={7}(\n.*)+>{7}.*'"
 
 # Aliases for subshells
